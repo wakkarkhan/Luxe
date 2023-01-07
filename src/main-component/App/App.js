@@ -1,13 +1,16 @@
-import React, { Fragment } from "react";
-import AllRoute from "../router";
-import "./App.css";
-
+import React, { Fragment, useState } from 'react'
+import AllRoute from '../router'
+import './App.css'
+import { UserProvider } from '../../context'
 const App = () => {
+  const [user, setUser] = useState(null)
   return (
     <Fragment>
-      <AllRoute />
+      <UserProvider setUser={setUser} user={user}>
+        <AllRoute />
+      </UserProvider>
     </Fragment>
-  );
-};
+  )
+}
 
-export default App;
+export default App

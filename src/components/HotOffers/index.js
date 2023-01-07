@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap'
@@ -12,10 +12,11 @@ import img5 from '../../img/toyota-offer-2.png'
 import img6 from '../../img/marcedes-offer.png'
 
 import './style.css'
+import UserContext from '../../context'
 
 const HotOffers = () => {
   const { t } = useTranslation()
-
+  const { user } = useContext(UserContext)
   const [categories, setCategories] = useState([])
   const [cars, setCars] = useState(null)
 
@@ -32,7 +33,7 @@ const HotOffers = () => {
     const jsonData = await result.json()
 
     setCars(jsonData?.data)
-    console.log(cars)
+    console.log(jsonData)
   }
 
   useEffect(() => {
@@ -41,26 +42,10 @@ const HotOffers = () => {
         'https://hiso.software-compilers.com/api/getCategories'
       )
       const jsonData = await result.json()
-      // console.log(jsonData.data);
       setCategories(jsonData.data)
     }
-
-    const fetchCars = async (key) => {
-      const data = new FormData()
-      data.append('category_id', key)
-      const result = await fetch(
-        'https://hiso.software-compilers.com/api/getCars',
-        {
-          method: 'POST',
-          body: data,
-        }
-      )
-      const jsonData = await result.json()
-
-      setCars(jsonData?.data)
-    }
-    fetchCars(1)
     fetchData()
+    handleClick(1)
   }, [])
 
   return (
@@ -127,6 +112,7 @@ const HotOffers = () => {
                                       >
                                         {t('rent_car')}
                                       </Link>
+
                                       <Link
                                         to='/car-booking'
                                         className='offer-btn-2'
