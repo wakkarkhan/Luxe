@@ -28,6 +28,7 @@ import './style.css'
 import UserContext from '../../context'
 
 const CarBooking = () => {
+  const dateValue = new Date()
   const { user } = useContext(UserContext)
   const navigate = useNavigate()
   useEffect(() => {
@@ -45,8 +46,8 @@ const CarBooking = () => {
     data.append('user_id', 1)
     data.append('destination', document.getElementById('to_address').value)
     data.append('pick_and_drop', 0)
-    data.append('from_date_time', document.getElementById('datepicker').value)
-    data.append('to_date_time', document.getElementById('datepicker').value)
+    data.append('from_date_time', dateConverter(dateValue))
+    data.append('to_date_time', dateConverter(dateValue))
     data.append('status', 1)
     data.append('payment_id', 1)
     try {
@@ -62,6 +63,16 @@ const CarBooking = () => {
     } catch (error) {
       alert('error')
     }
+  }
+  function dateConverter(str) {
+    var date = new Date(str),
+      mnth = ('0' + (date.getMonth() + 1)).slice(-2),
+      day = ('0' + date.getDate()).slice(-2),
+      hours = ('0' + date.getHours()).slice(-2),
+      minutes = ('0' + date.getMinutes()).slice(-2),
+      seconds = ('0' + date.getSeconds()).slice(-2),
+      year = date.getFullYear()
+    return `${year}/${mnth}/${day} ${hours}:${minutes}:${seconds}`
   }
 
   const onClick = (e) => {
@@ -279,6 +290,8 @@ const CarBooking = () => {
                           <p>
                             <DatePickerComponent
                               id='datepicker'
+                              value={dateValue}
+                              format='dd/MM/yyyy'
                               placeholder={t('journey_date')}
                             ></DatePickerComponent>
                           </p>
