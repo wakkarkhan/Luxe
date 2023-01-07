@@ -49,13 +49,17 @@ const CarBooking = () => {
     data.append('to_date_time', document.getElementById('datepicker').value)
     data.append('status', 1)
     data.append('payment_id', 1)
-    const result = await axios.post(
-      'https://hiso.software-compilers.com/api/makeBooking',
-      data
-    )
-    if (result.status === 200) {
-      navigate('/')
-    } else {
+    try {
+      const result = await axios.post(
+        'https://hiso.software-compilers.com/api/makeBooking',
+        data
+      )
+      if (result.status === 200) {
+        navigate('/')
+      } else {
+        alert('error')
+      }
+    } catch (error) {
       alert('error')
     }
   }
