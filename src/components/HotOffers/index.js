@@ -90,7 +90,7 @@ const HotOffers = () => {
                     <Tab eventKey={item.id} title={item.name}>
                       <Row>
                         {cars ? (
-                          cars?.map(() => {
+                          cars?.map((car) => {
                             return (
                               <Col lg={4}>
                                 <div className='single-offers'>
@@ -101,7 +101,7 @@ const HotOffers = () => {
                                   </div>
                                   <div className='offer-text'>
                                     <Link to='/car-booking'>
-                                      <h3>Toyota Alphard</h3>
+                                      <h3>{car.name}</h3>
                                     </Link>
                                     <h4>
                                       $50.00<span>/ {t('day')}</span>
