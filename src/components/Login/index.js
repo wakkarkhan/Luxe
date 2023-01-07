@@ -17,11 +17,12 @@ const Login = () => {
 
     data.append('username', e.target[0].value)
     data.append('password', e.target[1].value)
-    data.append('email', e.target[1].value)
+    data.append('email', e.target[0].value)
     data.append('type', 0)
     await axios
       .post('https://hiso.software-compilers.com/api/signin', data)
       .then((res) => {
+        alert(res.data.success)
         if (res.data.success === 'false') {
           alert('Invalid')
           setUser(false)
