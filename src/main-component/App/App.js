@@ -3,7 +3,7 @@ import AllRoute from '../router'
 import './App.css'
 import { UserProvider } from '../../context'
 const App = () => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(true)
   return (
     <Fragment>
       <UserProvider setUser={setUser} user={user}>

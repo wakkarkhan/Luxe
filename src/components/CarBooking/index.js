@@ -22,6 +22,7 @@ import {
 import img1 from '../../img/booking.jpg'
 import img2 from '../../img/master-card.jpg'
 import img3 from '../../img/paypal.jpg'
+import axios from 'axios'
 
 import './style.css'
 import UserContext from '../../context'
@@ -36,8 +37,27 @@ const CarBooking = () => {
   }, [])
   const { t } = useTranslation()
 
-  const SubmitHandler = (e) => {
+  const SubmitHandler = async (e) => {
     e.preventDefault()
+    const data = new FormData()
+
+    data.append('car_id', 1)
+    data.append('user_id', 1)
+    data.append('destination', document.getElementById('to_address').value)
+    data.append('pick_and_drop', 0)
+    data.append('from_date_time', document.getElementById('datepicker').value)
+    data.append('to_date_time', document.getElementById('datepicker').value)
+    data.append('status', 1)
+    data.append('payment_id', 1)
+    const result = await axios.post(
+      'https://hiso.software-compilers.com/api/makeBooking',
+      data
+    )
+    if (result.status === 200) {
+      navigate('/')
+    } else {
+      alert('error')
+    }
   }
 
   const onClick = (e) => {
@@ -143,170 +163,198 @@ const CarBooking = () => {
       </section>
       <section className='gauto-booking-form section_70'>
         <Container>
-          <Row>
-            <Col lg={8}>
-              <div className='booking-form-left'>
-                <div className='single-booking'>
-                  <h3>{t('car_booking.personal_information')}</h3>
-                  <form onSubmit={SubmitHandler}>
-                    <Row>
-                      <Col md={6}>
-                        <p>
-                          <input
-                            type='text'
-                            placeholder={t('car_booking.first_name')}
-                          />
-                        </p>
-                      </Col>
-                      <Col md={6}>
-                        <p>
-                          <input
-                            type='text'
-                            placeholder={t('car_booking.last_name')}
-                          />
-                        </p>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={6}>
-                        <p>
-                          <input
-                            type='email'
-                            placeholder={t('car_booking.email')}
-                          />
-                        </p>
-                      </Col>
-                      <Col md={6}>
-                        <p>
-                          <input
-                            type='tel'
-                            placeholder={t('car_booking.phn')}
-                          />
-                        </p>
-                      </Col>
-                    </Row>
-                  </form>
-                </div>
-                <div className='single-booking'>
-                  <h3>{t('car_booking.booking_details')}</h3>
-                  <form>
-                    <Row>
-                      <Col md={6}>
-                        <p>
-                          <input type='text' placeholder={t('from_address')} />
-                        </p>
-                      </Col>
-                      <Col md={6}>
-                        <p>
-                          <input type='text' placeholder={t('to_address')} />
-                        </p>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={6}>
-                        <p>
-                          <select>
-                            <option data-display='Select'>1 person</option>
-                            <option>2 person</option>
-                            <option>3 person</option>
-                            <option>4 person</option>
-                            <option>5-10 person</option>
-                          </select>
-                        </p>
-                      </Col>
-                      <Col md={6}>
-                        <p>
-                          <select>
-                            <option data-display='Select'>1 luggage</option>
-                            <option>2 luggage</option>
-                            <option>3 luggage</option>
-                            <option>4(+) luggage</option>
-                          </select>
-                        </p>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={6}>
-                        <p>
-                          <DatePickerComponent
-                            id='datepicker'
-                            placeholder={t('journey_date')}
-                          ></DatePickerComponent>
-                        </p>
-                      </Col>
-                      <Col md={6}>
-                        <p>
-                          <TimePickerComponent
-                            id='timepicker'
-                            placeholder={t('journey_time')}
-                          ></TimePickerComponent>
-                        </p>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={12}>
-                        <p>
-                          <textarea
-                            placeholder='Write Here...'
-                            defaultValue={''}
-                          />
-                        </p>
-                      </Col>
-                    </Row>
-                  </form>
-                </div>
-              </div>
-            </Col>
-            <Col lg={4}>
-              <div className='booking-right'>
-                <h3>{t('car_booking.payment_method')}</h3>
-                <div className='gauto-payment clearfix'>
-                  <div className='payment'>
-                    <input type='radio' id='ss-option' name='selector' />
-                    <label htmlFor='ss-option'>
-                      {t('car_booking.bank_transfer')}
-                    </label>
-                    <div className='check'>
-                      <div className='inside' />
-                    </div>
-                    <p>{t('car_booking.payment_text')}</p>
+          <form onSubmit={SubmitHandler}>
+            <Row>
+              <Col lg={8}>
+                <div className='booking-form-left'>
+                  <div className='single-booking'>
+                    <h3>{t('car_booking.personal_information')}</h3>
+                    <form>
+                      <Row>
+                        <Col md={6}>
+                          <p>
+                            <input
+                              type='text'
+                              placeholder={t('car_booking.first_name')}
+                              id='first_name'
+                              required
+                            />
+                          </p>
+                        </Col>
+                        <Col md={6}>
+                          <p>
+                            <input
+                              type='text'
+                              placeholder={t('car_booking.last_name')}
+                              id='last_name'
+                              required
+                            />
+                          </p>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col md={6}>
+                          <p>
+                            <input
+                              type='email'
+                              placeholder={t('car_booking.email')}
+                              id='email'
+                              required
+                            />
+                          </p>
+                        </Col>
+                        <Col md={6}>
+                          <p>
+                            <input
+                              type='tel'
+                              placeholder={t('car_booking.phn')}
+                              id='phn'
+                              required
+                            />
+                          </p>
+                        </Col>
+                      </Row>
+                    </form>
                   </div>
-                  <div className='payment'>
-                    <input type='radio' id='f-option' name='selector' />
-                    <label htmlFor='f-option'>
-                      {t('car_booking.check_payment')}
-                    </label>
-                    <div className='check'>
-                      <div className='inside' />
-                    </div>
-                  </div>
-                  <div className='payment'>
-                    <input type='radio' id='s-option' name='selector' />
-                    <label htmlFor='s-option'>
-                      {t('car_booking.credit_card')}
-                    </label>
-                    <div className='check'>
-                      <div className='inside' />
-                    </div>
-                    <img src={img2} alt='credit card' />
-                  </div>
-                  <div className='payment'>
-                    <input type='radio' id='t-option' name='selector' />
-                    <label htmlFor='t-option'>Paypal</label>
-                    <div className='check'>
-                      <div className='inside' />
-                    </div>
-                    <img src={img3} alt='credit card' />
+                  <div className='single-booking'>
+                    <h3>{t('car_booking.booking_details')}</h3>
+                    <form>
+                      <Row>
+                        <Col md={6}>
+                          <p>
+                            <input
+                              type='text'
+                              placeholder={t('from_address')}
+                              id='from_address'
+                              required
+                            />
+                          </p>
+                        </Col>
+                        <Col md={6}>
+                          <p>
+                            <input
+                              type='text'
+                              placeholder={t('to_address')}
+                              id='to_address'
+                              required
+                            />
+                          </p>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col md={6}>
+                          <p>
+                            <select>
+                              <option data-display='Select'>1 person</option>
+                              <option>2 person</option>
+                              <option>3 person</option>
+                              <option>4 person</option>
+                              <option>5-10 person</option>
+                            </select>
+                          </p>
+                        </Col>
+                        <Col md={6}>
+                          <p>
+                            <select>
+                              <option
+                                data-display='Select'
+                                id='luggages'
+                                required
+                              >
+                                1 luggage
+                              </option>
+                              <option>2 luggage</option>
+                              <option>3 luggage</option>
+                              <option>4(+) luggage</option>
+                            </select>
+                          </p>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col md={6}>
+                          <p>
+                            <DatePickerComponent
+                              id='datepicker'
+                              placeholder={t('journey_date')}
+                            ></DatePickerComponent>
+                          </p>
+                        </Col>
+                        <Col md={6}>
+                          <p>
+                            <TimePickerComponent
+                              id='timepicker'
+                              placeholder={t('journey_time')}
+                            ></TimePickerComponent>
+                          </p>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col md={12}>
+                          <p>
+                            <textarea
+                              placeholder='Write Here...'
+                              defaultValue={''}
+                              id='note'
+                              required
+                            />
+                          </p>
+                        </Col>
+                      </Row>
+                    </form>
                   </div>
                 </div>
-                <div className='action-btn'>
-                  <Link to='/' onClick={onClick} className='gauto-btn'>
-                    {t('researve_now')}
-                  </Link>
+              </Col>
+              <Col lg={4}>
+                <div className='booking-right'>
+                  <h3>{t('car_booking.payment_method')}</h3>
+                  <div className='gauto-payment clearfix'>
+                    <div className='payment'>
+                      <input type='radio' id='ss-option' name='selector' />
+                      <label htmlFor='ss-option'>
+                        {t('car_booking.bank_transfer')}
+                      </label>
+                      <div className='check'>
+                        <div className='inside' />
+                      </div>
+                      <p>{t('car_booking.payment_text')}</p>
+                    </div>
+                    <div className='payment'>
+                      <input type='radio' id='f-option' name='selector' />
+                      <label htmlFor='f-option'>
+                        {t('car_booking.check_payment')}
+                      </label>
+                      <div className='check'>
+                        <div className='inside' />
+                      </div>
+                    </div>
+                    <div className='payment'>
+                      <input type='radio' id='s-option' name='selector' />
+                      <label htmlFor='s-option'>
+                        {t('car_booking.credit_card')}
+                      </label>
+                      <div className='check'>
+                        <div className='inside' />
+                      </div>
+                      <img src={img2} alt='credit card' />
+                    </div>
+                    <div className='payment'>
+                      <input type='radio' id='t-option' name='selector' />
+                      <label htmlFor='t-option'>Paypal</label>
+                      <div className='check'>
+                        <div className='inside' />
+                      </div>
+                      <img src={img3} alt='credit card' />
+                    </div>
+                  </div>
+                  <div className='action-btn'>
+                    <button className='gauto-btn' type='submit'>
+                      {t('researve_now')}
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </Col>
-          </Row>
+              </Col>
+            </Row>
+          </form>
         </Container>
       </section>
     </>
