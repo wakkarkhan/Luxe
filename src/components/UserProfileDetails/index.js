@@ -23,9 +23,9 @@ const UserProfileDetails = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    // if (!user) {
-    //   navigate('/login')
-    // }
+    if (!user) {
+      navigate('/login')
+    }
   }, []);
 
   const onClickHandler = (e) => {
@@ -38,11 +38,10 @@ const UserProfileDetails = () => {
   //update basic info
   const SubmitHandler = async (e) => {
     e.preventDefault()
-    //   useEffect(() => {
-    // if (!user) {
-    //   navigate('/login')
-    // }
-    // else{
+    if (!user) {
+      navigate('/login')
+    }
+    else{
     const data = new FormData()
 
     data.append('user_id', 5);
@@ -74,7 +73,7 @@ const UserProfileDetails = () => {
       }
     } catch (error) {
       alert('error')
-      // }
+      }
 
     }
   }
@@ -82,11 +81,10 @@ const UserProfileDetails = () => {
   //update profile image
   const SubmitImageHandler = async (e) => {
     e.preventDefault()
-    //   useEffect(() => {
-    // if (!user) {
-    //   navigate('/login')
-    // }
-    // else{
+    if (!user) {
+      navigate('/login')
+    }
+    else{
     const data = new FormData()
 
     data.append('user_id', 5);
@@ -110,7 +108,7 @@ const UserProfileDetails = () => {
       }
     } catch (error) {
       alert('error')
-      // }
+      }
 
     }
   }
@@ -118,11 +116,10 @@ const UserProfileDetails = () => {
   //update license images
   const submitLicenseHandler = async (e) => {
     e.preventDefault()
-    //   useEffect(() => {
-    // if (!user) {
-    //   navigate('/login')
-    // }
-    // else{
+    if (!user) {
+      navigate('/login')
+    }
+    else{
 
     const data = new FormData()
 
@@ -152,7 +149,7 @@ const UserProfileDetails = () => {
       alert('error')
     }
 
-    // }
+    }
   }
 
 
