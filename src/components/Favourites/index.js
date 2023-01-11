@@ -1,17 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import { Link, useLinkClickHandler, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Accordion } from "react-bootstrap";
+
+// import img1 from "../../img/service-details-1.jpg";
+// import img2 from "../../img/service-details-2.jpg";
+
+import "./style.css";
 import {
   FaCar,
   FaCogs,
   FaTachometerAlt,
   FaAngleDoubleRight,
 } from "react-icons/fa";
-// import {
-//   DatePickerComponent,
-//   TimePickerComponent,
-// } from "@syncfusion/ej2-react-calendars";
+import {
+  DatePickerComponent,
+  TimePickerComponent,
+} from "@syncfusion/ej2-react-calendars";
 
 import img2 from "../../img/nissan-offer.png";
 import img3 from "../../img/audi-offer.png";
@@ -19,53 +24,113 @@ import img4 from "../../img/bmw-offer.png";
 import img5 from "../../img/toyota-offer-2.png";
 import img6 from "../../img/marcedes-offer.png";
 
-import "./style.css";
-
-const CarList = () => {
+const UserFavourites = () => {
   const { t } = useTranslation();
+  const [cars, setCars] = useState(null)
+  const navigate = useNavigate()
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-//   const SubmitHandler = (e) => {
-//     e.preventDefault();
-//   };
 
   const onClick = (e) => {
     e.preventDefault();
   };
 
+  const onClickHandler = (e) =>{
+      e.preventDefault()
+    localStorage.removeItem("id")
+    navigate("/login")
+    window.location.reload()
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = new FormData()
+      const userID = localStorage.getItem('id')
+      data.append('user_id', userID)
+      const result = await fetch(
+        'https://hiso.software-compilers.com/api/getFavouriteCars',
+        {
+          method: 'POST',
+          body: data,
+        }
+      )
+      const jsonData = await result.json()
+  
+      setCars(jsonData?.data)
+    }
+    fetchData()
+  }, [])
+
+  
+
   return (
-    <section className="gauto-car-listing section_70">
+    <section className="gauto-service-details-area section_70">
       <Container>
         <Row>
-          <Col lg={12}>
-            <div className="car-listing-right">
+          <Col lg={4}>
+            <div className="service-details-left">
+              <div className="sidebar-widget">
+                <ul className="service-menu">
+                  <li>
+                  {/* <Link to="/service-single">Today</Link> */}
+                  <Link to="/user-bookings">All Bookings</Link>
+                  </li>
+                  <li>
+                  <Link to="/make-bookings">Make Bookings</Link>
+                  </li>
+                  <li className="active">
+                  <Link to="/favourites">Favourites</Link>
+                  </li>
+                  <li>
+                  <Link to="/user-profile">Profile</Link>
+                  </li>
+                  <li>
+                  <Link onClick={onClickHandler}>Logout</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </Col>
+          <Col lg={8}>
+            <div className="service-details-right">
+              <div className="service-accordion" id="accordion">
+                  <h3>Your Favourites</h3>
+              </div>
+              <div className="car-listing-right">
               <div className="car-grid-list">
                 <Row>
-                  <Col md={4}>
+                {cars?.map((car) => {
+                  return (
+                    <Col md={6}>
                     <div className="single-offers">
                       <div className="offer-image">
                         <Link to="/car-booking">
-                          <img src={img2} alt="offer 1" />
+                        {car.IntExImages.slice(0, 1).map((c, i) => (
+                          <img src={'https://hiso.software-compilers.com/public/Vehicle/'+car.id+'/IntExtImages/'+c.image_path} alt='offer 1' />
+                        ))}
                         </Link>
                       </div>
                       <div className="offer-text">
                         <Link to="/car-booking">
-                          <h3>Nissan 370Z</h3>
+                          <h3>{car.name}</h3>
                         </Link>
                         <h4>
-                          $75.00<span>/ {t("day")}</span>
+                          {car.price_per_day}<span>/ {t("day")}</span>
                         </h4>
                         <ul>
                           <li>
                             <FaCar />
-                            {t("model")}:2017
+                            {t("model")}:{car.model_year}
                           </li>
                           <li>
                             <FaCogs />
-                            {t("automatic")}
+                            {car.transmission}
                           </li>
                           <li>
                             <FaTachometerAlt />
-                            20kmpl
+                            {car.car_range}
                           </li>
                         </ul>
                         <div className="offer-action">
@@ -79,205 +144,12 @@ const CarList = () => {
                       </div>
                     </div>
                   </Col>
-                  <Col md={4}>
-                    <div className="single-offers">
-                      <div className="offer-image">
-                        <Link to="/car-booking">
-                          <img src={img3} alt="offer 1" />
-                        </Link>
-                      </div>
-                      <div className="offer-text">
-                        <Link to="/car-booking">
-                          <h3>Audi Q3</h3>
-                        </Link>
-                        <h4>
-                          $45.00<span>/ {t("day")}</span>
-                        </h4>
-                        <ul>
-                          <li>
-                            <FaCar />
-                            {t("model")}:2017
-                          </li>
-                          <li>
-                            <FaCogs />
-                            {t("automatic")}
-                          </li>
-                          <li>
-                            <FaTachometerAlt />
-                            20kmpl
-                          </li>
-                        </ul>
-                        <div className="offer-action">
-                          <Link to="/car-booking" className="offer-btn-1">
-                            {t("rent_car")}
-                          </Link>
-                          <Link to="/car-booking" className="offer-btn-2">
-                            {t("details")}
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col md={4}>
-                    <div className="single-offers">
-                      <div className="offer-image">
-                        <Link to="/car-booking">
-                          <img src={img4} alt="offer 1" />
-                        </Link>
-                      </div>
-                      <div className="offer-text">
-                        <Link to="/car-booking">
-                          <h3>BMW X3</h3>
-                        </Link>
-                        <h4>
-                          $50.00<span>/ {t("day")}</span>
-                        </h4>
-                        <ul>
-                          <li>
-                            <FaCar />
-                            {t("model")}:2017
-                          </li>
-                          <li>
-                            <FaCogs />
-                            {t("automatic")}
-                          </li>
-                          <li>
-                            <FaTachometerAlt />
-                            20kmpl
-                          </li>
-                        </ul>
-                        <div className="offer-action">
-                          <Link to="/car-booking" className="offer-btn-1">
-                            {t("rent_car")}
-                          </Link>
-                          <Link to="/car-booking" className="offer-btn-2">
-                            {t("details")}
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </Col>
-                </Row>
-                <Row>
+                  )}
+                )}
+                 
                   
-                  <Col md={4}>
-                    <div className="single-offers">
-                      <div className="offer-image">
-                        <Link to="/car-booking">
-                          <img src={img5} alt="offer 1" />
-                        </Link>
-                      </div>
-                      <div className="offer-text">
-                        <Link to="/car-booking">
-                          <h3>Toyota Camry</h3>
-                        </Link>
-                        <h4>
-                          $55.00<span>/ {t("day")}</span>
-                        </h4>
-                        <ul>
-                          <li>
-                            <FaCar />
-                            {t("model")}:2017
-                          </li>
-                          <li>
-                            <FaCogs />
-                            {t("automatic")}
-                          </li>
-                          <li>
-                            <FaTachometerAlt />
-                            20kmpl
-                          </li>
-                        </ul>
-                        <div className="offer-action">
-                          <Link to="/car-booking" className="offer-btn-1">
-                            {t("rent_car")}
-                          </Link>
-                          <Link to="/car-booking" className="offer-btn-2">
-                            {t("details")}
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col md={4}>
-                    <div className="single-offers">
-                      <div className="offer-image">
-                        <Link to="/car-booking">
-                          <img src={img6} alt="offer 1" />
-                        </Link>
-                      </div>
-                      <div className="offer-text">
-                        <Link to="/car-booking">
-                          <h3>marcedes S-class</h3>
-                        </Link>
-                        <h4>
-                          $50.00<span>/ {t("day")}</span>
-                        </h4>
-                        <ul>
-                          <li>
-                            <FaCar />
-                            {t("model")}:2017
-                          </li>
-                          <li>
-                            <FaCogs />
-                            {t("automatic")}
-                          </li>
-                          <li>
-                            <FaTachometerAlt />
-                            20kmpl
-                          </li>
-                        </ul>
-                        <div className="offer-action">
-                          <Link to="/car-booking" className="offer-btn-1">
-                            {t("rent_car")}
-                          </Link>
-                          <Link to="/car-booking" className="offer-btn-2">
-                            {t("details")}
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col md={4}>
-                    <div className="single-offers">
-                      <div className="offer-image">
-                        <Link to="/car-booking">
-                          <img src={img2} alt="offer 1" />
-                        </Link>
-                      </div>
-                      <div className="offer-text">
-                        <Link to="/car-booking">
-                          <h3>Audi Q3</h3>
-                        </Link>
-                        <h4>
-                          $45.00<span>/ {t("day")}</span>
-                        </h4>
-                        <ul>
-                          <li>
-                            <FaCar />
-                            {t("model")}:2017
-                          </li>
-                          <li>
-                            <FaCogs />
-                            {t("automatic")}
-                          </li>
-                          <li>
-                            <FaTachometerAlt />
-                            20kmpl
-                          </li>
-                        </ul>
-                        <div className="offer-action">
-                          <Link to="/car-booking" className="offer-btn-1">
-                            {t("rent_car")}
-                          </Link>
-                          <Link to="/car-booking" className="offer-btn-2">
-                            {t("details")}
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </Col>
                 </Row>
+                
               </div>
               <div className="pagination-box-row">
                 <p>Page 1 of 6</p>
@@ -311,6 +183,7 @@ const CarList = () => {
                 </ul>
               </div>
             </div>
+            </div>
           </Col>
         </Row>
       </Container>
@@ -318,4 +191,4 @@ const CarList = () => {
   );
 };
 
-export default CarList;
+export default UserFavourites;

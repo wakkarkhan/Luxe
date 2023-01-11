@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Container, Row, Col } from "react-bootstrap";
@@ -12,6 +12,9 @@ import "./style.css";
 
 const Blog = () => {
   const { t } = useTranslation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <section className="gauto-blog-area section_70">

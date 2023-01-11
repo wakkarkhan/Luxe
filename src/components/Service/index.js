@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Container, Row, Col } from "react-bootstrap";
@@ -17,6 +17,9 @@ import "./style.css";
 
 const Service = () => {
   const { t } = useTranslation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const settings = {
     dots: true,
@@ -74,7 +77,7 @@ const Service = () => {
                     <img src={img1} alt="city trasport" />
                   </div>
                   <div className="service-text">
-                    <Link to="/service-single">
+                    <Link>
                     <h3>{t("rental_tourist")}</h3>
                     </Link>
                     <p>
@@ -90,7 +93,7 @@ const Service = () => {
                     <img src={img2} alt="airport trasport" />
                   </div>
                   <div className="service-text">
-                    <Link to="/service-single">
+                    <Link>
                     <h3>{t("rental_organizations")}</h3>
                     </Link>
                     <p>
@@ -106,7 +109,7 @@ const Service = () => {
                     <img src={img3} alt="hospital trasport" />
                   </div>
                   <div className="service-text">
-                    <Link to="/service-single">
+                    <Link>
                     <h3>{t("rental_embassy")}</h3>
                     </Link>
                     <p>
@@ -122,7 +125,7 @@ const Service = () => {
                     <img src={img4} alt="wedding trasport" />
                   </div>
                   <div className="service-text">
-                    <Link to="/service-single">
+                    <Link>
                     <h3>{t("rental_wedding")}</h3>
                     </Link>
                     <p>
@@ -138,7 +141,7 @@ const Service = () => {
                     <img src={img5} alt="wedding trasport" />
                   </div>
                   <div className="service-text">
-                    <Link to="/service-single">
+                    <Link>
                     <h3>{t("private_tour_guide")}</h3>
                     </Link>
                     <p>
@@ -154,7 +157,7 @@ const Service = () => {
                     <img src={img6} alt="wedding trasport" />
                   </div>
                   <div className="service-text">
-                    <Link to="/service-single">
+                    <Link>
                     <h3> {t("guest")}</h3>
                     </Link>
                     <p>

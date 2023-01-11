@@ -48,10 +48,7 @@ const About = () => {
                 <div className="signature-left">
                   <img src={signature} alt="signature" />
                 </div>
-                <div className="signature-right">
-                  <h3>MAVIN </h3>
-                  <p>{t("founder")}</p>
-                </div>
+               
               </div>
             </div>
           </Col>

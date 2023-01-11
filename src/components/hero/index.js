@@ -44,9 +44,9 @@ const Hero = () => {
                       <div className="slider-text">
                         <p>{t("hero_slide_subtitle")}</p>
                         <h2>{t("hero_slide_title")}</h2>
-                        <Link to="/" onClick={onClick} className="gauto-btn">
+                        {/* <Link to="/" onClick={onClick} className="gauto-btn">
                           {t("researve_now")}
-                        </Link>
+                        </Link> */}
                       </div>
                     </Col>
                   </Row>
@@ -68,9 +68,9 @@ const Hero = () => {
                       <div className="slider-text">
                         <p>{t("hero_slide_subtitle")}</p>
                         <h2>{t("hero_slide_title")}</h2>
-                        <Link to="/" onClick={onClick} className="gauto-btn">
+                        {/* <Link to="/" onClick={onClick} className="gauto-btn">
                           {t("researve_now")}
-                        </Link>
+                        </Link> */}
                       </div>
                     </Col>
                   </Row>

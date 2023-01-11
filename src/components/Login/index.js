@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Container, Row, Col } from 'react-bootstrap'
@@ -6,11 +6,23 @@ import { FaKey, FaLock, FaUser } from 'react-icons/fa'
 import axios from 'axios'
 import './style.css'
 import UserContext from '../../context'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const Login = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const { setUser } = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
+  const notify = () => toast("Please Login!");
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
+    if (!user) {
+      notify()
+      // navigate('/login')
+    }
+  }, [])
   const SubmitHandler = async (e) => {
     e.preventDefault()
     const data = new FormData()
@@ -26,11 +38,11 @@ const Login = () => {
           alert('Invalid credentials')
           setUser(false)
         } else {
-          navigate('/')
+          navigate('/user-bookings')
           setUser(true)
           localStorage.setItem(
-            'token',
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+            'id', res.data.data.id
+            // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
           )
         }
       })
@@ -46,6 +58,18 @@ const Login = () => {
   return (
     <section className='gauto-login-area section_70'>
       <Container>
+      <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          />
         <Row>
           <Col md={12}>
             <form onSubmit={SubmitHandler}>
@@ -79,7 +103,7 @@ const Login = () => {
                       {t('login_page.f_password')}
                     </Link>
                   </p>
-                  <p className='checkbox remember'>
+                  {/* <p className='checkbox remember'>
                     <input
                       className='checkbox-spin'
                       type='checkbox'
@@ -89,7 +113,7 @@ const Login = () => {
                       <span />
                       {t('login_page.keep')}
                     </label>
-                  </p>
+                  </p> */}
                 </div>
                 <p>
                   <button className='gauto-theme-btn' type='submit'>

@@ -8,6 +8,7 @@ import img2 from "../../img/gallery-2.jpg";
 import img3 from "../../img/gallery-3.jpg";
 import img4 from "../../img/gallery-4.jpg";
 import img5 from "../../img/gallery-5.jpg";
+import img6 from "../../img/gallery-6.jpg";
 
 import "./style.css";
 
@@ -31,7 +32,7 @@ const Gallery = () => {
                     <div className="title-box">
                       <h3>
                         <Link to="/" onClick={onClick}>
-                          Base Cabient Repair
+                        AUDI TT Roadster 45 limited
                         </Link>
                       </h3>
                     </div>
@@ -49,7 +50,7 @@ const Gallery = () => {
                     <div className="title-box">
                       <h3>
                         <Link to="/" onClick={onClick}>
-                          Base Cabient Repair
+                          Porshe
                         </Link>
                       </h3>
                     </div>
@@ -67,7 +68,7 @@ const Gallery = () => {
                     <div className="title-box">
                       <h3>
                         <Link to="/" onClick={onClick}>
-                          Base Cabient Repair
+                        Lamborghini Huracan EVO RWD
                         </Link>
                       </h3>
                     </div>
@@ -85,7 +86,7 @@ const Gallery = () => {
                     <div className="title-box">
                       <h3>
                         <Link to="/" onClick={onClick}>
-                          Base Cabient Repair
+                        BMW M4401 Coupe V6
                         </Link>
                       </h3>
                     </div>
@@ -103,7 +104,7 @@ const Gallery = () => {
                     <div className="title-box">
                       <h3>
                         <Link to="/" onClick={onClick}>
-                          Base Cabient Repair
+                        Mercedes-Benz C220
                         </Link>
                       </h3>
                     </div>
@@ -115,13 +116,13 @@ const Gallery = () => {
           <Col lg={4} sm={6}>
             <div className="single-gallery">
               <div className="img-holder">
-                <img src={img1} alt="gallery 6" />
+                <img src={img6} alt="gallery 6" />
                 <div className="overlay-content">
                   <div className="inner-content">
                     <div className="title-box">
                       <h3>
                         <Link to="/" onClick={onClick}>
-                          Base Cabient Repair
+                        Porche Boxster 718
                         </Link>
                       </h3>
                     </div>
@@ -131,7 +132,7 @@ const Gallery = () => {
             </div>
           </Col>
         </Row>
-        <Row>
+        {/* <Row>
           <Col md={12}>
             <div className="load-more">
               <Link to="/" onClick={onClick} className="gauto-btn">
@@ -139,7 +140,7 @@ const Gallery = () => {
               </Link>
             </div>
           </Col>
-        </Row>
+        </Row> */}
       </Container>
     </section>
   );

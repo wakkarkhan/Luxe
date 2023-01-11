@@ -1,22 +1,15 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap'
 import { FaCar, FaCogs, FaTachometerAlt } from 'react-icons/fa'
 
-import img1 from '../../img/offer-toyota.png'
-import img2 from '../../img/nissan-offer.png'
-import img3 from '../../img/audi-offer.png'
-import img4 from '../../img/bmw-offer.png'
-import img5 from '../../img/toyota-offer-2.png'
-import img6 from '../../img/marcedes-offer.png'
 
 import './style.css'
-import UserContext from '../../context'
 
-const HotOffers = () => {
+
+const HotOffers = (props) => {
   const { t } = useTranslation()
-  const { user } = useContext(UserContext)
   const [categories, setCategories] = useState([])
   const [cars, setCars] = useState(null)
 
@@ -33,7 +26,7 @@ const HotOffers = () => {
     const jsonData = await result.json()
 
     setCars(jsonData?.data)
-    console.log(jsonData)
+    // console.log(jsonData)
   }
 
   useEffect(() => {
@@ -49,9 +42,10 @@ const HotOffers = () => {
   }, [])
 
   return (
-    <section className='gauto-offers-area section_70'>
+    <section className="gauto-offers-area">
       <Container>
-        <Row>
+        {!props.title &&
+        <Row className="section_70">
           <Col md={12}>
             <div className='site-heading'>
               <h4>{t('come_with')}</h4>
@@ -59,11 +53,12 @@ const HotOffers = () => {
             </div>
           </Col>
         </Row>
+        }
         <Row>
           <Col md={12}>
             <div className='offer-tabs' id='offerTab'>
               <Tabs
-                defaultActiveKey='sport car'
+                defaultActiveKey='1'
                 transition={true}
                 id='uncontrolled-tab-example'
                 onSelect={handleClick}
@@ -73,48 +68,54 @@ const HotOffers = () => {
                 {categories.map((item) => {
                   return (
                     <Tab eventKey={item.id} title={item.name}>
+                      {props.title && props.title.match("userBookings") &&
                       <Row>
                         {cars ? (
                           cars?.map((car) => {
                             return (
-                              <Col lg={4}>
+                              
+                              <Col lg ={6}>
                                 <div className='single-offers'>
                                   <div className='offer-image'>
-                                    <Link to='/car-booking'>
-                                      <img src={img1} alt='offer 1' />
+                                    <Link to='/car-details'>
+                                    {car.IntExImages.slice(0, 1).map((c, i) => (
+                                      <img src={'https://hiso.software-compilers.com/public/Vehicle/'+car.id+'/IntExtImages/'+c.image_path} alt='offer 1' />
+                                    ))}
                                     </Link>
                                   </div>
                                   <div className='offer-text'>
-                                    <Link to='/car-booking'>
-                                      <h3>{car.name}</h3>
+                                    <Link to='/car-booking' state={{data: car}}>
+                                      <h3>{car.name.substr(0, 19)}..</h3>
                                     </Link>
                                     <h4>
-                                      $50.00<span>/ {t('day')}</span>
+                                      {car.price_per_day}<span>/ {t('day')}</span>
                                     </h4>
                                     <ul>
                                       <li>
                                         <FaCar />
-                                        {t('model')}:2017
+                                        {t('model')}:{car.model_year}
                                       </li>
                                       <li>
                                         <FaCogs />
-                                        {t('automatic')}
+                                        {car.transmission}
                                       </li>
                                       <li>
                                         <FaTachometerAlt />
-                                        20kmpl
+                                        {car.car_range}
                                       </li>
                                     </ul>
                                     <div className='offer-action'>
                                       <Link
                                         to='/car-booking'
+                                        state={{data: car}}
                                         className='offer-btn-1'
                                       >
                                         {t('rent_car')}
                                       </Link>
 
                                       <Link
-                                        to='/car-booking'
+                                        to='/car-details'
+                                        state={{data: car}}
                                         className='offer-btn-2'
                                       >
                                         {t('details')}
@@ -129,6 +130,73 @@ const HotOffers = () => {
                           <></>
                         )}
                       </Row>
+                      }
+
+
+                      {/* No-Props */}
+                      {!props.title &&
+                      <Row>
+                        {cars ? (
+                          cars?.map((car, index) => {
+                            return (
+                              
+                              <Col lg ={4}>
+                                <div className='single-offers'>
+                                  <div className='offer-image'>
+                                    <Link to='/car-booking' state={{data: car}}>
+                                    {car.IntExImages.slice(0, 1).map((c, i) => (
+                                      <img src={'https://hiso.software-compilers.com/public/Vehicle/'+car.id+'/IntExtImages/'+c.image_path} alt='offer 1' />
+                                    ))}
+                                    </Link>
+                                  </div>
+                                  <div className='offer-text'>
+                                    <Link to='/car-booking'>
+                                      <h3>{car.name.substr(0, 19)}..</h3>
+                                    </Link>
+                                    <h4>
+                                      {car.price_per_day}<span>/ {t('day')}</span>
+                                    </h4>
+                                    <ul>
+                                      <li>
+                                        <FaCar />
+                                        {t('model')}:{car.model_year}
+                                      </li>
+                                      <li>
+                                        <FaCogs />
+                                        {car.transmission}
+                                      </li>
+                                      <li>
+                                        <FaTachometerAlt />
+                                        {car.car_range}
+                                      </li>
+                                    </ul>
+                                    <div className='offer-action'>
+                                      <Link
+                                        to='/car-booking'
+                                        state={{data: car}}
+                                        className='offer-btn-1'
+                                      >
+                                        {t('rent_car')}
+                                      </Link>
+
+                                      <Link
+                                        to='/car-details'
+                                        state={{data: car}}
+                                        className='offer-btn-2'
+                                      >
+                                        {t('details')}
+                                      </Link>
+                                    </div>
+                                  </div>
+                                </div>
+                              </Col>
+                            )
+                          })
+                        ) : (
+                          <></>
+                        )}
+                      </Row>
+                      }
                     </Tab>
                   )
                 })}

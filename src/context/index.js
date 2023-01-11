@@ -4,9 +4,9 @@ const UserContext = createContext()
 
 export function UserProvider({ children, user, setUser }) {
   useEffect(() => {
-    let token = localStorage.getItem('token')
+    let id = localStorage.getItem('id')
 
-    if (token) {
+    if (id) {
       setUser(true)
     } else {
       setUser(false)

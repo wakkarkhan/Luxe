@@ -93,7 +93,9 @@
   margin-right: 5px;
   fill: #263741;
 }
-
+.single-booking .gauto-theme-btn {
+  margin-top: 20px;
+}
 .single-booking h3,
 .booking-right h3 {
   font-size: 23px;

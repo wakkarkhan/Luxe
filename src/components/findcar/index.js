@@ -27,7 +27,7 @@ const FindCar = () => {
               <Row className="align-items-center">
                 <Col md={4}>
                   <div className="find-text">
-                    {/* <h3>{t("search_best_car")}</h3> */}
+                    <h3>{t("search_best_car")}</h3>
                   </div>
                 </Col>
                 <Col md={8}>

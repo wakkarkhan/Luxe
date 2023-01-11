@@ -20,7 +20,7 @@ const AboutPage = () => {
       />
       <AboutPageList />
       <Promo />
-      <Team />
+      {/* <Team /> */}
       <Footer />
     </Fragment>
   );

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import {
   DatePickerComponent,
   TimePickerComponent,
@@ -26,26 +26,40 @@ import axios from 'axios'
 
 import './style.css'
 import UserContext from '../../context'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const CarBooking = () => {
   const dateValue = new Date()
   const { user } = useContext(UserContext)
   const navigate = useNavigate()
+  const location = useLocation()
+  const state = location.state;
+  const notify = () => toast("Booking Successfull");
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     if (!user) {
       navigate('/login')
     }
-  }, [])
+  }, []);
   const { t } = useTranslation()
 
   const SubmitHandler = async (e) => {
     e.preventDefault()
-    const data = new FormData()
+    //   useEffect(() => {
+    if (!user) {
+      navigate('/login')
+    }
+    else{
+        const data = new FormData()
 
     data.append('car_id', 1)
-    data.append('user_id', 1)
-    data.append('destination', document.getElementById('to_address').value)
-    data.append('pick_and_drop', 0)
+    data.append('user_id', 4)
+    // data.append('destination', document.getElementById('to_address').value)
+    data.append('destination', e.target[0].value)
+    data.append('pick_and_drop', e.target[1].value)
     data.append('from_date_time', dateConverter(dateValue))
     data.append('to_date_time', dateConverter(dateValue))
     data.append('status', 1)
@@ -56,13 +70,25 @@ const CarBooking = () => {
         data
       )
       if (result.status === 200) {
-        navigate('/')
+        notify()
+        setTimeout(
+          function() {
+            navigate('/user-bookings')
+          }
+          .bind(this),
+          3000
+      );
+        
       } else {
         alert('error')
       }
     } catch (error) {
       alert('error')
     }
+
+    }
+//   }, [])
+
   }
   function dateConverter(str) {
     var date = new Date(str),
@@ -83,23 +109,37 @@ const CarBooking = () => {
     <>
       <section className='gauto-car-booking section_70'>
         <Container>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          />
           <Row>
             <Col lg={6}>
               <div className='car-booking-image'>
-                <img src={img1} alt='car' />
+                {state.data.IntExImages.slice(0, 1).map((c, i) => (
+                  <img src={'https://hiso.software-compilers.com/public/Vehicle/'+c.car_id+'/IntExtImages/'+c.image_path} alt='car' />
+                ))}
               </div>
             </Col>
             <Col lg={6}>
               <div className='car-booking-right'>
                 <p className='rental-tag'>{t('rental')}</p>
-                <h3>mercedes S-class</h3>
+                <h3>{state.data.name}</h3>
                 <div className='price-rating'>
                   <div className='price-rent'>
                     <h4>
-                      $50.00<span>/ {t('day')}</span>
+                      {state.data.price_per_day}<span>/ {t('day')}</span>
                     </h4>
                   </div>
-                  <div className='car-rating'>
+                  {/* <div className='car-rating'>
                     <ul>
                       <li>
                         <FaStar />
@@ -118,31 +158,28 @@ const CarBooking = () => {
                       </li>
                     </ul>
                     <p>(123 {t('rating')})</p>
-                  </div>
+                  </div> */}
                 </div>
                 <p>
                   {' '}
-                  consectetur adipiscing elit. Donec luctus tincidunt aliquam.
-                  Aliquam gravida massa at sem vulputate interdum et vel eros.
-                  Maecenas eros enim, tincidunt vel turpis vel,dapibus tempus
-                  nulla. Donec vel nulla dui.
+                  {state.data.description}
                 </p>
                 <div className='car-features clearfix'>
                   <ul>
                     <li>
-                      <FaCar /> {t('model')}:2017
+                      <FaCar /> {t('model')}:{state.data.model_year}
                     </li>
                     <li>
-                      <FaCogs /> {t('automatic')}
+                      <FaCogs /> {state.data.transmission}
                     </li>
                     <li>
-                      <FaTachometerAlt /> 20kmpl
+                      <FaTachometerAlt /> {state.data.top_speed}
                     </li>
                     <li>
                       <FaEmpire /> V-6 Cylinder
                     </li>
                   </ul>
-                  <ul>
+                  {/* <ul>
                     <li>
                       <FaEye /> GPS Navigation
                     </li>
@@ -156,7 +193,7 @@ const CarBooking = () => {
                       <FaDesktop /> Rear-Seat DVD
                     </li>
                   </ul>
-                  <ul>
+                  <ul> 
                     <li>
                       <FaCar /> {t('model')}:2017
                     </li>
@@ -169,7 +206,7 @@ const CarBooking = () => {
                     <li>
                       <FaEmpire /> V-6 Cylinder
                     </li>
-                  </ul>
+                  </ul>*/}
                 </div>
               </div>
             </Col>
@@ -178,69 +215,20 @@ const CarBooking = () => {
       </section>
       <section className='gauto-booking-form section_70'>
         <Container>
-          <form onSubmit={SubmitHandler}>
+          {/* <form onSubmit={SubmitHandler}> */}
             <Row>
-              <Col lg={8}>
+              <Col lg={12}>
                 <div className='booking-form-left'>
                   <div className='single-booking'>
-                    <h3>{t('car_booking.personal_information')}</h3>
-                    <form>
-                      <Row>
-                        <Col md={6}>
-                          <p>
-                            <input
-                              type='text'
-                              placeholder={t('car_booking.first_name')}
-                              id='first_name'
-                              required
-                            />
-                          </p>
-                        </Col>
-                        <Col md={6}>
-                          <p>
-                            <input
-                              type='text'
-                              placeholder={t('car_booking.last_name')}
-                              id='last_name'
-                              required
-                            />
-                          </p>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col md={6}>
-                          <p>
-                            <input
-                              type='email'
-                              placeholder={t('car_booking.email')}
-                              id='email'
-                              required
-                            />
-                          </p>
-                        </Col>
-                        <Col md={6}>
-                          <p>
-                            <input
-                              type='tel'
-                              placeholder={t('car_booking.phn')}
-                              id='phn'
-                              required
-                            />
-                          </p>
-                        </Col>
-                      </Row>
-                    </form>
-                  </div>
-                  <div className='single-booking'>
                     <h3>{t('car_booking.booking_details')}</h3>
-                    <form>
+                    <form onSubmit={SubmitHandler}>
                       <Row>
                         <Col md={6}>
                           <p>
                             <input
                               type='text'
                               placeholder={t('from_address')}
-                              id='from_address'
+                              name="from_address"
                               required
                             />
                           </p>
@@ -250,41 +238,13 @@ const CarBooking = () => {
                             <input
                               type='text'
                               placeholder={t('to_address')}
-                              id='to_address'
+                              name="to_address"
                               required
                             />
                           </p>
                         </Col>
                       </Row>
-                      <Row>
-                        <Col md={6}>
-                          <p>
-                            <select>
-                              <option data-display='Select'>1 person</option>
-                              <option>2 person</option>
-                              <option>3 person</option>
-                              <option>4 person</option>
-                              <option>5-10 person</option>
-                            </select>
-                          </p>
-                        </Col>
-                        <Col md={6}>
-                          <p>
-                            <select>
-                              <option
-                                data-display='Select'
-                                id='luggages'
-                                required
-                              >
-                                1 luggage
-                              </option>
-                              <option>2 luggage</option>
-                              <option>3 luggage</option>
-                              <option>4(+) luggage</option>
-                            </select>
-                          </p>
-                        </Col>
-                      </Row>
+                     
                       <Row>
                         <Col md={6}>
                           <p>
@@ -298,80 +258,32 @@ const CarBooking = () => {
                         </Col>
                         <Col md={6}>
                           <p>
-                            <TimePickerComponent
-                              id='timepicker'
-                              placeholder={t('journey_time')}
-                            ></TimePickerComponent>
+                            <DatePickerComponent
+                              id='datepicker'
+                              value={dateValue}
+                              format='dd/MM/yyyy'
+                              placeholder={t('journey_date')}
+                            ></DatePickerComponent>
                           </p>
                         </Col>
                       </Row>
                       <Row>
-                        <Col md={12}>
-                          <p>
-                            <textarea
-                              placeholder='Write Here...'
-                              defaultValue={''}
-                              id='note'
-                              required
-                            />
-                          </p>
-                        </Col>
+                      <Col md={4}></Col>
+                      <Col md={4}></Col>
+                          <Col md={4}>
+                            {/* <div className='action-btn'> */}
+                                <button className='gauto-theme-btn mt-20' type='submit'>
+                                {t('researve_now')}
+                                </button>
+                            {/* </div> */}
+                          </Col>
                       </Row>
                     </form>
                   </div>
                 </div>
               </Col>
-              <Col lg={4}>
-                <div className='booking-right'>
-                  <h3>{t('car_booking.payment_method')}</h3>
-                  <div className='gauto-payment clearfix'>
-                    <div className='payment'>
-                      <input type='radio' id='ss-option' name='selector' />
-                      <label htmlFor='ss-option'>
-                        {t('car_booking.bank_transfer')}
-                      </label>
-                      <div className='check'>
-                        <div className='inside' />
-                      </div>
-                      <p>{t('car_booking.payment_text')}</p>
-                    </div>
-                    <div className='payment'>
-                      <input type='radio' id='f-option' name='selector' />
-                      <label htmlFor='f-option'>
-                        {t('car_booking.check_payment')}
-                      </label>
-                      <div className='check'>
-                        <div className='inside' />
-                      </div>
-                    </div>
-                    <div className='payment'>
-                      <input type='radio' id='s-option' name='selector' />
-                      <label htmlFor='s-option'>
-                        {t('car_booking.credit_card')}
-                      </label>
-                      <div className='check'>
-                        <div className='inside' />
-                      </div>
-                      <img src={img2} alt='credit card' />
-                    </div>
-                    <div className='payment'>
-                      <input type='radio' id='t-option' name='selector' />
-                      <label htmlFor='t-option'>Paypal</label>
-                      <div className='check'>
-                        <div className='inside' />
-                      </div>
-                      <img src={img3} alt='credit card' />
-                    </div>
-                  </div>
-                  <div className='action-btn'>
-                    <button className='gauto-btn' type='submit'>
-                      {t('researve_now')}
-                    </button>
-                  </div>
-                </div>
-              </Col>
             </Row>
-          </form>
+          {/* </form> */}
         </Container>
       </section>
     </>

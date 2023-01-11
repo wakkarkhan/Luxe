@@ -3,16 +3,13 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Container, Row, Col } from "react-bootstrap";
 
-import img1 from "../../img/toyota-offer-2.png";
+import img1 from "../../img/contact-us.jpg";
 
 import "./style.css";
 
 const Promo = () => {
   const { t } = useTranslation();
 
-  const onClick = (e) => {
-    e.preventDefault();
-  };
 
   return (
     <section className="gauto-promo-area">
@@ -26,7 +23,7 @@ const Promo = () => {
           <Col md="6">
             <div className="promo-box-right">
               <h3>{t("promo_text")}</h3>
-              <Link to="/" onClick={onClick} className="gauto-btn">
+              <Link to="/contact"className="gauto-btn">
                 {t("promo_btn")}
               </Link>
             </div>

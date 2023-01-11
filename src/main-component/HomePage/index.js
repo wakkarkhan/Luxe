@@ -12,8 +12,8 @@ import Help from "../../components/Help";
 import Blog from "../../components/Blog";
 import Footer from "../../components/Footer";
 
-
 const HomePage = () => {
+  
   return (
     <Fragment>
       <Header />

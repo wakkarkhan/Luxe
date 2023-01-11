@@ -1,16 +1,34 @@
-import React from "react";
-import { Link } from "react-router-dom";
-// import { useTranslation } from "react-i18next";
+import React, {useEffect, useContext} from "react";
+import { Link, useLinkClickHandler, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Container, Row, Col, Accordion } from "react-bootstrap";
 
 // import img1 from "../../img/service-details-1.jpg";
 // import img2 from "../../img/service-details-2.jpg";
 
 import "./style.css";
+import UserContext from '../../context'
 
 
-const UserBookings = () => {
-//   const { t } = useTranslation();
+const UserBookingsDetails = () => {
+  // const { t } = useTranslation();
+  const { user } = useContext(UserContext)
+  const navigate = useNavigate()
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
+    if (!user) {
+      navigate('/login')
+    }
+  }, [])
+
+  const onClickHandler = (e) =>{
+    e.preventDefault()
+    localStorage.removeItem("id")
+    navigate("/login")
+    window.location.reload()
+  }
 
   
 
@@ -24,16 +42,19 @@ const UserBookings = () => {
                 <ul className="service-menu">
                   <li className="active">
                   {/* <Link to="/service-single">Today</Link> */}
-                    <Link>Today</Link>
+                  <Link to="/user-bookings">All Bookings</Link>
                   </li>
                   <li>
-                    <Link>This Week</Link>
+                  <Link to="/make-bookings">Make Bookings</Link>
                   </li>
                   <li>
-                    <Link>This Month</Link>
+                  <Link to="/favourites">Favourites</Link>
                   </li>
                   <li>
-                    <Link>This Year</Link>
+                  <Link to="/user-profile">Profile</Link>
+                  </li>
+                  <li>
+                  <Link onClick={onClickHandler}>Logout</Link>
                   </li>
                 </ul>
               </div>
@@ -45,7 +66,7 @@ const UserBookings = () => {
              
         
               <div className="service-accordion" id="accordion">
-                {/* <h3>{t("service_details_page.faq_text")}</h3> */}
+                <h3>Your Bookings</h3>
                 <Accordion>
                   <Accordion.Item eventKey="0" className="single_faq_accordian">
                     <Accordion.Header className="faq_accordian_header">
@@ -102,4 +123,4 @@ const UserBookings = () => {
   );
 };
 
-export default UserBookings;
+export default UserBookingsDetails;

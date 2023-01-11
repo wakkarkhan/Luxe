@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 import { useTranslation } from "react-i18next";
 
-import HeaderUser from "../../components/headerUser";
+import Header from "../../components/header";
 import PageTitle from "../../components/PageTitle";
 // import Login from "../../components/Login";
 
-import Favourites from "../../components/Favourites";
+import UserFavourites from "../../components/Favourites";
 import Footer from "../../components/Footer";
 
 const FavouritesPage = () => {
@@ -13,12 +13,12 @@ const FavouritesPage = () => {
 
   return (
     <Fragment>
-      <HeaderUser />
-      <PageTitle
+      <Header />
+      {/* <PageTitle
         pageTitle={t("header-navigation-user.favourites")}
         pagesub={t("header-navigation-user.favourites")}
-      />
-      <Favourites />
+      /> */}
+      <UserFavourites />
       {/* <Login /> */}
       <Footer />
     </Fragment>

@@ -30,7 +30,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="gauto-footer-area">
+    <footer className="gauto-footer-area section_footer_70">
       <div className="footer-top-area">
         <Container>
           <Row>
@@ -52,41 +52,18 @@ const Footer = () => {
                 <h3>{t("footer.quick_links")}</h3>
                 <ul className="quick-links">
                   <li>
-                    <Link to="/" onClick={onClick}>
-                      {" "}
+                    <Link to="/about">
                       {t("footer.about_us")}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/" onClick={onClick}>
+                    <Link to="/services">
                       {t("footer.our_service")}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/" onClick={onClick}>
-                      {t("footer.case_studies")}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/" onClick={onClick}>
+                    <Link to="/contact">
                       {t("footer.contact_us")}
-                    </Link>
-                  </li>
-                </ul>
-                <ul className="quick-links">
-                  <li>
-                    <Link to="/" onClick={onClick}>
-                      {t("footer.testimonials")}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/" onClick={onClick}>
-                      {t("footer.privacy")}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/" onClick={onClick}>
-                      {t("footer.latest_news")}
                     </Link>
                   </li>
                 </ul>

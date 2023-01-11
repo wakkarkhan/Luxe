@@ -1,15 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useTranslation } from "react-i18next";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaPhoneAlt } from "react-icons/fa";
 
-import img1 from "../../img/about-page.jpg";
+import img1 from "../../img/about-page.jpeg";
 import img2 from "../../img/cars.png";
 
 import "./style.css";
 
 const AboutPage = () => {
   const { t } = useTranslation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

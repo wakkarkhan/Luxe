@@ -1,123 +1,4 @@
-/* ===================== CAR LIST ======================*/
-@import "/node_modules/@syncfusion/ej2-base/styles/material.css";
-@import "/node_modules/@syncfusion/ej2-buttons/styles/material.css";
-@import "/node_modules/@syncfusion/ej2-inputs/styles/material.css";
-@import "/node_modules/@syncfusion/ej2-popups/styles/material.css";
-@import "/node_modules/@syncfusion/ej2-react-calendars/styles/material.css";
-
-.sidebar-widget form p input,
-.sidebar-widget form p select,
-.e-control-wrapper {
-  width: 100% !important;
-  border: 2px solid #f0f0ff !important;
-  padding: 5px 10px;
-  height: 45px !important;
-  color: #111 !important;
-  -webkit-transition: all 0.4s ease 0s;
-  transition: all 0.4s ease 0s;
-  background: #ffffff !important;
-}
-input#datepicker,
-input#timepicker {
-  height: auto !important;
-  border: none !important;
-  font-size: 14px;
-  font-weight: 500;
-}
-.sidebar-widget form p input:focus,
-.sidebar-widget form p select:focus {
-  border: 2px solid #263741;
-}
-
-.sidebar-widget form {
-  background: #f4f4f5 none repeat scroll 0 0;
-  padding: 15px;
-}
-
-.sidebar-widget form p {
-  margin-bottom: 10px;
-}
-
-.sidebar-widget form p:last-child {
-  margin-bottom: 0;
-}
-
-.sidebar-widget form p .nice-select.open .list {
-  width: 100%;
-}
-
-.sidebar-widget form p button {
-  margin-top: 20px;
-  background: #fff none repeat scroll 0 0;
-}
-
-.property-page-heading {
-  border: 0px solid #f0f0ff;
-  padding: 7px 15px;
-  background: #f4f4f5 none repeat scroll 0 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-line-pack: center;
-  align-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.propertu-page-shortby {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.propertu-page-shortby .nice-select {
-  background-color: #f4f4f5;
-  border-radius: 0;
-  border: solid 0px #e8e8e8;
-  width: 200px;
-}
-
-.propertu-page-head {
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.propertu-page-head ul li {
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.propertu-page-head ul li.active a {
-  color: #111;
-}
-
-.paging_status {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.propertu-page-head ul li a:hover,
-.paging_status p {
-  color: #111;
-}
-
-.propertu-page-shortby label {
-  margin-top: 5px;
-  margin-bottom: 0;
-  margin-right: 10px;
-  color: #111;
-  font-size: 14px;
-}
-
-.propertu-page-shortby label i {
-  margin-right: 5px;
-}
+/* ===================== SERVICE DETAILS ======================*/
 .sidebar-widget {
   margin-bottom: 30px;
 }
@@ -158,55 +39,11 @@ input#timepicker {
   color: #263741;
   padding-left: 25px;
 }
-.car-grid-list .single-offers {
-  text-align: center;
-  padding: 20px;
-  border: 3px solid #f0f0ff;
-  margin-bottom: 30px;
-  margin-top: 0;
+.service-menu li.active a {
+  background: #263741 !important;
+    color: #fff !important;
 }
-
-.offer-image {
-  width: 235px;
-  margin: 0 auto;
-  display: block;
-}
-
-.offer-image img {
-  width: 100%;
-}
-
-.offer-text {
-  margin-top: 20px;
-}
-
-.offer-text h3 {
-  font-size: 23px;
-  color: #001238;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-  -webkit-transition: all 0.4s ease 0s;
-  transition: all 0.4s ease 0s;
-  display: inline-block;
-  text-transform: capitalize;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-}
-
-.offer-text h4 {
-  color: #020202;
-  font-size: 18px;
-  text-transform: capitalize;
-  margin-top: 8px;
-}
-
-.offer-text h4 span {
-  text-transform: capitalize;
-  color: #263741;
-  font-size: 16px;
-}
-
-.offer-action {
+.brochures {
   text-align: center;
   background: #020202 none repeat scroll 0 0;
   position: relative;
@@ -218,20 +55,10 @@ input#timepicker {
   transition: all 0.4s ease 0s;
 }
 
-.offer-action a {
-  display: inline-block;
-  text-transform: uppercase;
-  padding: 7px 15px;
-  font-weight: 500;
-  color: #fff;
-  font-size: 14px;
-  width: 47%;
-}
-
-.offer-action:after {
+.brochures:after {
   position: absolute;
   content: "";
-  width: 66%;
+  width: 62%;
   height: 100%;
   background: #263741 none repeat scroll 0 0;
   right: -36px;
@@ -242,85 +69,310 @@ input#timepicker {
   transition: all 0.4s ease 0s;
 }
 
-.offer-action:hover {
+.brochures a {
+  display: inline-block;
+  text-transform: uppercase;
+  padding: 15px;
+  font-weight: 500;
+  color: #fff;
+  font-size: 14px;
+  width: 47%;
+}
+
+.brochures a i {
+  margin-right: 5px;
+}
+
+.brochures:hover {
   background: #263741 none repeat scroll 0 0;
 }
 
-.offer-action:hover:after {
+.brochures:hover:after {
   background: #020202 none repeat scroll 0 0;
 }
 
-.offer-text ul {
+.service-page-banner {
+  background: url(../../img/find-box-bg.png) no-repeat scroll 0 0 / cover;
+  padding: 30px;
   text-align: center;
-  margin-top: 10px;
-}
-
-.offer-text ul li {
-  display: inline-block;
-  font-size: 14px;
-  margin: 0 3px;
-}
-
-.offer-text ul li i {
-  margin-right: 5px;
-  color: #263741;
-}
-.pagination-box-row {
-  text-align: left;
-}
-
-.pagination-box-row p {
-  display: inline-block;
-  font-size: 15px;
-  color: #444;
-  margin-right: 15px;
-}
-
-.pagination {
-  margin-top: 20px;
-  text-align: center;
-  float: none;
-  display: inline-block;
-}
-
-.pagination li {
-  display: inline-block;
-  margin-right: 5px;
-}
-
-.pagination li:last-child {
-  margin-right: 0;
-}
-
-.pagination li a {
-  display: block;
-  width: 35px;
-  height: 35px;
-  font-size: 15px;
-  line-height: 35px;
-  border-radius: 5px;
-  color: #111;
-  font-weight: 500;
-}
-
-.pagination li.active a,
-.pagination li a:hover {
-  background: #101010 none repeat scroll 0 0;
   color: #fff;
 }
 
+.service-page-banner > h3 {
+  font-size: 28px !important;
+  color: #fff !important;
+  letter-spacing: 1px !important;
+  margin-bottom: 15px !important;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+  display: inline-block;
+  text-transform: capitalize;
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 600 !important;
+  line-height: 40px !important;
+}
+
+.service-page-banner a {
+  margin-bottom: 0;
+  border-color: #fff;
+  margin-top: 20px;
+}
+
+.service-page-banner a:before,
+.service-page-banner a:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-color: #fff;
+  box-sizing: border-box;
+  border-style: solid;
+  width: 1em;
+  height: 1em;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.service-page-banner a:hover {
+  color: #263741;
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.service-page-banner a:hover:before,
+.service-page-banner a:hover:after {
+  border-color: #fff;
+}
+
+.service-details-right h3,
+.sidebar-widget h3 {
+  font-size: 30px;
+  color: #001238;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+  display: inline-block;
+  text-transform: capitalize;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  line-height: 45px;
+}
+
+.service-details-right p {
+  margin: 0 0 10px;
+}
+
+.pad-right-sm {
+  padding-right: 7px;
+}
+
+.pad-left-sm {
+  padding-left: 7px;
+}
+
+.service-details-image {
+  margin-top: 10px;
+}
+
+.service-details-list ul {
+  width: 50%;
+  float: left;
+  margin-top: 20px;
+}
+
+.service-details-list li {
+  margin: 5px 0;
+}
+
+.service-details-list li svg {
+  fill: #263741;
+  margin-right: 5px;
+}
+
+.service-accordion {
+  margin-top: 20px;
+}
+
+.service-accordion h3,
+.sidebar-widget h3 {
+  font-size: 20px;
+}
+
+.Tags-catagory {
+  padding: 15px;
+  background: #f4f4f5 none repeat scroll 0 0;
+}
+
+.Tags-catagory li {
+  display: inline-block;
+  border: medium none !important;
+  padding: 0 !important;
+  margin: 2px 0;
+}
+
+.Tags-catagory a {
+  color: #001238;
+  font-weight: 500;
+  text-transform: capitalize;
+  display: inline-block;
+  padding: 5px 15px;
+  background: #fff none repeat scroll 0 0;
+  border-radius: 5px;
+}
+
+.Tags-catagory a:hover {
+  color: #263741;
+}
+
+.single_faq_accordian {
+  margin-top: 10px;
+}
+
+.faq_accordian_header > button {
+  display: block;
+  text-align: left;
+  padding: 20px 20px 20px 85px;
+  background: #020202 none repeat scroll 0 0;
+  font-size: 15px;
+  color: #fff;
+  text-transform: capitalize;
+  font-weight: 500;
+  border: 0px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.faq_accordian_header > button:hover,
+.faq_accordian_header > button:focus {
+  background: #020202 none repeat scroll 0 0;
+  color: #fff;
+  outline: medium none;
+}
+
+.faq_accordian_header > button:after {
+  position: absolute;
+  left: 20px;
+  color: #fff;
+  font-size: 18px;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+.accordion-button::after {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: auto;
+  content: "";
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  transition: transform 0.2s ease-in-out;
+}
+.accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  transform: rotate(-180deg);
+}
+
+.faq_accordian_header > button:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  width: 12%;
+  height: 100%;
+  left: -26px;
+  background: #263741;
+  -webkit-transform: skew(-30deg);
+  transform: skew(-30deg);
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.faq_accordian_header > button.collapsed:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  width: 12%;
+  height: 100%;
+  left: -26px;
+  background: #263741;
+  -webkit-transform: skew(30deg);
+  transform: skew(30deg);
+}
+
+.faq_accordian_body {
+  padding: 10px;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #fff;
+  background-color: #020202;
+  box-shadow: none;
+}
 @media (min-width: 768px) and (max-width: 991px) {
-  .car-listing-right {
+  .service-details-right {
     margin-top: 30px;
   }
 }
 @media (max-width: 767px) {
-  .car-listing-right {
+  .service-details-right h3,
+  .sidebar-widget h3 {
+    font-size: 22px !important;
+    line-height: 40px !important;
+  }
+  .pad-right-sm {
+    padding-right: 15px;
+  }
+  .pad-left-sm {
+    padding-left: 15px;
+  }
+  .service-details-list ul {
+    width: 100% !important;
+    float: none !important;
+    margin: 0 !important;
+  }
+  .service-details-list.clearfix {
     margin-top: 30px;
   }
+  .faq_accordian_header > button.collapsed:before {
+    width: 30%;
+  }
+  .faq_accordian_header > button:before {
+    width: 30%;
+  }
+  .service-details-right {
+    margin-top: 30px !important;
+  }
 }
+
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-  .car-listing-right {
+  .service-details-right {
+    margin-top: 30px !important;
+  }
+  .service-details-right h3,
+  .sidebar-widget h3 {
+    font-size: 22px;
+    line-height: 40px;
+  }
+  .pad-right-sm {
+    padding-right: 15px;
+  }
+  .pad-left-sm {
+    padding-left: 15px;
+  }
+  .service-details-list ul {
+    width: 100%;
+    float: none;
+    margin: 0;
+  }
+  .service-details-list.clearfix {
     margin-top: 30px;
+  }
+  .faq_accordian_header > button.collapsed:before {
+    width: 20%;
+  }
+  .faq_accordian_header > button:before {
+    width: 20%;
   }
 }

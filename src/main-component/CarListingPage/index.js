@@ -12,7 +12,7 @@ const CarListingPage = () => {
   return (
     <Fragment>
       <Header />
-      <PageTitle
+      <PageTitle className="cars-breadcrumb"
         pageTitle={t("header-navigation.car_listing")}
         pagesub={t("header-navigation.car_listing")}
       />

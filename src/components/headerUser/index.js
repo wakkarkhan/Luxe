@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import React, { Fragment, useContext } from "react";
+import { Link, useNavigate, useLinkClickHandler } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import { Col, Container, Row, Dropdown } from "react-bootstrap";
@@ -17,6 +17,7 @@ import globe from "../../img/globe.png";
 import clock from "../../img/clock.png";
 import "flag-icon-css/css/flag-icons.min.css";
 import "./style.css";
+import UserContext from '../../context'
 
 const languages = [
   {
@@ -46,6 +47,12 @@ const HeaderUser = () => {
   // };
 
   const { t } = useTranslation();
+  const { user } = useContext(UserContext)
+  const navigate = useNavigate()
+  const useLinkClickHandler = () =>{
+    localStorage.removeItem("id")
+    navigate("/login")
+  }
 
   return (
     <Fragment>
@@ -60,6 +67,7 @@ const HeaderUser = () => {
               </div>
             </Col>
             <Col md={6}>
+            { !user && 
               <div className="header-top-right">
                 <Link to="/login">
                   <FaSignInAlt />
@@ -91,6 +99,28 @@ const HeaderUser = () => {
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
+              }
+              { user &&
+                <div className="header-top-right">
+                  <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                      <FaUserAlt /> You are loggedin
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      {/* {languages.map(({ code, name, country_code }) => ( */}
+                        <Dropdown.Item
+                          eventKey='logout'
+                          key='logout'
+                          onClick={useLinkClickHandler}
+                        >
+                          
+                          Logout
+                        </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </div>
+              }
             </Col>
           </Row>
         </Container>
