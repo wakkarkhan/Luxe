@@ -55,9 +55,8 @@ const CarBooking = () => {
     else{
         const data = new FormData()
 
-    data.append('car_id', 1)
-    data.append('user_id', 4)
-    // data.append('destination', document.getElementById('to_address').value)
+    data.append('car_id', state.data.id)
+    data.append('user_id', localStorage.getItem('id'))
     data.append('destination', e.target[0].value)
     data.append('pick_and_drop', e.target[1].value)
     data.append('from_date_time', dateConverter(dateValue))

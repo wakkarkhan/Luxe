@@ -14,6 +14,7 @@ const Login = () => {
   const navigate = useNavigate()
   const { user, setUser } = useContext(UserContext)
   const notify = () => toast("Please Login!");
+  const invalidUser = () => toast("Invalid Credentials");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -27,15 +28,16 @@ const Login = () => {
     e.preventDefault()
     const data = new FormData()
 
-    data.append('username', e.target[0].value)
+    // data.append('username', e.target[0].value)
     data.append('password', e.target[1].value)
     data.append('email', e.target[0].value)
     data.append('type', 0)
     await axios
       .post('https://hiso.software-compilers.com/api/signin', data)
       .then((res) => {
-        if (res.data.success === 'false') {
-          alert('Invalid credentials')
+        console.log(res.data.success)
+        if (res.data.success === false) {
+          invalidUser()
           setUser(false)
         } else {
           navigate('/user-bookings')

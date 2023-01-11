@@ -93,10 +93,10 @@
   margin-right: 5px;
   fill: #263741;
 }
-.single-booking .gauto-theme-btn {
+.service-accordion .gauto-theme-btn {
   margin-top: 20px;
 }
-.single-booking h3,
+.service-accordion h3,
 .booking-right h3 {
   font-size: 23px;
   color: #001238;
@@ -113,7 +113,7 @@
   border-bottom: 1px solid #f0f0ff;
 }
 
-.single-booking form label {
+.service-accordion form label {
   display: block;
   color: #001238;
   font-weight: 500;
@@ -121,12 +121,12 @@
   text-transform: capitalize;
 }
 
-.single-booking form p {
+.service-accordion form p {
   margin-top: 15px;
 }
 
-.single-booking form p input,
-.single-booking form p select {
+.service-accordion form p input,
+.service-accordion form p select {
   width: 100%;
   border: 2px solid #f0f0ff;
   padding: 5px 10px;
@@ -136,7 +136,7 @@
   transition: all 0.4s ease 0s;
 }
 
-.single-booking form p textarea {
+.service-accordion form p textarea {
   width: 100%;
   border: 2px solid #f0f0ff;
   padding: 5px 10px;
@@ -146,16 +146,16 @@
   transition: all 0.4s ease 0s;
 }
 
-.single-booking form p input:focus,
-.single-booking form p select:focus {
+.service-accordion form p input:focus,
+.service-accordion form p select:focus {
   border: 2px solid #263741;
 }
 
-.single-booking {
+.service-accordion {
   margin-bottom: 30px;
 }
 
-.single-booking:last-child {
+.service-accordion:last-child {
   margin-bottom: 0px;
 }
 

@@ -14,10 +14,9 @@ const UserBookingsDetails = () => {
   // const { t } = useTranslation();
   const { user } = useContext(UserContext)
   const navigate = useNavigate()
+  
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
-  useEffect(() => {
     if (!user) {
       navigate('/login')
     }

@@ -44,7 +44,7 @@ const UserProfileDetails = () => {
     else{
     const data = new FormData()
 
-    data.append('user_id', 5);
+    data.append('user_id', localStorage.getItem('id'));
     data.append('first_name', e.target[0].value)
     data.append('last_name', e.target[1].value)
     data.append('email', e.target[2].value)
@@ -87,7 +87,7 @@ const UserProfileDetails = () => {
     else{
     const data = new FormData()
 
-    data.append('user_id', 5);
+    data.append('user_id', localStorage.getItem('id'));
     data.append('image', e.target[0].value);
     try {
       const result = await axios.post(
@@ -123,7 +123,7 @@ const UserProfileDetails = () => {
 
     const data = new FormData()
 
-    data.append('user_id', 5);
+    data.append('user_id', localStorage.getItem('id'));
     data.append('licence_front_image', e.target[0].value);
     data.append('licence_back', e.target[1].value);
 
@@ -235,7 +235,7 @@ const UserProfileDetails = () => {
                           <Col md={6}>
                             <p>
                               <input
-                                type='text'
+                                type='email'
                                 placeholder={t("Email")}
                                 name="email"
                                 required
@@ -245,7 +245,7 @@ const UserProfileDetails = () => {
                           <Col md={6}>
                             <p style={{ textAlign: "End" }}>
                               <input
-                                type='text'
+                                type='number'
                                 placeholder={t('Mobile Number')}
                                 name="phone"
                                 required

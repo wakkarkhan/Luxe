@@ -50,7 +50,7 @@ const CarDetails = (props) => {
     else{
         const data = new FormData()
 
-    data.append('car_id', 1)
+    data.append('car_id', state.data.id)
     data.append('user_id', localStorage.getItem("id"))
     // data.append('destination', document.getElementById('to_address').value)
     data.append('destination', e.target[0].value)

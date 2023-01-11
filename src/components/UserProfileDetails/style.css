@@ -310,6 +310,79 @@ input{
     background-color: #020202;
     box-shadow: none;
   }
+
+  .service-accordion h3,
+.booking-right h3 {
+  font-size: 23px;
+  color: #001238;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+  display: block;
+  text-transform: capitalize;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  line-height: 28px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0f0ff;
+}
+
+.service-accordion form label {
+  display: block;
+  color: #001238;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.service-accordion form p {
+  margin-top: 15px;
+}
+
+.service-accordion form p input,
+.service-accordion form p select {
+  width: 100%;
+  border: 2px solid #f0f0ff;
+  padding: 5px 10px;
+  height: 45px;
+  color: #111;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.service-accordion form p textarea {
+  width: 100%;
+  border: 2px solid #f0f0ff;
+  padding: 5px 10px;
+  height: 120px;
+  color: #111;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.service-accordion form p input:focus,
+.service-accordion form p select:focus {
+  border: 2px solid #263741;
+}
+
+.service-accordion {
+  margin-bottom: 30px;
+}
+
+.service-accordion:last-child {
+  margin-bottom: 0px;
+}
+
+
+
+
+
+
+
+
+
+
   @media (min-width: 768px) and (max-width: 991px) {
     .service-details-right {
       margin-top: 30px;
