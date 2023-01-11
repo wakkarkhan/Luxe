@@ -1,4 +1,7 @@
 /* ===================== SERVICE DETAILS ======================*/
+input{
+  width: 90%;
+}
 .sidebar-widget {
     margin-bottom: 30px;
   }
