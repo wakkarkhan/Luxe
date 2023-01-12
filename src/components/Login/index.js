@@ -110,7 +110,7 @@ const Login = () => {
                 </div>
                 <div className='remember-row'>
                   <p className='lost-pass'>
-                    <Link to='/' onClick={onClick}>
+                    <Link to='/forgot-password'>
                       {t('login_page.f_password')}
                     </Link>
                   </p>

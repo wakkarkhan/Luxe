@@ -18,6 +18,7 @@ import BlogPage from "../BlogPage";
 import BlogSinglePage from "../BlogSinglePage";
 import ErrorPage from "../ErrorPage";
 import LoginPage from "../LoginPage";
+import ForgotPasswordPage from "../ForgotPasswordPage";
 import DashboardPage from "../DashboardPage";
 import RegisterPage from "../RegisterPage";
 import ContactPage from "../ContactPage";
@@ -49,6 +50,7 @@ const AllRoute = () => {
           <Route path="/blog-single" element={<BlogSinglePage />} />
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/make-bookings" element={<MakeBookings />} />

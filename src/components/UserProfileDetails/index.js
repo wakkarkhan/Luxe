@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useLinkClickHandler, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Container, Row, Col, Accordion, Nav, Tab, Tabs } from "react-bootstrap";
+import { Container, Row, Col, Tab, Tabs } from "react-bootstrap";
 
 // import img1 from "../../img/service-details-1.jpg";
 // import img2 from "../../img/service-details-2.jpg";
@@ -12,7 +12,6 @@ import 'react-toastify/dist/ReactToastify.css'
 
 import UserContext from '../../context'
 import axios from 'axios'
-import { FaLowVision } from "react-icons/fa";
 
 const UserProfileDetails = () => {
   const { t } = useTranslation();
@@ -321,7 +320,7 @@ const UserProfileDetails = () => {
                           />
                           </Col>
                           <Col lg={4}><div className="imgPreview" style={{ display: imageControl }}>
-                              <img src={previewImage1}></img>
+                              <img alt="" src={previewImage1}></img>
                             </div></Col>
                           </Row>
                           <Row>
@@ -353,7 +352,7 @@ const UserProfileDetails = () => {
                               />
                             </Col>
                             <Col lg={4}><div className="imgPreview" style={{ display: lFrontControl }}>
-                              <img src={previewImage2}></img>
+                              <img alt="" src={previewImage2}></img>
                             </div></Col>
                           </Row>
                           <Row className="mt-5">
@@ -370,7 +369,7 @@ const UserProfileDetails = () => {
                               />
                             </Col>
                             <Col lg={4}><div className="imgPreview" style={{ display: lBackControl }}>
-                              <img src={previewImage3} />
+                              <img alt="" src={previewImage3} />
                             </div></Col>
                           </Row>
                           <Row  className="mt-4">

@@ -70,6 +70,7 @@ const CarBooking = () => {
       )
       if (result.status === 200) {
         notify()
+        e.target.reset()
         setTimeout(
           function() {
             navigate('/user-bookings')

@@ -131,6 +131,7 @@
     "blog_single" : "blog Single",
     "not_found" : "404 Not Found",
     "login" : "login",
+    "forgot" : "forgot password",
     "register" : "register",
     "contact" : "contact"
   },
@@ -208,6 +209,10 @@
       "keep" : "Keep Me Signed In",
       "btn" : "Login Now!",
       "need_account" : "Do you need an account?"
+    },
+    "forgot_password_page" : {
+      "forgot_pass" : "Reset Password",
+      "btn": "Reset Now!"
     },
     "register_page" : {
       "singup" : "sign Up",
