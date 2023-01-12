@@ -42,10 +42,19 @@ const Login = () => {
         } else {
           navigate('/user-bookings')
           setUser(true)
+          var getData =
+          {
+             'first_name': res.data.data.first_name,
+             'last_name': res.data.data.last_name,
+             'email': res.data.data.email,
+             'mobile_no': res.data.data.mobile_number,
+          }
           localStorage.setItem(
-            'id', res.data.data.id
+            'id', res.data.data.id,
             // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
           )
+          localStorage.setItem(
+            'dataKey', JSON.stringify(getData))
         }
       })
       .catch((err) => {
@@ -60,7 +69,7 @@ const Login = () => {
   return (
     <section className='gauto-login-area section_70'>
       <Container>
-      <ToastContainer
+        <ToastContainer
           position="top-right"
           autoClose={5000}
           hideProgressBar={false}
@@ -71,7 +80,7 @@ const Login = () => {
           draggable
           pauseOnHover
           theme="dark"
-          />
+        />
         <Row>
           <Col md={12}>
             <form onSubmit={SubmitHandler}>

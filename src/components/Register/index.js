@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from "react-i18next";
 import { Container, Row, Col } from "react-bootstrap";
@@ -14,12 +14,22 @@ const Register = () => {
   const { setUser } = useContext(UserContext)
   const navigate = useNavigate()
   const notify = () => toast("Registration Successfull");
+  const notifyTermsError = () => toast("Please accept Terms and Conditions");
+  const [terms, setTerms] = useState(false)
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  
+  const termsHandled = () => {
+    if(terms === true)
+    setTerms(false);
+    else
+    setTerms(true);
+  }
 
   const SubmitHandler = async (e) => {
     e.preventDefault();
+    if(terms === true){
     const data = new FormData()
 
     data.append('first_name', e.target[0].value)
@@ -52,6 +62,10 @@ const Register = () => {
       .catch((err) => {
         console.log(err)
       })
+    }
+    else{
+      notifyTermsError()
+    }
   };
 
   return (
@@ -148,7 +162,8 @@ const Register = () => {
                       className="checkbox-spin"
                       type="checkbox"
                       id="Freelance"
-                      required
+                      value="accepted"
+                      onChange={termsHandled}
                     />
                     <label htmlFor="Freelance">
                       <span />
