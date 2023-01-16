@@ -19,6 +19,7 @@ const UserMakeBookings = () => {
   const onClickHandler = (e) =>{
       e.preventDefault()
     localStorage.removeItem("id")
+    localStorage.removeItem("dataKey");
     navigate("/login")
     window.location.reload()
   }
@@ -44,7 +45,7 @@ const UserMakeBookings = () => {
                   <Link to="/favourites">Favourites</Link>
                   </li>
                   <li>
-                  <Link to="user-profile">Profile</Link>
+                  <Link to="/user-profile">Profile</Link>
                   </li>
                   <li>
                   <Link onClick={onClickHandler}>Logout</Link>

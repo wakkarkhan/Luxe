@@ -48,6 +48,9 @@ const Login = () => {
              'last_name': res.data.data.last_name,
              'email': res.data.data.email,
              'mobile_no': res.data.data.mobile_number,
+             'profile_image': res.data.data.image,
+             'license_front': res.data.data.licence_front,
+             'license_back': res.data.data.licence_back,
           }
           localStorage.setItem(
             'id', res.data.data.id,

@@ -1,5 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
+import {Carousel} from 'react-responsive-carousel'
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {
   DatePickerComponent,
   TimePickerComponent,
@@ -119,9 +121,17 @@ const CarDetails = (props) => {
           <Row>
             <Col lg={6}>
               <div className='car-booking-image'>
-                {state.data.IntExImages.slice(0, 1).map((c, i) => (
+                {/* {state.data.IntExImages.slice(0, 1).map((c, i) => (
                   <img src={'https://hiso.software-compilers.com/public/Vehicle/'+c.car_id+'/IntExtImages/'+c.image_path} alt='car' />
-                ))}
+                ))} */}
+                <Carousel showArrows={true} >
+                {state.data.IntExImages.map((c, i) => (
+                  <div>
+                      <img src={'https://hiso.software-compilers.com/public/Vehicle/'+c.car_id+'/IntExtImages/'+c.image_path} />
+                      {/* <p className="legend">Legend 1</p> */}
+                  </div>
+                 ))}
+                </Carousel>
               </div>
             </Col>
             <Col lg={6}>

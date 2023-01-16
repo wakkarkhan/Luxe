@@ -39,7 +39,8 @@ const UserFavourites = () => {
 
   const onClickHandler = (e) =>{
       e.preventDefault()
-    localStorage.removeItem("id")
+    localStorage.removeItem("id");
+    localStorage.removeItem("dataKey");
     navigate("/login")
     window.location.reload()
   }
@@ -151,7 +152,7 @@ const UserFavourites = () => {
                 </Row>
                 
               </div>
-              <div className="pagination-box-row">
+              {/* <div className="pagination-box-row">
                 <p>Page 1 of 6</p>
                 <ul className="pagination">
                   <li className="active">
@@ -181,7 +182,7 @@ const UserFavourites = () => {
                     </Link>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </div>
             </div>
           </Col>

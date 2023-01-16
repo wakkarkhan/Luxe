@@ -47,6 +47,7 @@ const UserBookingsDetails = () => {
   const onClickHandler = (e) => {
     e.preventDefault()
     localStorage.removeItem("id")
+    localStorage.removeItem("dataKey");
     navigate("/login")
     window.location.reload()
   }

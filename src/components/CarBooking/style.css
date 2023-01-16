@@ -8,6 +8,12 @@
   background: #fbfbfb none repeat scroll 0 0;
 }
 
+.carousel .control-next.control-arrow:before {
+  border-left: 8px solid #000 !important;
+}
+.carousel .control-prev.control-arrow:before {
+  border-left: 8px solid #000 !important;
+}
 .rental-tag {
   display: inline-block;
   padding: 5px 15px;
