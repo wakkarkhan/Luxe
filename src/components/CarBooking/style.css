@@ -8,12 +8,43 @@
   background: #fbfbfb none repeat scroll 0 0;
 }
 
+.e-btn.e-flat.e-primary, .e-css.e-btn.e-flat.e-primary{
+  display:none;
+}
+
 .carousel .control-next.control-arrow:before {
   border-left: 8px solid #000 !important;
 }
 .carousel .control-prev.control-arrow:before {
   border-left: 8px solid #000 !important;
 }
+
+.carousel .slider-wrapper .animated li:nth-child(1){
+  display: none !important;
+}
+
+.carousel .slider-wrapper .animated li:nth-child(2){
+  display: none !important;
+}
+
+.carousel .carousel-status{
+  display: none !important;
+}
+
+.carousel .control-dots li:nth-last-child(2){
+  display: none !important;
+}
+
+
+.carousel .control-dots li:nth-last-child(1){
+  display: none !important;
+} 
+
+.carousel.carousel-slider .control-arrow{
+  display: none !important;
+
+}
+
 .rental-tag {
   display: inline-block;
   padding: 5px 15px;
@@ -82,17 +113,17 @@
 }
 
 .price-rating {
-  margin-bottom: 20px;
+  margin-bottom: 10px !important;
 }
 
 .car-features ul {
   width: 32%;
   float: left;
-  margin-top: 20px;
+  margin-top: 10px !important;
 }
 
 .car-features ul li {
-  margin: 5px 0;
+  margin: 0px 0px 5px 0px !important;
 }
 
 .car-features ul li svg {

@@ -7,6 +7,44 @@
 .gauto-car-booking {
   background: #fbfbfb none repeat scroll 0 0;
 }
+
+.e-btn.e-flat.e-primary, .e-css.e-btn.e-flat.e-primary{
+  display:none;
+}
+
+.carousel .control-next.control-arrow:before {
+  border-left: 8px solid #000 !important;
+}
+.carousel .control-prev.control-arrow:before {
+  border-left: 8px solid #000 !important;
+}
+
+.carousel .slider-wrapper .animated li:nth-child(1){
+  display: none !important;
+}
+
+.carousel .slider-wrapper .animated li:nth-child(2){
+  display: none !important;
+}
+
+.carousel .carousel-status{
+  display: none !important;
+}
+
+.carousel .control-dots li:nth-last-child(2){
+  display: none !important;
+}
+
+
+.carousel .control-dots li:nth-last-child(1){
+  display: none !important;
+} 
+
+.carousel.carousel-slider .control-arrow{
+  display: none !important;
+
+}
+
 .carousel .control-next.control-arrow:before {
   border-left: 8px solid #000 !important;
 }

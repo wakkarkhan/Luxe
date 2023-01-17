@@ -108,8 +108,8 @@ const UserBookingsDetails = () => {
                     <Accordion.Item eventKey={index} className="single_faq_accordian" key={index}>
                       <Accordion.Header className="faq_accordian_header" style={{padding: "10px 10px"}}>
                       <Row>
-                        <Col lg={6}>{booking.bookings[0].pick_and_drop} to {booking.bookings[0].destination}</Col>
-                        <Col lg={6}><p style={{ textAlign: "End" }}>{booking.bookings[0].from_date_time.substr(0,10)} to  {booking.bookings[0].to_date_time.substr(0,10)}</p></Col>
+                        <Col lg={6}>{booking.bookings[0].pick_and_drop} - {booking.bookings[0].destination}</Col>
+                        <Col lg={6}><p style={{ textAlign: "End" }}>{booking.bookings[0].from_date_time} to {booking.bookings[0].to_date_time}</p></Col>
                       </Row>
                         
                       </Accordion.Header>
