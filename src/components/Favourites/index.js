@@ -28,10 +28,14 @@ const UserFavourites = () => {
   const { t } = useTranslation();
   const [cars, setCars] = useState(null)
   const navigate = useNavigate()
+
+  const [isFavourite, setIsFavourite] = useState('none');
+  const [isNotFavourite, setIsNotFavourite] = useState('none');
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    fetchData()
   }, []);
-
 
   const onClick = (e) => {
     e.preventDefault();
@@ -45,24 +49,34 @@ const UserFavourites = () => {
     window.location.reload()
   }
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = new FormData()
-      const userID = localStorage.getItem('id')
-      data.append('user_id', userID)
-      const result = await fetch(
-        'https://hiso.software-compilers.com/api/getFavouriteCars',
-        {
-          method: 'POST',
-          body: data,
-        }
-      )
-      const jsonData = await result.json()
-  
-      setCars(jsonData?.data)
+  const fetchData = async () => {
+    const data = new FormData()
+    const userID = localStorage.getItem('id')
+    data.append('user_id', userID)
+    const result = await fetch(
+      'https://hiso.software-compilers.com/api/getFavouriteCars',
+      {
+        method: 'POST',
+        body: data,
+      }
+    )
+    const jsonData = await result.json()
+
+    setCars(jsonData?.data);
+
+    // console.log(cars);
+    let totalFavCars = jsonData?.data.length
+    console.log(totalFavCars);
+    if(totalFavCars > 0){
+      setIsFavourite('block');
+      setIsNotFavourite('none');
+
     }
-    fetchData()
-  }, [])
+    else{
+      setIsFavourite('none');
+      setIsNotFavourite('block');
+    }
+  }
 
   
 
@@ -94,7 +108,7 @@ const UserFavourites = () => {
               </div>
             </div>
           </Col>
-          <Col lg={8}>
+          <Col lg={8} style={{ display: isFavourite}}>
             <div className="service-details-right">
               <div className="service-accordion" id="accordion">
                   <h3>Your Favourites</h3>
@@ -185,6 +199,18 @@ const UserFavourites = () => {
               </div> */}
             </div>
             </div>
+          </Col>
+
+          {/* No favourites */}
+          <Col lg={8} style={{ display: isNotFavourite }}>
+            <div className="no-booking">
+              <div className="c">
+                <h3 style={{color: 'black'}}
+                > You have no favourite cars!!!</h3>
+              </div>
+
+            </div>
+
           </Col>
         </Row>
       </Container>

@@ -203,7 +203,7 @@
     },
     "login_page" : {
       "singin" : "sign in",
-      "user_email" : "Username or Email",
+      "user_email" : "Email",
       "password" : "Password",
       "f_password"  : "forgot password?",
       "keep" : "Keep Me Signed In",

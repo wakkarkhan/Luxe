@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment, useContext, useState, useEffect } from "react";
 import { Link, useNavigate, useLinkClickHandler } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
@@ -42,6 +42,18 @@ const Header = () => {
   //   e.preventDefault();
   // };
 
+  const getuserDetails = localStorage.getItem(('dataKey'));
+  const userInfo = JSON.parse(getuserDetails);
+  const [userfirstName, setUserFirstName] = useState(userInfo.first_name);
+  const [userLastName, setUserLastName] = useState(userInfo.last_name);
+  const [userName, setUserName] = useState(userfirstName+' '+userLastName);
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/login')
+    }
+  }, [])
+
   const onClick = (e) => {
     e.preventDefault();
   };
@@ -49,7 +61,7 @@ const Header = () => {
   const { t } = useTranslation();
   const { user } = useContext(UserContext)
   const navigate = useNavigate()
-  const useLinkClickHandler = () =>{
+  const useLinkClickHandler = () => {
     localStorage.removeItem("id")
     navigate("/login")
     window.location.reload()
@@ -71,42 +83,42 @@ const Header = () => {
               </div>
             </Col>
             <Col md={6}>
-            { !user && 
-              <div className="header-top-right">
-                <Link to="/login">
-                  <FaSignInAlt />
-                  {t("login")}
-                </Link>
-                <Link to="/register">
-                  <FaUserAlt />
-                  {t("register")}
-                </Link>
-               
-              </div>
+              {!user &&
+                <div className="header-top-right">
+                  <Link to="/login">
+                    <FaSignInAlt />
+                    {t("login")}
+                  </Link>
+                  <Link to="/register">
+                    <FaUserAlt />
+                    {t("register")}
+                  </Link>
+
+                </div>
               }
-              { user &&
+              {user &&
                 <div className="header-top-right">
                   <Dropdown>
                     <Dropdown.Toggle variant="success" id="dropdown-basic">
-                      <FaUserAlt /> You are loggedin
+                      <FaUserAlt /> {userName}
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
                       {/* {languages.map(({ code, name, country_code }) => ( */}
-                        <Dropdown.Item
-                          eventKey='bookings'
-                          key='bookings'
-                          onClick={goToDashboard}
-                        >
-                          Dashboard
-                        </Dropdown.Item>
-                        <Dropdown.Item
-                          eventKey='logout'
-                          key='logout'
-                          onClick={useLinkClickHandler}
-                        >
-                          Logout
-                        </Dropdown.Item>
+                      <Dropdown.Item
+                        eventKey='bookings'
+                        key='bookings'
+                        onClick={goToDashboard}
+                      >
+                        Dashboard
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        eventKey='logout'
+                        key='logout'
+                        onClick={useLinkClickHandler}
+                      >
+                        Logout
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </div>
@@ -160,11 +172,11 @@ const Header = () => {
       <section className="gauto-mainmenu-area">
         <Container>
           <Row>
-          <Col lg={12}>
+            <Col lg={12}>
               <div className="mainmenu">
                 <nav>
                   <ul id="gauto_navigation" className="text-center">
-                   
+
                     <li>
                       <Link to="/">{t("header-navigation.home")}</Link>
                     </li>

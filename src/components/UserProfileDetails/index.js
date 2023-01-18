@@ -35,6 +35,8 @@ const UserProfileDetails = () => {
   const [userEmail, setuserEmail] = useState(userInfo.email);
   const [userMobile, setuserMobile] = useState(userInfo.mobile_no);
 
+  const [updateStatus, setUpdateStatus] = useState(userInfo.updated)
+
   const [previewImage1, setPreviewImage1] = useState(profilePlaceholder)
   const [previewImage2, setPreviewImage2] = useState(licensePlaceholder)
   const [previewImage3, setPreviewImage3] = useState(licensePlaceholder)
@@ -42,6 +44,10 @@ const UserProfileDetails = () => {
   const [isProfile, setIsProfile] = useState('false')
   const [isLicenseFront, setisLicenseFront] = useState('false')
   const [isLicenseBack, setisLicenseBack] = useState('false')
+
+  const [licenseFront, setLicenseFront] = useState(null)
+  const [licenseBack, setLicenseBack] = useState(null)
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -56,13 +62,27 @@ const UserProfileDetails = () => {
     }
 
     if (userInfo.license_front != null && userInfo.license_front != '') {
-      setPreviewImage2('https://hiso.software-compilers.com/public/LicenceImages/' + localStorage.getItem('id') + '/' + userInfo.license_front)
-      setisLicenseFront('true');
+      if (updateStatus === undefined) {
+        setPreviewImage2('https://hiso.software-compilers.com/public/LicenceImages/' + localStorage.getItem('id') + '/' + userInfo.license_front)
+        setisLicenseFront('true');
+      }
+      else {
+        setPreviewImage2(userInfo.license_front)
+        setisLicenseFront('true');
+
+      }
     }
 
     if (userInfo.license_back != null && userInfo.license_back != '') {
-      setPreviewImage3('https://hiso.software-compilers.com/public/LicenceImages/' + localStorage.getItem('id') + '/' + userInfo.license_back)
-      setisLicenseBack('true');
+      if (updateStatus === undefined) {
+        setPreviewImage3('https://hiso.software-compilers.com/public/LicenceImages/' + localStorage.getItem('id') + '/' + userInfo.license_back)
+        setisLicenseBack('true');
+      }
+      else {
+        setPreviewImage3(userInfo.license_back)
+        setisLicenseBack('true');
+
+      }
     }
 
   }, []);
@@ -213,8 +233,8 @@ const UserProfileDetails = () => {
         // let bb = e.target[1].value.substr(back+1,e.target[1].value.length);
 
         data.append('user_id', localStorage.getItem('id'));
-        data.append('licence_front_image', e.target[0].value);
-        data.append('licence_back', e.target[1].value);
+        data.append('licence_front_image', licenseFront);
+        data.append('licence_back', licenseBack);
 
         try {
           const res = await axios.post(
@@ -266,6 +286,7 @@ const UserProfileDetails = () => {
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
       setPreviewImage2(URL.createObjectURL(img));
+      setLicenseFront(event.target.files[0])
     }
   };
 
@@ -274,6 +295,7 @@ const UserProfileDetails = () => {
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
       setPreviewImage3(URL.createObjectURL(img));
+      setLicenseBack(event.target.files[0])
     }
   };
 

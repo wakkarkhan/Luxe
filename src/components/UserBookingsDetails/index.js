@@ -29,9 +29,14 @@ import {
 const UserBookingsDetails = () => {
   const { user } = useContext(UserContext)
   const navigate = useNavigate()
-  const notify = () => toast("Error fetching bookings");
+  const notify = () => toast("Error fetching bookings")
+
+  
 
   const [bookings, setBookings] = useState([])
+
+  const [isBooked, setIsBooked] = useState('none')
+  const [isNotBooked, setIsNotBooked] = useState('none')
 
   const [currentPage, setCurrentPage] = useState('1');
   const recordsPerPage = 7;
@@ -69,7 +74,17 @@ const UserBookingsDetails = () => {
       .then((res) => {
         if (res.data.success === true) {
           setBookings(res.data.data);
-          // console.log(bookings.bookings.length);
+          let totalBookings = res.data.data.length;
+          if (totalBookings > 0) {
+            setIsBooked('block');
+            setIsNotBooked('none')
+
+          }
+          else {
+            setIsNotBooked('block');
+            setIsBooked('none')
+
+          }
         }
       })
       .catch(() => {
@@ -79,6 +94,7 @@ const UserBookingsDetails = () => {
 
   return (
     <section className="gauto-service-details-area section_70">
+      {/* Bookings Available */}
       <Container>
         <Row>
           <Col lg={4}>
@@ -105,19 +121,34 @@ const UserBookingsDetails = () => {
               </div>
             </div>
           </Col>
-          <Col lg={8}>
-          {/* All Bookings  */}
+          <Col lg={8} style={{ display: isBooked }}>
+            {/* All Bookings  */}
             <Records data={currentRecords} />
-           {/* Pagination */}
+            {/* Pagination */}
             <Pagination
               nPages={nPages}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
             />
           </Col>
+
+          {/* No bookings */}
+          <Col lg={8} style={{ display: isNotBooked }}>
+            <div className="no-booking">
+              <div className="c">
+                <h3 style={{color: 'black'}}
+                > You haven't booked a car yet!!!</h3>
+              </div>
+
+            </div>
+
+          </Col>
         </Row>
 
       </Container>
+
+
+
     </section>
   );
 };
