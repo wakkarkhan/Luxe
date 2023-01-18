@@ -42,16 +42,37 @@ const Header = () => {
   //   e.preventDefault();
   // };
 
-  const getuserDetails = localStorage.getItem(('dataKey'));
-  const userInfo = JSON.parse(getuserDetails);
-  const [userfirstName, setUserFirstName] = useState(userInfo.first_name);
-  const [userLastName, setUserLastName] = useState(userInfo.last_name);
-  const [userName, setUserName] = useState(userfirstName+' '+userLastName);
+  var getuserDetails = '';
+  var userInfo = '';
+  var userFirstName = '';
+  var userLastName ='';
+  var userName = '';
+  // const [userfirstName, setUserFirstName] = useState('')
+  // const [userLastName, setUserLastName] = useState('')
+  // const [userName, setUserName] = useState('')
 
   useEffect(() => {
-    if (!user) {
-      navigate('/login')
+    if(!user) {
+      
     }
+    else{
+      getuserDetails = localStorage.getItem(('dataKey'));
+      userInfo = JSON.parse(getuserDetails);
+     
+      if (userInfo === null) {
+       
+      }
+      else{
+        userFirstName = userInfo.first_name;
+        userLastName= userInfo.last_name;
+        userName = userFirstName + ' ' + userLastName;
+
+        console.log(userName);
+
+      }
+    }
+
+
   }, [])
 
   const onClick = (e) => {
