@@ -47,6 +47,7 @@ const UserProfileDetails = () => {
 
   const [licenseFront, setLicenseFront] = useState(null)
   const [licenseBack, setLicenseBack] = useState(null)
+  const [profileImage, setProfileImage] = useState(null)
 
 
   useEffect(() => {
@@ -160,7 +161,7 @@ const UserProfileDetails = () => {
         const data = new FormData()
 
         data.append('user_id', localStorage.getItem('id'));
-        data.append('image', e.target[0].value);
+        data.append('image', profileImage);
 
         try {
           const res = await axios.post(
@@ -278,6 +279,7 @@ const UserProfileDetails = () => {
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
       setPreviewImage1(URL.createObjectURL(img));
+      setProfileImage(event.target.files[0])
     }
   };
 
