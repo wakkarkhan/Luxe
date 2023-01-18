@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState, useEffect } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useLinkClickHandler } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
@@ -42,54 +42,43 @@ const Header = () => {
   //   e.preventDefault();
   // };
 
-  var getuserDetails = '';
-  var userInfo = '';
-  var userFirstName = '';
-  var userLastName ='';
-  var userName = '';
-  // const [userfirstName, setUserFirstName] = useState('')
-  // const [userLastName, setUserLastName] = useState('')
-  // const [userName, setUserName] = useState('')
+  const { t } = useTranslation();
+  const { user } = useContext(UserContext)
+  const navigate = useNavigate()
+
+  const [userName, setUserName] = useState('')
 
   useEffect(() => {
-    if(!user) {
-      
-    }
-    else{
-      getuserDetails = localStorage.getItem(('dataKey'));
-      userInfo = JSON.parse(getuserDetails);
-     
-      if (userInfo === null) {
+    if (user) {
+      const getuserDetails = localStorage.getItem(('dataKey'));
+      const userInfo = JSON.parse(getuserDetails);
+
+      if (userInfo != null) {
+        let firstName = userInfo.first_name
+        
+        let lastName = userInfo.last_name;
        
-      }
-      else{
-        userFirstName = userInfo.first_name;
-        userLastName= userInfo.last_name;
-        userName = userFirstName + ' ' + userLastName;
-
-        console.log(userName);
-
+        setUserName(firstName + ' ' + lastName)
+        
       }
     }
 
-
-  }, [])
+  }, []);
 
   const onClick = (e) => {
     e.preventDefault();
   };
 
-  const { t } = useTranslation();
-  const { user } = useContext(UserContext)
-  const navigate = useNavigate()
   const useLinkClickHandler = () => {
     localStorage.removeItem("id")
+    localStorage.removeItem("dataKey");
     navigate("/login")
     window.location.reload()
-  }
+  };
+
   const goToDashboard = () => {
     navigate("/user-bookings")
-  }
+  };
 
   return (
     <Fragment>
