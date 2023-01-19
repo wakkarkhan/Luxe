@@ -26,6 +26,7 @@ import MakeBookings from "../MakeBookings";
 import UserBookings from "../UserBookings";
 import Favourites from "../Favourites";
 import UserProfile from "../UserProfile";
+import TermsNdConditions from "../Terms&ConditionsPage"
 
 const AllRoute = () => {
   return (
@@ -61,6 +62,7 @@ const AllRoute = () => {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route element={<ErrorPage />} />
+          <Route path="/terms-and-conditions" element={<TermsNdConditions />} />
         </Routes>
       </Router>
     </div>

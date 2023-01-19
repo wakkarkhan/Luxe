@@ -133,7 +133,8 @@
     "login" : "login",
     "forgot" : "forgot password",
     "register" : "register",
-    "contact" : "contact"
+    "contact" : "contact",
+    "terms": "terms & conditions"
   },
   "about_page" : {
     "subtitle" : "About Us",
@@ -224,7 +225,7 @@
       "email" : "Email",
       "password" : "Password",
       "c_password" : "Confirm Password",
-      "terms" : "accept terms & condition",
+      "terms" : "accept terms & conditions",
       "register_now" : "Register now",
       "have_account" : "Already have an account?"
     },

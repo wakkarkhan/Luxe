@@ -19,11 +19,8 @@ const Login = () => {
     window.scrollTo(0, 0);
   }, []);
   useEffect(() => {
-    if (!user) {
-      notify()
-      // navigate('/login')
-    }
   }, [])
+  // 
   const SubmitHandler = async (e) => {
     e.preventDefault()
     const data = new FormData()

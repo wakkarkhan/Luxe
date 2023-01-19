@@ -167,7 +167,7 @@ const Register = () => {
                     />
                     <label htmlFor="Freelance">
                       <span />
-                      {t("register_page.terms")}
+                      <Link to="/terms-and-conditions" style={{color: "black"}}>{t("register_page.terms")}</Link>
                     </label>
                   </p>
                 </div>
