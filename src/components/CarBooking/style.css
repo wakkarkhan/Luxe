@@ -4,6 +4,17 @@
 @import "/node_modules/@syncfusion/ej2-inputs/styles/material.css";
 @import "/node_modules/@syncfusion/ej2-popups/styles/material.css";
 @import "/node_modules/@syncfusion/ej2-react-calendars/styles/material.css";
+.fav-bg{
+  height: 40px;
+   width: 40px;
+  border-radius: 50%;
+  background-color: black;
+  padding: 4px 5px;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-bottom: 4px;
+}
+
 .gauto-car-booking {
   background: #fbfbfb none repeat scroll 0 0;
 }

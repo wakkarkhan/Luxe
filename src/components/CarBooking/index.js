@@ -7,7 +7,7 @@ import {
   TimePickerComponent,
 } from '@syncfusion/ej2-react-calendars'
 import { useTranslation } from 'react-i18next'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Tooltip, OverlayTrigger } from 'react-bootstrap'
 import {
   FaStar,
   FaStarHalfAlt,
@@ -39,8 +39,15 @@ const CarBooking = () => {
   const state = location.state;
   const notify = () => toast("Booking Successfull");
 
+  const favNotify = () => toast("Added to Favourites")
+  const favRemoved = () => toast("Removed from Favourites")
+
   const [fromDate, setFromDate] = useState('')
   const [toDate, setToDate] = useState('')
+
+  const [favIcon, setFavIcon] = useState('none')
+  const [notFavIcon, setnotFavIcon] = useState('block')
+
 
   // sets the min
   const minDate = new Date();
@@ -58,9 +65,57 @@ const CarBooking = () => {
     if (!user) {
       navigate('/login')
     }
+    fetchFavourites()
   }, []);
 
   const { t } = useTranslation()
+
+  // 
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Add to Favourites
+    </Tooltip>
+  );
+
+  // 
+  const renderTooltipAdded = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Remove from Favourites
+    </Tooltip>
+  );
+
+  //
+  const makeFourite = async () => {
+    if (!user) {
+      navigate('/login')
+    }
+    else {
+      var data = new FormData();
+      const userID = localStorage.getItem('id')
+      data.append('user_id', userID);
+      data.append('car_id', state.data.id);
+
+      var config = {
+        method: 'post',
+        url: 'https://hiso.software-compilers.com/api/addToFavourite',
+
+        data: data
+      };
+
+      axios(config)
+        .then(function (response) {
+          if (response.data.message === "Car add in favourite successfully") {
+            favNotify()
+          }
+          if (response.data.message === "Car remove from favourite successfully") {
+            favRemoved()
+          }
+          fetchFavourites()
+        })
+        .catch(function (error) {
+        });
+    }
+  }
 
   //disable already booked dates
   const disabledDate = (args) => {
@@ -182,6 +237,48 @@ const CarBooking = () => {
     e.preventDefault()
   }
 
+  // 
+  const fetchFavourites = async () => {
+    const data = new FormData()
+    const userID = localStorage.getItem('id')
+    data.append('user_id', userID)
+    const result = await fetch(
+      'https://hiso.software-compilers.com/api/getFavouriteCars',
+      {
+        method: 'POST',
+        body: data,
+      }
+    )
+    const jsonData = await result.json()
+
+    let favourites = jsonData?.data
+
+    let totalFavCars = jsonData?.data.length
+    console.log(totalFavCars);
+
+    let car_id = state.data.id;
+
+    if (totalFavCars > 0) {
+      for (let i = 0; i < totalFavCars; i++) {
+        let id = favourites[i].id;
+
+        if (id === car_id) {
+          setFavIcon('block');
+          setnotFavIcon('none')
+          return
+        }
+        else {
+          setFavIcon('none');
+          setnotFavIcon('block')
+        }
+      }
+    }
+    else {
+      setFavIcon('none');
+      setnotFavIcon('block')
+    }
+  }
+
   return (
     <>
       <section className='gauto-car-booking section_70'>
@@ -216,7 +313,29 @@ const CarBooking = () => {
             </Col>
             <Col lg={6}>
               <div className='car-booking-right'>
-                <p className='rental-tag'>{t('rental')}</p>
+                <div style={{ display: 'inline-flex' }}>
+                  <p className='rental-tag'>{t('rental')}</p>
+                  {/* Add to Favourites */}
+                  <OverlayTrigger
+                    placement="top"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={renderTooltip}
+                  >
+                    <div className="fav-bg" style={{ display: notFavIcon }} >
+                      <FaStar size={30} style={{ color: "white", fontSize: "1.5em" }} onClick={makeFourite} /></div>
+                  </OverlayTrigger>
+
+                  {/* Already added to Favourites */}
+                  <OverlayTrigger
+                    placement="top"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={renderTooltipAdded}
+                  >
+                    <div className="fav-bg" style={{ display: favIcon }} >
+                      <FaStar size={30} style={{ color: "yellow", fontSize: "1.5em" }} onClick={makeFourite} /></div>
+                  </OverlayTrigger>
+                </div>
+
                 <h3>{state.data.name}</h3>
                 <div className='price-rating'>
                   <div className='price-rent'>

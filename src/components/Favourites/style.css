@@ -1,4 +1,9 @@
 /* ===================== SERVICE DETAILS ======================*/
+.car-grid-list .single-offers {
+  padding: 10px 20px 20px 20px;
+}
+ 
+
 .no-booking {
   background: none !important;
   text-align: center;
