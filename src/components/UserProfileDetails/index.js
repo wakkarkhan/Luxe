@@ -1,9 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Container, Row, Col, Tab, Tabs } from "react-bootstrap";
 import profilePlaceholder from '../../img/placeholder_profile.jpeg'
 import licensePlaceholder from '../../img/license_placeholder.jpeg'
+
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import loadingGif from '../../img/giphy.gif'
 
 import "./style.css";
 import { ToastContainer, toast } from 'react-toastify'
@@ -48,7 +51,6 @@ const UserProfileDetails = () => {
   const [licenseFront, setLicenseFront] = useState(null)
   const [licenseBack, setLicenseBack] = useState(null)
   const [profileImage, setProfileImage] = useState(null)
-
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -193,7 +195,7 @@ const UserProfileDetails = () => {
             alert('errorrrrr')
           }
         } catch (error) {
-          alert('errorrioiooioio')
+          alert('errorr')
         }
       }
     }
@@ -437,7 +439,13 @@ const UserProfileDetails = () => {
                               />
                             </Col>
                             <Col lg={4}><div className="imgPreview">
-                              <img alt="" src={previewImage1}></img>
+
+                              <LazyLoadImage
+                                src={previewImage1}
+                                placeholderSrc={loadingGif}
+                                alt="Profile Image"
+                              />
+
                             </div></Col>
                           </Row>
                           <Row>
@@ -471,7 +479,12 @@ const UserProfileDetails = () => {
                               />
                             </Col>
                             <Col lg={4}><div className="imgPreview">
-                              <img alt="" src={previewImage2}></img>
+                               <LazyLoadImage
+                                src={previewImage2}
+                                placeholderSrc={loadingGif}
+                                alt="License Front Image"
+                              />
+                              {/* <img alt="" src={previewImage2}></img> */}
                             </div></Col>
                           </Row>
                           <Row className="mt-5">
@@ -487,7 +500,12 @@ const UserProfileDetails = () => {
                               />
                             </Col>
                             <Col lg={4}><div className="imgPreview">
-                              <img alt="" src={previewImage3} />
+                            <LazyLoadImage
+                                src={previewImage3}
+                                placeholderSrc={loadingGif}
+                                alt="License Back Image"
+                              />
+                              {/* <img alt="" src={previewImage3} /> */}
                             </div></Col>
                           </Row>
                           <Row className="mt-4">

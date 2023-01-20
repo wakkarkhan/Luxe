@@ -8,8 +8,9 @@ import axios from 'axios'
 import UserContext from '../../context'
 import { ToastContainer, toast } from 'react-toastify'
 
-// import img1 from "../../img/service-details-1.jpg";
-// import img2 from "../../img/service-details-2.jpg";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import loadingGif from '../../img/giphy.gif'
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import "./style.css";
 import {
@@ -36,7 +37,7 @@ const UserFavourites = () => {
   const navigate = useNavigate()
 
   const { user } = useContext(UserContext)
-  
+
   const [isFavourite, setIsFavourite] = useState('none')
   const [isNotFavourite, setIsNotFavourite] = useState('none')
 
@@ -66,7 +67,7 @@ const UserFavourites = () => {
       axios(config)
         .then(function (response) {
           console.log(response.data.message);
-          if (response.data.message === "Car remove from favourite successfully"){  
+          if (response.data.message === "Car remove from favourite successfully") {
             fetchData();
           }
         })
@@ -172,18 +173,28 @@ const UserFavourites = () => {
                               >
 
                                 <div style={{ height: '40px', width: '40px', borderRadius: '50%', backgroundColor: 'black', padding: '4px 5px', marginLeft: 'auto', cursor: 'pointer' }} onClick={() => {
-                                    removeFourite(car.id);
-                                  }} >
+                                  removeFourite(car.id);
+                                }} >
                                   <FaStar size={30} style={{ color: "yellow", fontSize: "1.5em" }} />
                                 </div>
 
                               </OverlayTrigger>
                             ))}
+
+                            {/* <img src={'https://hiso.software-compilers.com/public/Vehicle/' + car.id + '/IntExtImages/' + c.image_path} alt='offer 1' /> */}
+
                             <div className="offer-image">
 
                               <Link to="/car-booking">
                                 {car.IntExImages.slice(0, 1).map((c, i) => (
-                                  <img src={'https://hiso.software-compilers.com/public/Vehicle/' + car.id + '/IntExtImages/' + c.image_path} alt='offer 1' />
+
+                                  <LazyLoadImage
+                                    key={i}
+                                    src={'https://hiso.software-compilers.com/public/Vehicle/' + car.id + '/IntExtImages/' + c.image_path}
+                                    placeholderSrc={loadingGif}
+                                    alt="Image Alt"
+                                  />
+
                                 ))}
                               </Link>
                             </div>
