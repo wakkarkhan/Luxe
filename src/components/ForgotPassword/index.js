@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { createSearchParams, Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Container, Row, Col } from 'react-bootstrap'
 import { FaKey, FaLock, FaUser } from 'react-icons/fa'
@@ -12,34 +12,35 @@ const ForgotPasword = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const notify = () => toast("Something went wrong!");
+  const userDoesNotExist = () => toast("User with this email does not exist");
+
+  // 
   const SubmitHandler = async (e) => {
     e.preventDefault()
-    const data = new FormData()
 
-    // data.append('username', e.target[0].value)
-    data.append('password', e.target[1].value)
+    const data = new FormData()
     data.append('email', e.target[0].value)
+
     await axios
       .post('https://hiso.software-compilers.com/api/forgetPassword', data)
       .then((res) => {
-        console.log(res.data)
-        if (res.data.response){
-            if(res.data.response.success === true) {
-            navigate('/login')
-            }
+        if (res.data.success === true) {
+          console.log("succes");
+          navigate({
+            pathname: '/verify-code',
+            search: createSearchParams({
+              email: e.target[0].value
+            }).toString()
+          });
         }
-        if (res.data) {
-            if(res.data.success === false) {
-            notify()
-            }
+        else {
+          userDoesNotExist();
         }
-
       })
-      .catch((err) => {
-        console.log(err)
+      .catch(() => {
+        notify()
       })
   }
-
 
   return (
     <section className='gauto-login-area section_70'>
@@ -62,36 +63,18 @@ const ForgotPasword = () => {
               <div className='login-box'>
                 <div className='login-page-heading'>
                   <FaKey />
-                  <h3>{t('forgot_password_page.forgot_pass')}</h3>
+                  <h3>{t('forgot_password_page.verify_email')}</h3>
                 </div>
-                {/* <form > */}
                 <div className='account-form-group'>
                   <input
-                    type='text'
+                    type='email'
                     placeholder={t('login_page.user_email')}
                     name='email'
                     required
                   />
                   <FaUser />
                 </div>
-                <div className='account-form-group'>
-                  <input
-                    type='password'
-                    placeholder={t('login_page.password')}
-                    name='password'
-                    required
-                  />
-                  <FaLock />
-                </div>
-                <div className='account-form-group'>
-                  <input
-                    type='password'
-                    placeholder={t('login_page.password')}
-                    name='password'
-                    required
-                  />
-                  <FaLock />
-                </div>
+  
                 <div className='remember-row'>
                   {/* <p className='lost-pass'>
                     <Link to='/forgot-password'>
@@ -112,12 +95,9 @@ const ForgotPasword = () => {
                 </div>
                 <p>
                   <button className='gauto-theme-btn' type='submit'>
-                    {/* <Link className='gauto-theme-btn' to='/all-bookings'> */}
-                    {t('forgot_password_page.btn')}
-                    {/* </Link> */}
+                    {t('forgot_password_page.send_code')}
                   </button>
                 </p>
-                {/* </form> */}
                 <div className='login-sign-up'>
                   <Link to='/register'>{t('login_page.need_account')}</Link>
                 </div>

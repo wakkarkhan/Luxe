@@ -27,6 +27,8 @@ import UserBookings from "../UserBookings";
 import Favourites from "../Favourites";
 import UserProfile from "../UserProfile";
 import TermsNdConditions from "../Terms&ConditionsPage"
+import VerifyCode from "../VerifyCodePage"
+import ResetPassword from '../ResetPasswordPage'
 
 const AllRoute = () => {
   return (
@@ -52,7 +54,8 @@ const AllRoute = () => {
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-
+          <Route path="/verify-code" element = {<VerifyCode />} />
+          <Route path="/reset-password" element = {<ResetPassword />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/make-bookings" element={<MakeBookings />} />
           <Route path="/user-bookings" element={<UserBookings />} />

@@ -217,7 +217,14 @@
     },
     "forgot_password_page" : {
       "forgot_pass" : "Reset Password",
-      "btn": "Reset Now!"
+      "btn": "Reset Now!",
+      "verify_email" : "Verify email",
+      "send_code": "Send code",
+      "verify_code": "Verify Code",
+      "description": "A verification code has been sent to the respective email.. Please check and verify..",
+      "code": "code",
+      "resend_code": "resend code",
+      "confirm": "confirm password"
     },
     "register_page" : {
       "singup" : "sign Up",
