@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Container, Row, Col, Tab, Tabs } from "react-bootstrap";
+import { Container, Row, Col, Tab, Tabs, Spinner } from "react-bootstrap";
 import profilePlaceholder from '../../img/placeholder_profile.jpeg'
 import licensePlaceholder from '../../img/license_placeholder.jpeg'
 
@@ -52,6 +52,15 @@ const UserProfileDetails = () => {
   const [licenseBack, setLicenseBack] = useState(null)
   const [profileImage, setProfileImage] = useState(null)
 
+  const [showUpload, setShowUpload] = useState('flex')
+  const [showSpinner, setShowSpinner] = useState('none')
+
+  const [showImageUpload, setShowImageUpload] = useState('flex')
+  const [showImageSpinner, setShowImageSpinner] = useState('none')
+
+  const [showUpdate, setShowUpdate] = useState('flex')
+  const [showUpdateSpinner, setUpdateSpinner] = useState('none')
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -72,7 +81,6 @@ const UserProfileDetails = () => {
       else {
         setPreviewImage2(userInfo.license_front)
         setisLicenseFront('true');
-
       }
     }
 
@@ -84,7 +92,6 @@ const UserProfileDetails = () => {
       else {
         setPreviewImage3(userInfo.license_back)
         setisLicenseBack('true');
-
       }
     }
 
@@ -105,6 +112,9 @@ const UserProfileDetails = () => {
       navigate('/login')
     }
     else {
+      setShowUpdate('none');
+      setUpdateSpinner('flex');
+
       const data = new FormData()
 
       data.append('user_id', localStorage.getItem('id'));
@@ -133,7 +143,10 @@ const UserProfileDetails = () => {
           }
           localStorage.removeItem('dataKey');
           localStorage.setItem(
-            'dataKey', JSON.stringify(getData))
+            'dataKey', JSON.stringify(getData));
+
+          setShowUpdate('flex');
+          setUpdateSpinner('none');
 
         } else {
           alert('error')
@@ -160,6 +173,8 @@ const UserProfileDetails = () => {
         }
       }
       else {
+        setShowImageUpload('none');
+        setShowImageSpinner('flex');
         const data = new FormData()
 
         data.append('user_id', localStorage.getItem('id'));
@@ -190,7 +205,12 @@ const UserProfileDetails = () => {
             }
             localStorage.removeItem('dataKey');
             localStorage.setItem(
-              'dataKey', JSON.stringify(getData))
+              'dataKey', JSON.stringify(getData));
+
+            e.target[0].value = '';
+
+            setShowImageUpload('flex');
+            setShowImageSpinner('none');
           } else {
             alert('errorrrrr')
           }
@@ -227,6 +247,8 @@ const UserProfileDetails = () => {
         }
       }
       else {
+        setShowUpload('none');
+        setShowSpinner('flex');
         const data = new FormData()
 
         // let front = e.target[0].value.lastIndexOf('\\');
@@ -264,7 +286,12 @@ const UserProfileDetails = () => {
             }
             localStorage.removeItem('dataKey');
             localStorage.setItem(
-              'dataKey', JSON.stringify(getData))
+              'dataKey', JSON.stringify(getData));
+            e.target[0].value = '';
+            e.target[1].value = '';
+
+            setShowUpload('flex');
+            setShowSpinner('none');
 
           } else {
             alert('error')
@@ -409,7 +436,9 @@ const UserProfileDetails = () => {
                             </p>
                           </Col>
                         </Row>
-                        <Row>
+
+                        {/* Update Button */}
+                        <Row className="mt-4" style={{ display: showUpdate }}>
                           <Col md={4}></Col>
                           <Col md={4}></Col>
                           <Col md={4}>
@@ -419,6 +448,17 @@ const UserProfileDetails = () => {
                             </button>
                             {/* </div> */}
                           </Col>
+                        </Row>
+
+                        {/* Updating button with spinner */}
+                        <Row className="mt-4" style={{ display: showUpdateSpinner }}>
+                          <Col md={4}></Col>
+                          <Col md={4}></Col>
+                          <Col md={4}><button className='gauto-theme-btn mt-4 mr-2'
+                            type="submit" disabled
+                          ><Spinner animation="border" role="status">
+                              <span className="visually-hidden">Loading...</span>
+                            </Spinner> </button></Col>
                         </Row>
                       </form>
                     </Tab>
@@ -435,7 +475,6 @@ const UserProfileDetails = () => {
                               <input className="fileInput"
                                 type="file"
                                 onChange={onImageChange}
-
                               />
                             </Col>
                             <Col lg={4}><div className="imgPreview">
@@ -445,14 +484,26 @@ const UserProfileDetails = () => {
                                 placeholderSrc={loadingGif}
                                 alt="Profile Image"
                               />
-
                             </div></Col>
                           </Row>
-                          <Row>
+
+                          {/* Upload Button */}
+                          <Row className="mt-4" style={{ display: showImageUpload }}>
                             <Col md={4}></Col>
                             <Col md={4}><button className='gauto-theme-btn mt-4 mr-2'
                               type="submit"
                             >Upload Image</button></Col>
+                            <Col md={4}></Col>
+                          </Row>
+
+                          {/* Uploading button with spinner */}
+                          <Row className="mt-4" style={{ display: showImageSpinner }}>
+                            <Col md={4}></Col>
+                            <Col md={4}><button className='gauto-theme-btn mt-4 mr-2'
+                              type="submit" disabled
+                            ><Spinner animation="border" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                              </Spinner> </button></Col>
                             <Col md={4}></Col>
 
                           </Row>
@@ -478,8 +529,8 @@ const UserProfileDetails = () => {
                                 onChange={onLicenseFrontChange}
                               />
                             </Col>
-                            <Col lg={4}><div className="imgPreview">
-                               <LazyLoadImage
+                            <Col lg={4}><div className="imgPreview2">
+                              <LazyLoadImage
                                 src={previewImage2}
                                 placeholderSrc={loadingGif}
                                 alt="License Front Image"
@@ -499,8 +550,8 @@ const UserProfileDetails = () => {
                                 onChange={onLicenseBackChange}
                               />
                             </Col>
-                            <Col lg={4}><div className="imgPreview">
-                            <LazyLoadImage
+                            <Col lg={4}><div className="imgPreview2">
+                              <LazyLoadImage
                                 src={previewImage3}
                                 placeholderSrc={loadingGif}
                                 alt="License Back Image"
@@ -508,20 +559,28 @@ const UserProfileDetails = () => {
                               {/* <img alt="" src={previewImage3} /> */}
                             </div></Col>
                           </Row>
-                          <Row className="mt-4">
+
+                          {/* Upload button */}
+                          <Row className="mt-4" style={{ display: showUpload }}>
                             <Col md={4}></Col>
                             <Col md={4}><button className='gauto-theme-btn mt-4 mr-2'
                               type="submit"
                             >Upload Images</button></Col>
                             <Col md={4}></Col>
-
                           </Row>
 
+                          {/* Uploading button with spinner */}
+                          <Row className="mt-4" style={{ display: showSpinner }}>
+                            <Col md={4}></Col>
+                            <Col md={4}><button className='gauto-theme-btn mt-4 mr-2'
+                              type="submit" disabled
+                            ><Spinner animation="border" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                              </Spinner> </button></Col>
+                            <Col md={4}></Col>
+                          </Row>
                         </form>
-
-
                       </div>
-
                     </Tab>
                   </Tabs>
                 </div>

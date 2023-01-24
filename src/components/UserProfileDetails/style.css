@@ -4,11 +4,36 @@ input{
   width: 90%;
 }
 
+.gauto-btn:disabled,
+button.gauto-theme-btn:disabled{
+  color: #fff;
+  background-color: #263741;
+  border-color: #263741;
+  pointer-events: none;
+}
+
+.imgPreview2{
+  text-align: center;
+  margin: 5px 15px;
+  height: 160px;
+  width: 200px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.imgPreview2 img{
+  width: 200px;
+  height: 158px;
+  object-fit: fill;
+}
+
 .imgPreview{
   text-align: center;
   margin: 5px 15px;
-  height: 180px;
-  width: 180px;
+  height: 160px;
+  width: 160px;
   border-left: 1px solid black;
   border-right: 1px solid black;
   border-top: 1px solid black;
@@ -16,9 +41,9 @@ input{
 }
 
 .imgPreview img{
-  width: 100%;
-  height: auto;
-  object-fit: cover;
+  width: 1500%;
+  height: 158px;
+  object-fit: fill;
 }
 
 .sidebar-widget {

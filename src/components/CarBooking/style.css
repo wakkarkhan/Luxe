@@ -15,6 +15,23 @@
   margin-bottom: 4px;
 }
 
+.gauto-btn:disabled,
+button.gauto-theme-btn:disabled{
+  color: #fff;
+  background-color: #263741;
+  border-color: #263741;
+  pointer-events: none;
+}
+
+.e-error {
+  color: #f44336 !important;
+}
+
+.e-time-wrapper .e-time-icon.e-icons::before, *.e-control-wrapper.e-time-wrapper .e-time-icon.e-icons::before {
+  margin-right: 5px;
+}
+
+
 .gauto-car-booking {
   background: #fbfbfb none repeat scroll 0 0;
 }
