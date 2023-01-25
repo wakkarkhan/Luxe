@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Link, useLinkClickHandler, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Container, Row, Col, Accordion } from "react-bootstrap";
+import { Container, Row, Col, Accordion, Spinner } from "react-bootstrap";
 
 import "./style.css";
 import UserContext from '../../context'
@@ -39,8 +39,15 @@ const UserBookingsDetails = () => {
   const [isNotBooked, setIsNotBooked] = useState('none')
 
   const [currentPage, setCurrentPage] = useState('1');
-  const recordsPerPage = 7;
+  const recordsPerPage = 8;
 
+  const [showSpinner, setShowSpinner] = useState('block');
+
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const currentRecords = bookings.slice(indexOfFirstRecord, indexOfLastRecord);
+  const nPages = Math.ceil(bookings.length / recordsPerPage);
+  
   useEffect(() => {
     window.scrollTo(0, 0);
     if (!user) {
@@ -48,11 +55,6 @@ const UserBookingsDetails = () => {
     }
     getAllBookings();
   }, [])
-
-  const indexOfLastRecord = currentPage * recordsPerPage;
-  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-  const currentRecords = bookings.slice(indexOfFirstRecord, indexOfLastRecord);
-  const nPages = Math.ceil(bookings.length / recordsPerPage)
 
   const { t } = useTranslation()
 
@@ -72,9 +74,11 @@ const UserBookingsDetails = () => {
     await axios
       .post('https://hiso.software-compilers.com/api/getBooking', data)
       .then((res) => {
+        setShowSpinner('none');
         if (res.data.success === true) {
           setBookings(res.data.data);
           let totalBookings = res.data.data.length;
+         
           if (totalBookings > 0) {
             setIsBooked('block');
             setIsNotBooked('none')
@@ -88,10 +92,12 @@ const UserBookingsDetails = () => {
         }
       })
       .catch(() => {
+        setShowSpinner('none');
         notify()
       });
   }
 
+  
   return (
     <section className="gauto-service-details-area section_70">
       {/* Bookings Available */}
@@ -125,11 +131,13 @@ const UserBookingsDetails = () => {
             {/* All Bookings  */}
             <Records data={currentRecords} />
             {/* Pagination */}
+            {nPages > 0 && 
             <Pagination
               nPages={nPages}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
             />
+            }
           </Col>
 
           {/* No bookings */}
@@ -140,6 +148,15 @@ const UserBookingsDetails = () => {
                 > You haven't booked a car yet!!!</h3>
               </div>
 
+            </div>
+
+          </Col>
+
+          <Col lg={8} style={{ display: showSpinner }}>
+          <div className='' style={{ height: '300px', paddingLeft: "50%" }} >
+              <Spinner animation="border" role="status" style={{ marginTop: '120px' }}>
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>
             </div>
 
           </Col>
