@@ -43,6 +43,8 @@ const CarBooking = () => {
   const location = useLocation()
   const state = location.state;
   const notify = () => toast("Booking Successfull");
+  const notifyFail = () => toast("Booking Failed");
+  const notifyAPIFail = () => toast("Something went wrong! Please try Again");
 
   const favNotify = () => toast("Added to Favourites")
   const favRemoved = () => toast("Removed from Favourites")
@@ -228,8 +230,8 @@ const CarBooking = () => {
     }
     // 
     else {
-      setDisabled(true);
       if (fromDateStatus === 'success' && toDateStatus === 'success' && fromTimeStatus === 'success' && toTimeStatus === 'success') {
+        setDisabled(true);
         if (journey_start_date > journey_end_date) {
           fromToDateError();
           setDisabled(false);
@@ -319,7 +321,6 @@ const CarBooking = () => {
 
     data.append('car_id', state.data.id)
     data.append('user_id', localStorage.getItem("id"))
-    // data.append('destination', document.getElementById('to_address').value)
     data.append('destination', '')
     data.append('pick_and_drop', '')
     data.append('from_date_time', val1)
@@ -333,10 +334,6 @@ const CarBooking = () => {
       )
       if (result.status === 200) {
         notify()
-        e.target[0].value = '';
-        e.target[1].value = '';
-        e.target[2].value = '';
-        e.target[3].value = '';
         setTimeout(
           function () {
             navigate('/user-bookings')
@@ -346,10 +343,16 @@ const CarBooking = () => {
         );
 
       } else {
-        alert('error')
+        notifyFail();
+        setDisabled(false);
       }
     } catch (error) {
-      alert('error')
+      notifyAPIFail();
+      e.target[0].value = '';
+      e.target[1].value = '';
+      e.target[2].value = '';
+      e.target[3].value = '';
+      setDisabled(false);
     }
 
   }
