@@ -16,6 +16,7 @@ const PageTitle = (props) => {
           <Col md={12}>
             <div className="breadcromb-box">
               <h3>{props.pageTitle}</h3>
+              <h4 style={{color: 'white', marginTop: '-10px'}} className="mb-1">{props.pageSubTitle}</h4>
               <ul>
                 <li>
                   <FaHome />

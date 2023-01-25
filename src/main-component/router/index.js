@@ -29,6 +29,7 @@ import UserProfile from "../UserProfile";
 import TermsNdConditions from "../Terms&ConditionsPage"
 import VerifyCode from "../VerifyCodePage"
 import ResetPassword from '../ResetPasswordPage'
+import NotAuthorized from '../NotAuthorizedPage'
 
 const AllRoute = () => {
   return (
@@ -61,6 +62,7 @@ const AllRoute = () => {
           <Route path="/user-bookings" element={<UserBookings />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/user-profile" element={<UserProfile />} />
+          <Route path="/not-authorized" element={<NotAuthorized />} />
 
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/contact" element={<ContactPage />} />

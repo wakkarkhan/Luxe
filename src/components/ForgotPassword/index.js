@@ -1,8 +1,8 @@
-import React from 'react'
-import { createSearchParams, Link, useNavigate } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
-import { Container, Row, Col } from 'react-bootstrap'
-import { FaKey, FaLock, FaUser } from 'react-icons/fa'
+import { React, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useSSR, useTranslation } from 'react-i18next'
+import { Container, Row, Col, Spinner } from 'react-bootstrap'
+import { FaKey, FaUser, FaHashtag } from 'react-icons/fa'
 import axios from 'axios'
 import './style.css'
 import { ToastContainer, toast } from 'react-toastify'
@@ -11,30 +11,92 @@ import 'react-toastify/dist/ReactToastify.css'
 const ForgotPasword = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const notify = () => toast("Something went wrong!");
-  const userDoesNotExist = () => toast("User with this email does not exist");
+  const notify = () => toast("Something went wrong! Please try again");
+  const userDoesNotExist = () => toast("User with this email does not exist! Please try another one");
+  const checkEmail = () => toast("Please check your email address for activation code")
+  const wrongCode = () => toast("Wrong Code");
 
-  // 
-  const SubmitHandler = async (e) => {
+  const [showVerifyEmail, setShowVerifyEmail] = useState('block');
+  const [showVerifyCode, setShowVerifyCode] = useState('none');
+  const [showSpinner, setShowSpinner] = useState('none');
+  const [userEmail, setUserEmail] = useState('');
+
+  // verify email 
+  const SubmitHandlerForVerifyEmail = async (e) => {
     e.preventDefault()
+    setUserEmail(e.target[0].value);
 
     const data = new FormData()
     data.append('email', e.target[0].value)
+
+    setShowVerifyEmail('none');
+    setShowSpinner('block');
 
     await axios
       .post('https://hiso.software-compilers.com/api/forgetPassword', data)
       .then((res) => {
         if (res.data.success === true) {
-          console.log("succes");
-          navigate({
-            pathname: '/verify-code',
-            search: createSearchParams({
-              email: e.target[0].value
-            }).toString()
-          });
+          // 
+          setTimeout(
+            function () {
+              setShowSpinner('none');
+              setShowVerifyCode('block');
+            }
+              .bind(this),
+            2500
+          );
+
         }
         else {
           userDoesNotExist();
+          setShowSpinner('none');
+          setShowVerifyEmail('block');
+        }
+      })
+      .catch(() => {
+        notify()
+        setShowSpinner('none');
+        setShowVerifyEmail('block');
+      })
+  }
+
+  // verify code
+  const SubmitHandlerForVerifyCode = async (e) => {
+    e.preventDefault()
+    const data = new FormData()
+    data.append('email', userEmail);
+    data.append('code', e.target[0].value)
+
+    await axios
+      .post('https://hiso.software-compilers.com/api/emailVerification', data)
+      .then((res) => {
+        if (res.data.success === true) {
+          navigate('/reset-password', { state: { email: userEmail } });
+
+        }
+        else {
+          wrongCode();
+        }
+      })
+      .catch(() => {
+        notify()
+      })
+  }
+
+  //   Resend Code
+  const resendCode = async (e) => {
+    e.preventDefault()
+    const data = new FormData()
+    data.append('email', userEmail);
+
+    await axios
+      .post('https://hiso.software-compilers.com/api/resentCode', data)
+      .then((res) => {
+        if (res.data.response.success === true) {
+          checkEmail();
+        }
+        else {
+          notify()
         }
       })
       .catch(() => {
@@ -57,9 +119,10 @@ const ForgotPasword = () => {
           pauseOnHover
           theme="dark"
         />
-        <Row>
+        {/* Verify Email */}
+        <Row style={{ display: showVerifyEmail }}>
           <Col md={12}>
-            <form onSubmit={SubmitHandler}>
+            <form onSubmit={SubmitHandlerForVerifyEmail}>
               <div className='login-box'>
                 <div className='login-page-heading'>
                   <FaKey />
@@ -74,7 +137,7 @@ const ForgotPasword = () => {
                   />
                   <FaUser />
                 </div>
-  
+
                 <div className='remember-row'>
                   {/* <p className='lost-pass'>
                     <Link to='/forgot-password'>
@@ -105,6 +168,57 @@ const ForgotPasword = () => {
             </form>
           </Col>
         </Row>
+
+        {/* Verify Code */}
+        <Row style={{ display: showVerifyCode }}>
+          <Col md={12}>
+            <form onSubmit={SubmitHandlerForVerifyCode}>
+              <div className='login-box'>
+                <div className='login-page-heading'>
+                  <FaKey />
+                  <h3>{t('forgot_password_page.verify_code')}</h3>
+                  <p>{t('forgot_password_page.description')}</p>
+                </div>
+                {/* <form > */}
+                <div className='account-form-group'>
+                  <input
+                    type='text'
+                    placeholder={t('forgot_password_page.code')}
+                    name='email'
+                    required
+                  />
+                  <FaHashtag />
+                </div>
+
+                <div className='remember-row'>
+                </div>
+                <p>
+                  <button className='gauto-theme-btn' type='submit'>
+                    {/* <Link className='gauto-theme-btn' to='/all-bookings'> */}
+                    {t('forgot_password_page.verify_code')}
+                    {/* </Link> */}
+                  </button>
+                </p>
+                {/* </form> */}
+                <div className='login-sign-up'>
+                  <Link onClick={resendCode}>{t('forgot_password_page.resend_code')}</Link>
+                </div>
+              </div>
+            </form>
+          </Col>
+        </Row>
+
+        <Row style={{ display: showSpinner }}>
+          <Col md={12}>
+            <div className='login-box' style={{ height: '300px' }} >
+              <Spinner animation="border" role="status" style={{ marginTop: '90px' }}>
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>
+            </div>
+
+          </Col>
+        </Row>
+
       </Container>
     </section>
   )

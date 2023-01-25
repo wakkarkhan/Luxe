@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate, useSearchParams, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Container, Row, Col } from 'react-bootstrap'
 import { FaKey, FaLock, FaUser } from 'react-icons/fa'
@@ -12,13 +12,27 @@ const ResetPasword = () => {
     const { t } = useTranslation()
     const navigate = useNavigate()
     const notify = () => toast("Something went wrong!");
+    const notifyError = () => toast("Failed to update password");
+
     const doNotMatch = () => toast("New Password and Confirm Password do not match");
     const passUpdated = () => toast("Your password has been updated! The next time you login, Please use your new password.")
 
-    const [searchparams] = useSearchParams()
+    const [userEmail, setUserEmail] = useState('')
+    const { state } = useLocation();
+    // const { email } = state;
 
-    var userEmail = searchparams.get("email")
-   
+    useEffect(() => {
+    if(state === null || state === ''){
+        navigate('/not-authorized');
+    }
+    else{
+        let email = state.email;
+        setUserEmail(email);
+    }
+
+    }, [])
+
+
     // 
     const SubmitHandler = async (e) => {
         e.preventDefault()
@@ -36,16 +50,16 @@ const ResetPasword = () => {
                             function () {
                                 navigate("/login");
                             }
-                              .bind(this),
+                                .bind(this),
                             3500
-                          );
+                        );
                     }
                     else {
-
+                        notifyError();
                     }
                 })
                 .catch(() => {
-                    notify()
+                    notify();
                 })
         }
         else {
