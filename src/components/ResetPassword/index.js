@@ -44,7 +44,7 @@ const ResetPasword = () => {
             await axios
                 .post('https://hiso.software-compilers.com/api/resetPassword', data)
                 .then((res) => {
-                    if (res.data.response.success === true) {
+                    if (res.data.success === true) {
                         passUpdated();
                         setTimeout(
                             function () {

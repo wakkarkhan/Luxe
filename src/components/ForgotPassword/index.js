@@ -92,7 +92,7 @@ const ForgotPasword = () => {
     await axios
       .post('https://hiso.software-compilers.com/api/resentCode', data)
       .then((res) => {
-        if (res.data.response.success === true) {
+        if (res.data.success === true) {
           checkEmail();
         }
         else {
