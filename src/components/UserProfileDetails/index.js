@@ -137,8 +137,8 @@ const UserProfileDetails = () => {
             'email': res.data.data.email,
             'mobile_no': res.data.data.mobile_number,
             'profile_image': res.data.data.image,
-            'license_front': res.data.data.licence_front,
-            'license_back': res.data.data.licence_back,
+            'license_front': userInfo.license_front,
+            'license_back': userInfo.license_back,
             'updated': "true"
           }
           localStorage.removeItem('dataKey');
