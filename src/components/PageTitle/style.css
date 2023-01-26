@@ -46,7 +46,7 @@
 }
 
 .breadcromb-box li svg {
-  fill: #263741;
+  fill: #fff;
   margin-right: 2px;
 }
 @media (max-width: 767px) {

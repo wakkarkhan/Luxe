@@ -22,8 +22,8 @@ const Records = ({ data }) => {
                         <Accordion.Item eventKey={index} className="single_faq_accordian" key={index}>
                             <Accordion.Header className="faq_accordian_header" style={{ padding: "10px 10px" }}>
                                 <Row>
-                                    <Col lg={6}>{booking.bookings[0].pick_and_drop} - {booking.bookings[0].destination}</Col>
-                                    <Col lg={6}><p style={{ textAlign: "End" }}>{booking.bookings[0].from_date_time} to {booking.bookings[0].to_date_time}</p></Col>
+                                    <Col lg={6}>From:  {booking.bookings[0].from_date_time}</Col>
+                                    <Col lg={6}><p style={{ textAlign: "End" }}>To:  {booking.bookings[0].to_date_time}</p></Col>
                                 </Row>
 
                             </Accordion.Header>
