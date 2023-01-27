@@ -50,7 +50,8 @@ const CarBooking = () => {
   const favRemoved = () => toast("Removed from Favourites")
 
   const fromToDateError = () => toast("Journey end date should not be before journey start date")
-  const fromToTimeError = () => toast("Journey end time should not be before journey start time")
+  const fromToTimeError = () => toast("Journey end time should not be before or equal to journey start time")
+  const inBetweenDaysError = () => toast("Some days between the journey start date and the journey end date are already booked.. Please try again")
 
   const [fromDate, setFromDate] = useState('')
   const [toDate, setToDate] = useState('')
@@ -231,24 +232,78 @@ const CarBooking = () => {
     // 
     else {
       if (fromDateStatus === 'success' && toDateStatus === 'success' && fromTimeStatus === 'success' && toTimeStatus === 'success') {
-        setDisabled(true);
+        
         if (journey_start_date > journey_end_date) {
+          setDisabled(true);
           fromToDateError();
           setDisabled(false);
 
         }
         else if (journey_start_date === journey_end_date) {
-          if (e.target[2].value > e.target[3].value) {
+          if ((e.target[2].value > e.target[3].value) || (e.target[2].value === e.target[3].value)) {
+            setDisabled(true);
             fromToTimeError();
             setDisabled(false);
           }
           else {
+            setDisabled(true);
             addNewBooking(journey_start, journey_end, e)
           }
         }
         // 
         else {
+          let inBetweenDays = 0;
+          var start = new Date(journey_start_date);
+
+          // Day next to selected date;
+          var startNextDay = new Date(start);
+          startNextDay.setDate(start.getDate() + 1);
+          var mnth = ('0' + (startNextDay.getMonth() + 1)).slice(-2),
+            day = ('0' + startNextDay.getDate()).slice(-2),
+            year = startNextDay.getFullYear(),
+            new_date = year + '-' + mnth + '-' + day;
+
+          carBookings = state.data.bookings;
+
+          for (let j = new_date; j !== journey_end_date;) {
+
+            let temp = j;
+
+            for (let i = 0; i < carBookings.length; i++) {
+
+              if (carBookings[i].status === '1' && carBookings[i].from_date_time !== null && carBookings[i].to_date_time !== null) {
+
+                var from_date_time = carBookings[i].from_date_time.substring(0, 10)
+                var to_date_time = carBookings[i].to_date_time.substring(0, 10)
+
+                if (((temp === from_date_time) || ((temp === to_date_time)))) {
+                  inBetweenDays = 1;
+                }
+              }
+            }
+
+            var val = new Date(temp);
+
+            // get next date;
+            var nextDay = new Date(val);
+            nextDay.setDate(val.getDate() + 1);
+            var mnth = ('0' + (nextDay.getMonth() + 1)).slice(-2),
+              day = ('0' + nextDay.getDate()).slice(-2),
+              year = nextDay.getFullYear(),
+              val2 = year + '-' + mnth + '-' + day;
+
+            j = val2;
+
+          }
+
+          if (inBetweenDays === 1) {
+            inBetweenDaysError();
+
+          }
+          else {
+            setDisabled(true);
           addNewBooking(journey_start, journey_end, e)
+          }
 
         }
       }

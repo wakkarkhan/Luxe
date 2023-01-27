@@ -40,6 +40,7 @@
 
 .service-icon {
   width: 60px;
+  height: 50px;
 }
 
 .service-text {
@@ -123,6 +124,7 @@
   }
   .service-icon {
     width: 50px;
+    height: 40px;
   }
   .service-menu {
     padding: 20px;

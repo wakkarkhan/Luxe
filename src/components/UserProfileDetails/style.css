@@ -44,7 +44,7 @@ button.gauto-theme-btn:disabled{
 .imgPreview img{
   width: 160px;
   height: 158px;
-  object-fit: fill;
+  object-fit: cover;
 }
 
 .sidebar-widget {

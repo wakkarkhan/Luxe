@@ -185,7 +185,7 @@ const UserFavourites = () => {
 
                             <div className="offer-image">
 
-                              <Link to="/car-booking">
+                              <Link to="/car-booking" state={{ data: car }}>
                                 {car.IntExImages.slice(0, 1).map((c, i) => (
 
                                   <LazyLoadImage

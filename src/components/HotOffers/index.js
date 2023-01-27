@@ -80,7 +80,7 @@ const HotOffers = (props) => {
                                   <div className='single-offers'>
                                     <div className='offer-image'>
 
-                                      <Link to='/car-details'>
+                                      <Link to='/car-details' state={{ data: car }}>
                                         {car.IntExImages.slice(0, 1).map((c, i) => (
                                           <LazyLoadImage
                                             key={i}

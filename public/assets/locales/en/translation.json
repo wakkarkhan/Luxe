@@ -207,7 +207,7 @@
       "desc" : "The page you are looking for might have been removed had its name changed or temporarily unavailable."
     },
     "login_page" : {
-      "singin" : "sign in",
+      "singin" : "log in",
       "user_email" : "Email",
       "password" : "Password",
       "f_password"  : "forgot password?",
