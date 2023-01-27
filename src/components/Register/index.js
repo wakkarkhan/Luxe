@@ -13,7 +13,7 @@ const Register = () => {
   const { t } = useTranslation();
   const { setUser } = useContext(UserContext)
   const navigate = useNavigate()
-  const notify = () => toast("Registration Successfull");
+  const notify = () => toast("Registration Successful");
   const notifyTermsError = () => toast("Please accept Terms and Conditions");
   const [terms, setTerms] = useState(false)
   useEffect(() => {

@@ -42,7 +42,7 @@ const CarBooking = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const state = location.state;
-  const notify = () => toast("Booking Successfull");
+  const notify = () => toast("Booking Successful");
   const notifyFail = () => toast("Booking Failed");
   const notifyAPIFail = () => toast("Something went wrong! Please try Again");
 
