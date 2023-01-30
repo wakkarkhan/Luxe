@@ -14,6 +14,7 @@ const Register = () => {
   const { setUser } = useContext(UserContext)
   const navigate = useNavigate()
   const notify = () => toast("Registration Successful");
+  const notifySomethingWrong = () => toast("Something Went Wrong!");
   const notifyTermsError = () => toast("Please accept Terms and Conditions");
   const [terms, setTerms] = useState(false)
   useEffect(() => {
@@ -38,14 +39,14 @@ const Register = () => {
     data.append('DOB', '123213213213')
     data.append('mobile_number', e.target[3].value)
     data.append('password', e.target[4].value)
-    data.append('username', e.target[5].value)
+    // data.append('username', e.target[5].value)
     data.append('type', 0)
     data.append('lang_id', 'en')
     await axios
       .post('https://hiso.software-compilers.com/api/signup', data)
       .then((res) => {
         if (res.data.success === false) {
-          alert('Invalid Information')
+          notifySomethingWrong()
           setUser(false)
         } else {
           notify()
@@ -136,7 +137,7 @@ const Register = () => {
                   />
                   <FaLock />
                 </div>
-                <div className="account-form-group">
+                {/* <div className="account-form-group">
                   <input
                     type="text"
                     placeholder={t("register_page.username")}
@@ -144,7 +145,7 @@ const Register = () => {
                     required
                   />
                   <FaUser />
-                </div>
+                </div> */}
                 
                 
                 <div className="account-form-group">
