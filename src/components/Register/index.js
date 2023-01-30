@@ -15,6 +15,7 @@ const Register = () => {
   const navigate = useNavigate()
   const notify = () => toast("Registration Successful");
   const notifySomethingWrong = () => toast("Something Went Wrong!");
+  const passwordNotMatched = () => toast("Password Not matched!");
   const notifyTermsError = () => toast("Please accept Terms and Conditions");
   const [terms, setTerms] = useState(false)
   useEffect(() => {
@@ -42,7 +43,9 @@ const Register = () => {
     // data.append('username', e.target[5].value)
     data.append('type', 0)
     data.append('lang_id', 'en')
-    await axios
+    if(e.target[4].value == e.target[5].value){
+      
+      await axios
       .post('https://hiso.software-compilers.com/api/signup', data)
       .then((res) => {
         if (res.data.success === false) {
@@ -63,6 +66,12 @@ const Register = () => {
       .catch((err) => {
         console.log(err)
       })
+
+    }
+    else {
+      passwordNotMatched();
+    }
+   
     }
     else{
       notifyTermsError()
