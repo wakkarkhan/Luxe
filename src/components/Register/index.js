@@ -40,7 +40,7 @@ const Register = () => {
     data.append('DOB', '123213213213')
     data.append('mobile_number', e.target[3].value)
     data.append('password', e.target[4].value)
-    // data.append('username', e.target[5].value)
+    data.append('username', e.target[0].value+e.target[1].value)
     data.append('type', 0)
     data.append('lang_id', 'en')
     if(e.target[4].value == e.target[5].value){
