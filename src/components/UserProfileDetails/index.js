@@ -137,8 +137,8 @@ const UserProfileDetails = () => {
             'email': res.data.data.email,
             'mobile_no': res.data.data.mobile_number,
             'profile_image': res.data.data.image,
-            'license_front': userInfo.license_front,
-            'license_back': userInfo.license_back,
+            'license_front': res.data.data.license_front,
+            'license_back': res.data.data.license_back,
             'updated': "true"
           }
           localStorage.removeItem('dataKey');
@@ -149,10 +149,14 @@ const UserProfileDetails = () => {
           setUpdateSpinner('none');
 
         } else {
-          alert('error')
+          alert('error');
+          setShowUpdate('flex');
+          setUpdateSpinner('none');
         }
       } catch (error) {
-        alert('error')
+        alert('error');
+        setShowUpdate('flex');
+        setUpdateSpinner('none');
       }
     }
   }
@@ -213,9 +217,13 @@ const UserProfileDetails = () => {
             setShowImageSpinner('none');
           } else {
             alert('errorrrrr')
+            setShowImageUpload('flex');
+            setShowImageSpinner('none');
           }
         } catch (error) {
           alert('errorr')
+          setShowImageUpload('flex');
+          setShowImageSpinner('none');
         }
       }
     }
@@ -295,9 +303,13 @@ const UserProfileDetails = () => {
 
           } else {
             alert('error')
+            setShowUpload('flex');
+            setShowSpinner('none');
           }
         } catch (error) {
           alert('error')
+          setShowUpload('flex');
+          setShowSpinner('none');
         }
       }
     }
