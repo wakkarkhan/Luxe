@@ -16,6 +16,20 @@ const Contact = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const test = (event) => {
+    let val1 = event.target.value.indexOf('<');
+    let val2 = event.target.value.indexOf('>');
+
+    if (val1 >= 0 || val2 >= 0)
+      event.target.setCustomValidity('HTML tags i.e. < > not allowed');
+    else
+      event.target.setCustomValidity('');
+
+    if (event.target.validity.valueMissing) {
+      event.target.setCustomValidity('Please fill in this field');
+    }
+  }
+
   const SubmitHandler = async (e) => {
     e.preventDefault()
     const data = new FormData()
@@ -93,6 +107,7 @@ const Contact = () => {
                         placeholder={t("contact_page.msg")}
                         name="message"
                         required
+                        onKeyUp={test}
                       />
                     </div>
                   </Col>
