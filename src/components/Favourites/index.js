@@ -12,6 +12,8 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import loadingGif from '../../img/giphy.gif'
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
+import env from "../../env";
+
 import "./style.css";
 import {
   FaStar,
@@ -59,7 +61,7 @@ const UserFavourites = () => {
 
       var config = {
         method: 'post',
-        url: 'https://hiso.software-compilers.com/api/addToFavourite',
+        url: env.apiUrl + 'api/addToFavourite',
 
         data: data
       };
@@ -101,7 +103,7 @@ const UserFavourites = () => {
     const userID = localStorage.getItem('id')
     data.append('user_id', userID)
     const result = await fetch(
-      'https://hiso.software-compilers.com/api/getFavouriteCars',
+      env.apiUrl + 'api/getFavouriteCars',
       {
         method: 'POST',
         body: data,
@@ -181,7 +183,7 @@ const UserFavourites = () => {
                               </OverlayTrigger>
                             ))}
 
-                            {/* <img src={'https://hiso.software-compilers.com/public/Vehicle/' + car.id + '/IntExtImages/' + c.image_path} alt='offer 1' /> */}
+                            {/* <img src={' https://api.luxecar.app/public/Vehicle/' + car.id + '/IntExtImages/' + c.image_path} alt='offer 1' /> */}
 
                             <div className="offer-image">
 
@@ -190,7 +192,7 @@ const UserFavourites = () => {
 
                                   <LazyLoadImage
                                     key={i}
-                                    src={'https://hiso.software-compilers.com/public/Vehicle/' + car.id + '/IntExtImages/' + c.image_path}
+                                    src={env.apiUrl + 'public/Vehicle/' + car.id + '/IntExtImages/' + c.image_path}
                                     placeholderSrc={loadingGif}
                                     alt="Image Alt"
                                   />

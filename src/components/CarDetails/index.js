@@ -34,6 +34,8 @@ import 'react-toastify/dist/ReactToastify.css'
 import { enableRipple } from '@syncfusion/ej2-base';
 import { FormValidator } from '@syncfusion/ej2-inputs';
 
+import env from '../../env';
+
 enableRipple(true);
 
 const CarDetails = (props) => {
@@ -132,7 +134,7 @@ const CarDetails = (props) => {
 
       var config = {
         method: 'post',
-        url: 'https://hiso.software-compilers.com/api/addToFavourite',
+        url: env.apiUrl + 'api/addToFavourite',
 
         data: data
       };
@@ -322,7 +324,7 @@ const CarDetails = (props) => {
     const userID = localStorage.getItem('id')
     data.append('user_id', userID)
     const result = await fetch(
-      'https://hiso.software-compilers.com/api/getFavouriteCars',
+      env.apiUrl + 'api/getFavouriteCars',
       {
         method: 'POST',
         body: data,
@@ -374,7 +376,7 @@ const CarDetails = (props) => {
     data.append('payment_id', 1)
     try {
       const result = await axios.post(
-        'https://hiso.software-compilers.com/api/makeBooking',
+        env.apiUrl + 'api/makeBooking',
         data
       )
       if (result.status === 200) {
@@ -422,14 +424,14 @@ const CarDetails = (props) => {
             <Col lg={6}>
               <div className='car-booking-image'>
                 {/* {state.data.IntExImages.slice(0, 1).map((c, i) => (
-                  <img src={'https://hiso.software-compilers.com/public/Vehicle/'+c.car_id+'/IntExtImages/'+c.image_path} alt='car' />
+                  <img src={' https://api.luxecar.app/public/Vehicle/'+c.car_id+'/IntExtImages/'+c.image_path} alt='car' />
                 ))} */}
                 <Carousel showArrows={true} >
                   {state.data.IntExImages.map((c, index) => (
                     <div key={index}>
                       {
                         index > 1 &&
-                        <img src={'https://hiso.software-compilers.com/public/Vehicle/' + c.car_id + '/IntExtImages/' + c.image_path} />
+                        <img src={env.apiUrl + 'public/Vehicle/' + c.car_id + '/IntExtImages/' + c.image_path} />
 
                       }
                     </div>

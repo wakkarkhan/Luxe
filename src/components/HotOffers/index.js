@@ -6,6 +6,7 @@ import { FaCar, FaCogs, FaTachometerAlt } from 'react-icons/fa'
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import loadingGif from '../../img/giphy.gif'
+import env from '../../env'
 
 import './style.css'
 
@@ -19,7 +20,7 @@ const HotOffers = (props) => {
     const data = new FormData()
     data.append('category_id', key)
     const result = await fetch(
-      'https://hiso.software-compilers.com/api/getCars',
+      env.apiUrl + 'api/getCars',
       {
         method: 'POST',
         body: data,
@@ -34,7 +35,7 @@ const HotOffers = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await fetch(
-        'https://hiso.software-compilers.com/api/getCategories'
+        env.apiUrl+ 'api/getCategories'
       )
       const jsonData = await result.json()
       setCategories(jsonData.data)
@@ -84,7 +85,7 @@ const HotOffers = (props) => {
                                         {car.IntExImages.slice(0, 1).map((c, i) => (
                                           <LazyLoadImage
                                             key={i}
-                                            src={'https://hiso.software-compilers.com/public/Vehicle/' + car.id + '/IntExtImages/' + c.image_path}
+                                            src={env.apiUrl + 'public/Vehicle/' + car.id + '/IntExtImages/' + c.image_path}
                                             placeholderSrc={loadingGif}
                                             alt='image alt'
                                           />
@@ -155,7 +156,7 @@ const HotOffers = (props) => {
                                         {car.IntExImages.slice(0, 1).map((c, i) => (
                                           <LazyLoadImage
                                             key={i}
-                                            src={'https://hiso.software-compilers.com/public/Vehicle/' + car.id + '/IntExtImages/' + c.image_path}
+                                            src={env.apiUrl + 'public/Vehicle/' + car.id + '/IntExtImages/' + c.image_path}
                                             placeholderSrc={loadingGif}
                                             alt='image alt'
                                           />

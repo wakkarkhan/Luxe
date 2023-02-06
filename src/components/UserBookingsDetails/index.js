@@ -13,6 +13,8 @@ import 'react-toastify/dist/ReactToastify.css'
 import Pagination from "../Pagination";
 import Records from "./records";
 
+import env from "../../env";
+
 import {
   FaStar,
   FaStarHalfAlt,
@@ -30,9 +32,7 @@ const UserBookingsDetails = () => {
   const { user } = useContext(UserContext)
   const navigate = useNavigate()
   const notify = () => toast("Error fetching bookings")
-
   
-
   const [bookings, setBookings] = useState([])
 
   const [isBooked, setIsBooked] = useState('none')
@@ -72,7 +72,7 @@ const UserBookingsDetails = () => {
     data.append('user_id', localStorage.getItem('id'));
 
     await axios
-      .post('https://hiso.software-compilers.com/api/getBooking', data)
+      .post(env.apiUrl + 'api/getBooking', data)
       .then((res) => {
         setShowSpinner('none');
         if (res.data.success === true) {

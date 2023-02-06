@@ -8,6 +8,7 @@ import './style.css'
 import UserContext from '../../context'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import env from '../../env'
 
 const Login = () => {
   const { t } = useTranslation()
@@ -30,7 +31,7 @@ const Login = () => {
     data.append('email', e.target[0].value)
     data.append('type', 0)
     await axios
-      .post('https://hiso.software-compilers.com/api/signin', data)
+      .post(env.apiUrl + 'api/signin', data)
       .then((res) => {
         console.log(res.data.success)
         if (res.data.success === false) {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Container, Row, Col } from "react-bootstrap";
 
+import env from "../../env";
 import axios from 'axios'
 
 const TermsAndCondition = () => {
@@ -21,7 +22,7 @@ const TermsAndCondition = () => {
 
         var config = {
             method: 'post',
-            url: 'https://hiso.software-compilers.com/api/getPage',
+            url: env.apiUrl + 'api/getPage',
             data: data
         };
 

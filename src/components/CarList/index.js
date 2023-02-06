@@ -21,6 +21,8 @@ import img6 from "../../img/marcedes-offer.png";
 
 import "./style.css";
 
+import env from "../../env";
+
 const CarList = () => {
   const { t } = useTranslation();
   const location = useLocation()
@@ -39,7 +41,7 @@ const CarList = () => {
     const data = new FormData()
     data.append('category_id', key)
     const result = await fetch(
-      'https://hiso.software-compilers.com/api/getCars',
+      env.apiUrl + 'api/getCars',
       {
         method: 'POST',
         body: data,
@@ -53,7 +55,7 @@ const CarList = () => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await fetch(
-        'https://hiso.software-compilers.com/api/getCategories'
+        env.apiUrl + 'api/getCategories'
       )
       const jsonData = await result.json()
       setCategories(jsonData.data)
@@ -101,7 +103,7 @@ const CarList = () => {
                                               <div className='offer-image'>
                                                 <Link to='/car-booking'>
                                                 {car.IntExImages.slice(0, 1).map((c, i) => (
-                                                  <img src={'https://hiso.software-compilers.com/public/Vehicle/'+car.id+'/IntExtImages/'+c.image_path} alt='offer 1' />
+                                                  <img src={env.apiUrl + 'public/Vehicle/'+car.id+'/IntExtImages/'+c.image_path} alt='offer 1' />
                                                 ))}
                                                 </Link>
                                               </div>

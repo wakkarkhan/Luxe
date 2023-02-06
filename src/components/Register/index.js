@@ -8,6 +8,7 @@ import "./style.css";
 import UserContext from '../../context'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import env from '../../env';
 
 const Register = () => {
   const { t } = useTranslation();
@@ -50,7 +51,7 @@ const Register = () => {
       if (e.target[4].value == e.target[5].value) {
 
         await axios
-          .post('https://hiso.software-compilers.com/api/signup', data)
+          .post(env.apiUrl + 'api/signup', data)
           .then((res) => {
             if (res.data.success === false) {
               if (res.data.message === "Username already exists")

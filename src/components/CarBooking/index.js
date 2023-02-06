@@ -34,6 +34,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { enableRipple } from '@syncfusion/ej2-base';
 import { FormValidator } from '@syncfusion/ej2-inputs';
 
+import env from '../../env';
 enableRipple(true);
 
 const CarBooking = () => {
@@ -136,7 +137,7 @@ const CarBooking = () => {
 
       var config = {
         method: 'post',
-        url: 'https://hiso.software-compilers.com/api/addToFavourite',
+        url: env.apiUrl + 'api/addToFavourite',
 
         data: data
       };
@@ -331,7 +332,7 @@ const CarBooking = () => {
     const userID = localStorage.getItem('id')
     data.append('user_id', userID)
     const result = await fetch(
-      'https://hiso.software-compilers.com/api/getFavouriteCars',
+      env.apiUrl + 'api/getFavouriteCars',
       {
         method: 'POST',
         body: data,
@@ -384,7 +385,7 @@ const CarBooking = () => {
     data.append('payment_id', 1)
     try {
       const result = await axios.post(
-        'https://hiso.software-compilers.com/api/makeBooking',
+        env.apiUrl + 'api/makeBooking',
         data
       )
       if (result.status === 200) {
@@ -436,7 +437,7 @@ const CarBooking = () => {
                     <div key={index}>
                       {
                         index > 1 &&
-                        <img src={'https://hiso.software-compilers.com/public/Vehicle/' + c.car_id + '/IntExtImages/' + c.image_path} />
+                        <img src={env.apiUrl + 'public/Vehicle/' + c.car_id + '/IntExtImages/' + c.image_path} />
                       }
                     </div>
                   )

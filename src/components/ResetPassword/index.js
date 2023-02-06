@@ -7,6 +7,7 @@ import axios from 'axios'
 import './style.css'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import env from '../../env'
 
 const ResetPasword = () => {
     const { t } = useTranslation()
@@ -42,7 +43,7 @@ const ResetPasword = () => {
             data.append('password', e.target[0].value)
 
             await axios
-                .post('https://hiso.software-compilers.com/api/resetPassword', data)
+                .post(env.apiUrl + 'api/resetPassword', data)
                 .then((res) => {
                     if (res.data.success === true) {
                         passUpdated();

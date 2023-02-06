@@ -15,6 +15,8 @@ import 'react-toastify/dist/ReactToastify.css'
 import UserContext from '../../context'
 import axios from 'axios'
 
+import env from "../../env";
+
 const UserProfileDetails = () => {
   const { t } = useTranslation();
   const navigate = useNavigate()
@@ -75,7 +77,7 @@ const UserProfileDetails = () => {
 
     if (userInfo.license_front != null && userInfo.license_front != '') {
       if (updateStatus === undefined) {
-        setPreviewImage2('https://hiso.software-compilers.com/public/LicenceImages/' + localStorage.getItem('id') + '/' + userInfo.license_front)
+        setPreviewImage2(env.apiUrl + 'public/LicenceImages/' + localStorage.getItem('id') + '/' + userInfo.license_front)
         setisLicenseFront('true');
       }
       else {
@@ -86,7 +88,7 @@ const UserProfileDetails = () => {
 
     if (userInfo.license_back != null && userInfo.license_back != '') {
       if (updateStatus === undefined) {
-        setPreviewImage3('https://hiso.software-compilers.com/public/LicenceImages/' + localStorage.getItem('id') + '/' + userInfo.license_back)
+        setPreviewImage3(env.apiUrl + 'public/LicenceImages/' + localStorage.getItem('id') + '/' + userInfo.license_back)
         setisLicenseBack('true');
       }
       else {
@@ -125,7 +127,7 @@ const UserProfileDetails = () => {
 
       try {
         const res = await axios.post(
-          'https://hiso.software-compilers.com/api/updateProfile',
+          env.apiUrl + 'api/updateProfile',
           data
         )
         if (res.status === 200) {
@@ -186,7 +188,7 @@ const UserProfileDetails = () => {
 
         try {
           const res = await axios.post(
-            'https://hiso.software-compilers.com/api/updateProfileImage',
+            env.apiUrl + 'api/updateProfileImage',
             data, {
             headers: {
               'Content-Type': 'multipart/form-data',
@@ -271,7 +273,7 @@ const UserProfileDetails = () => {
 
         try {
           const res = await axios.post(
-            'https://hiso.software-compilers.com/api/saveLicenceImages',
+            env.apiUrl + 'api/saveLicenceImages',
             data, {
             headers: {
               'Content-Type': 'multipart/form-data',

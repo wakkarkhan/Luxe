@@ -9,6 +9,8 @@ import "./style.css";
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
+import env from "../../env";
+
 const Contact = () => {
   const { t } = useTranslation();
   const notify = () => toast("Thanks! We'll reach you shortly");
@@ -39,7 +41,7 @@ const Contact = () => {
     data.append('email', e.target[1].value)
     data.append('message', e.target[2].value)
     await axios
-      .post('https://hiso.software-compilers.com/api/addQuery', data)
+      .post(env.apiUrl + 'api/addQuery', data)
       .then((res) => {
 
         if (res.data) {

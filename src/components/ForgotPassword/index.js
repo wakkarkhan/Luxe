@@ -7,6 +7,7 @@ import axios from 'axios'
 import './style.css'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import env from '../../env'
 
 const ForgotPasword = () => {
   const { t } = useTranslation()
@@ -33,7 +34,7 @@ const ForgotPasword = () => {
     setShowSpinner('block');
 
     await axios
-      .post('https://hiso.software-compilers.com/api/forgetPassword', data)
+      .post(env.apiUrl + 'api/forgetPassword', data)
       .then((res) => {
         if (res.data.success === true) {
           // 
@@ -68,11 +69,10 @@ const ForgotPasword = () => {
     data.append('code', e.target[0].value)
 
     await axios
-      .post('https://hiso.software-compilers.com/api/emailVerification', data)
+      .post(env.apiUrl + 'api/emailVerification', data)
       .then((res) => {
         if (res.data.success === true) {
           navigate('/reset-password', { state: { email: userEmail } });
-
         }
         else {
           wrongCode();
@@ -90,7 +90,7 @@ const ForgotPasword = () => {
     data.append('email', userEmail);
 
     await axios
-      .post('https://hiso.software-compilers.com/api/resentCode', data)
+      .post(env.apiUrl + 'api/resentCode', data)
       .then((res) => {
         if (res.data.success === true) {
           checkEmail();
