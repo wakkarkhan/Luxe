@@ -17,6 +17,7 @@ const HotOffers = (props) => {
   const [cars, setCars] = useState(null)
 
   const handleClick = async (key) => {
+    setCars(null);
     const data = new FormData()
     data.append('category_id', key)
     const result = await fetch(
@@ -83,7 +84,7 @@ const HotOffers = (props) => {
                                       <div className='single-offers'>
                                         <div className='offer-image'>
 
-                                          <Link to='/car-details' state={{ data: car }}>
+                                          <Link to='/car-booking' state={{ data: car }}>
                                             {car.IntExImages.slice(0, 1).map((c, i) => (
                                               <LazyLoadImage
                                                 key={i}
@@ -156,7 +157,7 @@ const HotOffers = (props) => {
                                     <Col lg={4} key={index}>
                                       <div className='single-offers'>
                                         <div className='offer-image'>
-                                          <Link to='/car-booking' state={{ data: car }}>
+                                          <Link to='/car-details' state={{ data: car }}>
                                             {car.IntExImages.slice(0, 1).map((c, i) => (
                                               <LazyLoadImage
                                                 key={i}
@@ -169,7 +170,7 @@ const HotOffers = (props) => {
                                           </Link>
                                         </div>
                                         <div className='offer-text'>
-                                          <Link to='/car-booking' state={{ data: car }}>
+                                          <Link to='/car-details' state={{ data: car }}>
                                             <h3 className='mt-3'>{car.name.substr(0, 19)}..</h3>
                                           </Link>
                                           <h4>

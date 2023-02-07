@@ -100,14 +100,14 @@ const CarList = () => {
                                     <div className="car-grid-list">
                                       <div className='single-offers'>
                                         <div className='offer-image'>
-                                          <Link to='/car-booking' state={{ data: car }}>
+                                          <Link to='/car-details' state={{ data: car }}>
                                             {car.IntExImages.slice(0, 1).map((c, i) => (
                                               <img src={env.apiUrl + 'public/Vehicle/' + car.id + '/IntExtImages/' + c.image_path} alt='offer 1' />
                                             ))}
                                           </Link>
                                         </div>
                                         <div className='offer-text'>
-                                          <Link to='/car-booking' state={{ data: car }}>
+                                          <Link to='/car-details' state={{ data: car }}>
                                             <h3>{car.name.substr(0, 19)}..</h3>
                                           </Link>
                                           <h4>

@@ -201,7 +201,7 @@ const UserFavourites = () => {
                               </Link>
                             </div>
                             <div className="offer-text">
-                              <Link to="/car-booking">
+                              <Link to="/car-booking" state={{ data: car }}>
                                 <h3>{car.name}</h3>
                               </Link>
                               <h4>
@@ -222,10 +222,10 @@ const UserFavourites = () => {
                                 </li>
                               </ul>
                               <div className="offer-action">
-                                <Link to="/car-booking" className="offer-btn-1">
+                                <Link to="/car-booking" className="offer-btn-1" state={{ data: car }}>
                                   {t("rent_car")}
                                 </Link>
-                                <Link to="/car-booking" className="offer-btn-2">
+                                <Link to="/car-details" className="offer-btn-2" state={{ data: car }}>
                                   {t("details")}
                                 </Link>
                               </div>

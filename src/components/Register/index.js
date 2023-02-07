@@ -140,6 +140,8 @@ const Register = () => {
                     placeholder={t("register_page.email")}
                     name="email"
                     required
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                    title="Email must be a valid Email Address"
                   />
                   <FaRegEnvelope />
                 </div>
