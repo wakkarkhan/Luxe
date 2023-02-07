@@ -7,6 +7,10 @@
   margin: 30px 0;
 }
 
+.single-offers {
+  padding: 15px !important;
+}
+
 #offerTab li {
   display: inline-block;
   margin: 0 5px;
@@ -103,7 +107,7 @@
 }
 
 .offer-text h3 {
-  font-size: 23px;
+  font-size: 22px !important;
   color: #001238;
   letter-spacing: 1px;
   margin-bottom: 10px;

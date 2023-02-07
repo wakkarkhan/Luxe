@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Container, Row, Col, Nav, Tab } from "react-bootstrap";
@@ -34,7 +34,7 @@ const CarList = () => {
     e.preventDefault();
   };
 
- 
+
 
   const handleClick = async (key) => {
     setMatch(key)
@@ -67,109 +67,103 @@ const CarList = () => {
   return (
     <section className="gauto-car-listing section_70">
       <Container>
-          <Row>
-            <Tab.Container id="left-tabs-example" defaultActiveKey="1">
-              <Col lg={4}>
-                <Nav variant="pills" className="flex-column" onSelect={handleClick}>
+        <Row>
+          <Tab.Container id="left-tabs-example" defaultActiveKey="1">
+            <Col lg={4}>
+              <Nav variant="pills" className="flex-column" onSelect={handleClick}>
                 {categories.map((item, index) => {
                   return (
-                  <Nav.Item >
-                    <Nav.Link eventKey={item.id} title={item.name} >{item.name}</Nav.Link>
-                  </Nav.Item>
-                  )}
+                    <Nav.Item >
+                      <Nav.Link eventKey={item.id} title={item.name} >{item.name}</Nav.Link>
+                    </Nav.Item>
+                  )
+                }
                 )}
-                  {/* <Nav.Item>
+                {/* <Nav.Item>
                     <Nav.Link eventKey="second">Tab 2</Nav.Link>
                   </Nav.Item> */}
-                </Nav>
-              </Col>
-              <Col lg={8}>
+              </Nav>
+            </Col>
+            <Col lg={8}>
               <div className="car-listing-right">
                 <Tab.Content>
-                <Row>
-                  {cars ? (
-                    cars?.map((car, index) => {
-                      return (
-                        
-                        <Col lg ={6}>
-                          <Tab.Pane eventKey={match}>
-                          
-                              <div className="car-listing-right">
-                                <div className="car-grid-list">
+                  <Row>
+                    {cars ? (
+                      cars?.map((car, index) => {
+                        return (
+                          <>
+                            {car.IntExImages.length > 0 &&
+                              <Col lg={6}>
 
-                                   
-                                      {/* <Col lg ={5}> */}
-                                            <div className='single-offers'>
-                                              <div className='offer-image'>
-                                                <Link to='/car-booking'>
-                                                {car.IntExImages.slice(0, 1).map((c, i) => (
-                                                  <img src={env.apiUrl + 'public/Vehicle/'+car.id+'/IntExtImages/'+c.image_path} alt='offer 1' />
-                                                ))}
-                                                </Link>
-                                              </div>
-                                              <div className='offer-text'>
-                                                <Link to='/car-booking' state={{data: car}}>
-                                                  <h3>{car.name.substr(0, 19)}..</h3>
-                                                </Link>
-                                                <h4>
-                                                  {car.price_per_day}<span>/ {t('day')}</span>
-                                                </h4>
-                                                <ul>
-                                                  <li>
-                                                    <FaCar />
-                                                    {t('model')}:{car.model_year}
-                                                  </li>
-                                                  <li>
-                                                    <FaCogs />
-                                                    {car.transmission}
-                                                  </li>
-                                                  <li>
-                                                    <FaTachometerAlt />
-                                                    {car.car_range}
-                                                  </li>
-                                                </ul>
-                                                <div className='offer-action'>
-                                                  <Link
-                                                    to='/car-booking'
-                                                    state={{data: car}}
-                                                    className='offer-btn-1'
-                                                  >
-                                                    {t('rent_car')}
-                                                  </Link>
+                                <Tab.Pane eventKey={match}>
+                                  <div className="car-listing-right">
+                                    <div className="car-grid-list">
+                                      <div className='single-offers'>
+                                        <div className='offer-image'>
+                                          <Link to='/car-booking'>
+                                            {car.IntExImages.slice(0, 1).map((c, i) => (
+                                              <img src={env.apiUrl + 'public/Vehicle/' + car.id + '/IntExtImages/' + c.image_path} alt='offer 1' />
+                                            ))}
+                                          </Link>
+                                        </div>
+                                        <div className='offer-text'>
+                                          <Link to='/car-booking' state={{ data: car }}>
+                                            <h3>{car.name.substr(0, 19)}..</h3>
+                                          </Link>
+                                          <h4>
+                                            {car.price_per_day}<span>/ {t('day')}</span>
+                                          </h4>
+                                          <ul>
+                                            <li>
+                                              <FaCar />
+                                              {t('model')}:{car.model_year}
+                                            </li>
+                                            <li>
+                                              <FaCogs />
+                                              {car.transmission}
+                                            </li>
+                                            <li>
+                                              <FaTachometerAlt />
+                                              {car.car_range}
+                                            </li>
+                                          </ul>
+                                          <div className='offer-action'>
+                                            <Link
+                                              to='/car-booking'
+                                              state={{ data: car }}
+                                              className='offer-btn-1'
+                                            >
+                                              {t('rent_car')}
+                                            </Link>
 
-                                                  <Link
-                                                    to='/car-details'
-                                                    state={{data: car}}
-                                                    className='offer-btn-2'
-                                                  >
-                                                    {t('details')}
-                                                  </Link>
-                                                </div>
-                                              </div>
-                                            </div>
-                                      {/* </Col> */}
+                                            <Link
+                                              to='/car-details'
+                                              state={{ data: car }}
+                                              className='offer-btn-2'
+                                            >
+                                              {t('details')}
+                                            </Link>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
 
-                                    
-                                  
-                                </div>
-                              </div>
+                                </Tab.Pane>
+                              </Col>
+                            }
+                          </>
+                        )
+                      })
+                    ) : (
+                      <></>
+                    )}
+                  </Row>
 
-                            </Tab.Pane>
-                          </Col>
-                         
-
-                            
-                            )
-                          })
-                        ) : (
-                          <></>
-                        )}
-                        </Row>
-                        
                 </Tab.Content>
               </div>
             </Col>
-            </Tab.Container>
+          </Tab.Container>
         </Row>
       </Container>
     </section>
