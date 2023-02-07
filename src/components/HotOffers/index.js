@@ -169,7 +169,7 @@ const HotOffers = (props) => {
                                           </Link>
                                         </div>
                                         <div className='offer-text'>
-                                          <Link to='/car-booking'>
+                                          <Link to='/car-booking' state={{ data: car }}>
                                             <h3 className='mt-3'>{car.name.substr(0, 19)}..</h3>
                                           </Link>
                                           <h4>
