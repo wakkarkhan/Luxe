@@ -12,7 +12,7 @@ i18n
   .use(LanguageDetector)
   .use(HttpApi)
   .init({
-    supportedLngs: ['en', 'fr', 'pt'],
+    supportedLngs: ['en', 'fr', 'pt','th'],
     fallbackLng: 'en',
     detection: {
       order: ['htmlTag', 'cookie', 'localStorage', 'path', 'subdomain'],
@@ -29,7 +29,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <Suspense fallback={loadingMarkup}>
     <React.StrictMode>
-      <App />
+      <App /> 
     </React.StrictMode>
   </Suspense>
 )

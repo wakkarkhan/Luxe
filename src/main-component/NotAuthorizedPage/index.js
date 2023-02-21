@@ -12,8 +12,8 @@ const ResetPasswordPage = () => {
     <Fragment>
       <Header />
       <PageTitle
-        pageTitle="You are not authorized to access this page"
-        pageSubTitle = "Please go to Login or Forgot Password to continue..."
+        pageTitle={t("not_authorized.no_auth_01")}
+        pageSubTitle ={t("not_authorized.no_auth_02")}
       />
       <Footer />
     </Fragment>

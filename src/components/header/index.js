@@ -35,6 +35,11 @@ const languages = [
     name: "Português",
     country_code: "pt",
   },
+  {
+    code: "th",
+    name: "Thailand",
+    country_code: "th",
+  },
 ];
 
 const Header = () => {
@@ -42,7 +47,7 @@ const Header = () => {
   //   e.preventDefault();
   // };
 
-  const { t } = useTranslation();
+  const { t, i18n, ready } = useTranslation();
   const { user } = useContext(UserContext)
   const navigate = useNavigate()
 
@@ -55,11 +60,11 @@ const Header = () => {
 
       if (userInfo != null) {
         let firstName = userInfo.first_name
-        
+
         let lastName = userInfo.last_name;
-       
+
         setUserName(firstName + ' ' + lastName)
-        
+
       }
     }
 
@@ -74,6 +79,10 @@ const Header = () => {
     localStorage.removeItem("dataKey");
     navigate("/login")
     window.location.reload()
+  };
+
+  const handleLanguageChange = (val) => {
+    i18n.changeLanguage(val);
   };
 
   const goToDashboard = () => {
@@ -103,6 +112,28 @@ const Header = () => {
                     <FaUserAlt />
                     {t("register")}
                   </Link>
+                  <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                      <FaGlobe /> {t("language")}
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      {languages.map(({ code, name, country_code, index }) => (
+                        <>
+                          <Dropdown.Item
+                            eventKey={index}
+                            key='index'
+                            onClick={() => {
+                              handleLanguageChange(code)
+                            }}
+                          >
+                            <span className={`flag-icon flag-icon-${country_code}`}></span>{" "}{name}
+                          </Dropdown.Item>
+
+                        </>
+                      ))}
+                    </Dropdown.Menu>
+                  </Dropdown>
 
                 </div>
               }
@@ -120,20 +151,44 @@ const Header = () => {
                         key='bookings'
                         onClick={goToDashboard}
                       >
-                        Dashboard
+                         {t("dashboard")}
                       </Dropdown.Item>
                       <Dropdown.Item
                         eventKey='logout'
                         key='logout'
                         onClick={useLinkClickHandler}
                       >
-                        Logout
+                        {t("logout")}
                       </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                  <Dropdown style={{marginLeft: '10px'}}>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic" >
+                      <FaGlobe /> {t("language")}
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      {languages.map(({ code, name, country_code, index }) => (
+                        <>
+                          <Dropdown.Item
+                            eventKey={index}
+                            key='index'
+                            onClick={() => {
+                              handleLanguageChange(code)
+                            }}
+                          >
+                              <span className={`flag-icon flag-icon-${country_code}`}></span>{" "}{name}
+                          </Dropdown.Item>
+
+                        </>
+                      ))}
                     </Dropdown.Menu>
                   </Dropdown>
                 </div>
               }
+
             </Col>
+
           </Row>
         </Container>
       </section>

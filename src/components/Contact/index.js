@@ -13,7 +13,8 @@ import env from "../../env";
 
 const Contact = () => {
   const { t } = useTranslation();
-  const notify = () => toast("Thanks! We'll reach you shortly");
+  
+  const notify = () => toast(t("contact_page.notify"));
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -22,13 +23,13 @@ const Contact = () => {
     let val1 = event.target.value.indexOf('<');
     let val2 = event.target.value.indexOf('>');
 
-    if (val1 >= 0 || val2 >= 0)
-      event.target.setCustomValidity('HTML tags i.e. < > not allowed');
+    if (val1 >= 0 || val2 >= 0) 
+      event.target.setCustomValidity(t("contact_page.tags_not_allowed"));
     else
       event.target.setCustomValidity('');
 
     if (event.target.validity.valueMissing) {
-      event.target.setCustomValidity('Please fill in this field');
+      event.target.setCustomValidity(t("contact_page.fill_in"));
     }
   }
 
@@ -86,7 +87,7 @@ const Contact = () => {
                     <div className="single-contact-field">
                       <input type="text" placeholder={t("contact_page.name")} name="fullname" required
                         pattern="[A-Za-z-. ]+"
-                        title="Name should only contain letters, period(dot), space or dash"
+                        title={t("contact_page.name_error")}
                       />
                     </div>
                   </Col>
@@ -98,7 +99,7 @@ const Contact = () => {
                         name="email"
                         required
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                        title="Email must be a valid Email Address"
+                        title={t("contact_page.email_error")}
                       />
                     </div>
                   </Col>

@@ -1,10 +1,12 @@
 import React, { useEffect, useContext, useState } from 'react'
 import UserContext from '../../context'
 import { useNavigate } from "react-router-dom";
+import { useSSR, useTranslation } from 'react-i18next'
 import "./style.css";
 
 const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
 
+    const { t } = useTranslation()
     const { user } = useContext(UserContext)
     const navigate = useNavigate()
 
@@ -111,12 +113,12 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
                         onClick={prevPage}
                         style={{ width: 'auto', height: 'auto', display: previousPage }}
                     >
-                        Prev
+                        {t("fav.previous")}
                     </a>
                     <a className="page-link disabled-link"
                         style={{ width: 'auto', height: 'auto', display: firstPrevious }}
                     >
-                        Prev
+                        {t("fav.previous")}
                     </a>
                 </li>
                 {pageNumbers.map(pgNumber => (
@@ -136,14 +138,14 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
                         style={{ width: 'auto', height: 'auto', display: lastNext }}
                     >
 
-                        Next
+                        {t("fav.next")}
                     </a>
                     <a className="page-link"
                         onClick={nextPage}
                         style={{ width: 'auto', height: 'auto', display: lastPage }}
                     >
 
-                        Next
+                         {t("fav.next")}
                     </a>
                 </li>
             </ul>

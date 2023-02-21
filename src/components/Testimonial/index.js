@@ -72,9 +72,7 @@ const Testimonial = () => {
               <div className="slide">
                 <div className="single-testimonial">
                   <div className="testimonial-text">
-                    <p>
-                      "Thank you so much for all the wonderful support and service."
-                    </p>
+                  <p>{t("testimonials_page.test_01")}</p>
                     <div className="testimonial-meta">
                       {/* <div className="client-image">
                         <img src={img1} alt="testimonial" />
@@ -91,9 +89,7 @@ const Testimonial = () => {
               <div className="slide">
                 <div className="single-testimonial">
                   <div className="testimonial-text">
-                    <p>
-                      "Driver was very polite and the journey was smooth."
-                    </p>
+                  <p>{t("testimonials_page.test_02")}</p>
                     <div className="testimonial-meta">
                       {/* <div className="client-image">
                         <img src={img2} alt="testimonial" />
@@ -110,9 +106,7 @@ const Testimonial = () => {
               <div className="slide">
                 <div className="single-testimonial">
                   <div className="testimonial-text">
-                    <p>
-                      "Awesome company to deal with, door to door service."
-                    </p>
+                  <p>{t("testimonials_page.test_03")}</p>
                     <div className="testimonial-meta">
                       {/* <div className="client-image">
                         <img src={img1} alt="testimonial" />
@@ -129,9 +123,7 @@ const Testimonial = () => {
               <div className="slide">
                 <div className="single-testimonial">
                   <div className="testimonial-text">
-                    <p>
-                      "Overall very professional 100% satisfaction, and everything perfect on time."
-                    </p>
+                  <p>{t("testimonials_page.test_04")}</p>
                     <div className="testimonial-meta">
                       {/* <div className="client-image">
                         <img src={img1} alt="testimonial" />

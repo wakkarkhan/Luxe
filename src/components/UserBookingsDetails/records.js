@@ -15,15 +15,15 @@ const Records = ({ data }) => {
         <div className="service-details-right">
 
             <div className="service-accordion" id="accordion">
-                <h3>Your Bookings</h3>
+                <h3>{t("booking_details_page.bookings")}</h3>
                 <Accordion>
                     {data.map((booking, index) => (
 
                         <Accordion.Item eventKey={index} className="single_faq_accordian" key={index}>
                             <Accordion.Header className="faq_accordian_header" style={{ padding: "10px 10px" }}>
                                 <Row>
-                                    <Col lg={6}>From:  {booking.bookings[0].from_date_time}</Col>
-                                    <Col lg={6}><p style={{ textAlign: "End" }}>To:  {booking.bookings[0].to_date_time}</p></Col>
+                                    <Col lg={6}>{t("booking_details_page.from")}:  {booking.bookings[0].from_date_time}</Col>
+                                    <Col lg={6}><p style={{ textAlign: "End" }}>{t("booking_details_page.to")}:  {booking.bookings[0].to_date_time}</p></Col>
                                 </Row>
 
                             </Accordion.Header>

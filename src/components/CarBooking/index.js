@@ -43,16 +43,18 @@ const CarBooking = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const state = location.state;
-  const notify = () => toast("Booking Successful");
-  const notifyFail = () => toast("Booking Failed");
-  const notifyAPIFail = () => toast("Something went wrong! Please try Again");
+  const { t } = useTranslation()
 
-  const favNotify = () => toast("Added to Favourites")
-  const favRemoved = () => toast("Removed from Favourites")
+  const notify = () => toast(t("car_booking.booking_successful")); 
+  const notifyFail = () => toast(t("car_booking.booking_failed")); 
+  const notifyAPIFail = () => toast(t("car_booking.went_wrong"));
 
-  const fromToDateError = () => toast("Journey end date should not be before journey start date")
-  const fromToTimeError = () => toast("Journey end time should not be before or equal to journey start time")
-  const inBetweenDaysError = () => toast("Some days between the journey start date and the journey end date are already booked.. Please try again")
+  const favNotify = () => toast(t("car_booking.fav_notify"))
+  const favRemoved = () => toast(t("car_booking.unfav_notify"))
+
+  const fromToDateError = () => toast(t("car_booking.booking_error_01")) 
+  const fromToTimeError = () => toast(t("car_booking.booking_error_02"))
+  const inBetweenDaysError = () => toast(t("car_booking.booking_error_03"))
 
   const [fromDate, setFromDate] = useState('')
   const [toDate, setToDate] = useState('')
@@ -108,19 +110,19 @@ const CarBooking = () => {
     formObject.addRules('timepicker2', { required: true });
   }, []);
 
-  const { t } = useTranslation()
+  
 
   // 
   const renderTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
-      Add to Favourites
+     {t("car_booking.make_fav_notify")}
     </Tooltip>
   );
 
   // 
   const renderTooltipAdded = (props) => (
     <Tooltip id="button-tooltip" {...props}>
-      Remove from Favourites
+       {t("car_booking.make_unfav_notify")}
     </Tooltip>
   );
 

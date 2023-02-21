@@ -82,7 +82,7 @@ const UserFavourites = () => {
   // 
   const renderTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
-      Remove from Favourites
+        {t("car_booking.make_unfav_notify")}
     </Tooltip>
   );
 
@@ -137,19 +137,19 @@ const UserFavourites = () => {
                 <ul className="service-menu">
                   <li>
                     {/* <Link to="/service-single">Today</Link> */}
-                    <Link to="/user-bookings">All Bookings</Link>
+                    <Link to="/user-bookings">{t("all_bookings")}</Link>
                   </li>
                   <li>
-                    <Link to="/make-bookings">Make Bookings</Link>
+                    <Link to="/make-bookings">{t("make_booking")}</Link>
                   </li>
                   <li className="active">
-                    <Link to="/favourites">Favourites</Link>
+                    <Link to="/favourites">{t("header-navigation-user.favourites")}</Link>
                   </li>
                   <li>
-                    <Link to="/user-profile">Profile</Link>
+                    <Link to="/user-profile">{t("profile")}</Link>
                   </li>
                   <li>
-                    <Link onClick={onClickHandler}>Logout</Link>
+                    <Link onClick={onClickHandler}>{t("logout")}</Link>
                   </li>
                 </ul>
               </div>
@@ -158,7 +158,7 @@ const UserFavourites = () => {
           <Col lg={8} style={{ display: isFavourite }}>
             <div className="service-details-right">
               <div className="service-accordion" id="accordion">
-                <h3>Your Favourites</h3>
+                <h3>{t("fav.your_fav")}</h3>
               </div>
               <div className="car-listing-right">
                 <div className="car-grid-list">
@@ -280,7 +280,7 @@ const UserFavourites = () => {
             <div className="no-booking">
               <div className="c">
                 <h3 style={{ color: 'black' }}
-                > You have no favourite cars!!!</h3>
+                >{t("fav.no_fav")}</h3>
               </div>
 
             </div>

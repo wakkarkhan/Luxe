@@ -14,13 +14,12 @@ const Register = () => {
   const { t } = useTranslation();
   const { setUser } = useContext(UserContext)
   const navigate = useNavigate()
-  const notify = () => toast("Registration Successful");
-  const notifySomethingWrong = () => toast("Something Went Wrong!");
-  const passwordNotMatched = () => toast("Password Not matched!");
-  const notifyTermsError = () => toast("Please accept Terms and Conditions");
-  const notifyUserExists = () => toast("Username already exists!");
-  const notifyEmailExists = () => toast("User with this Email Address already exists!");
-
+  const notify = () => toast(t("register_page.reg_successful"));
+  const notifySomethingWrong = () => toast(t("register_page.went_wrong"));
+  const passwordNotMatched = () => toast(t("register_page.pass_not_matched"));
+  const notifyTermsError = () => toast(t("register_page.accept_terms"));
+  const notifyUserExists = () => toast(t("register_page.username_exist"));
+  const notifyEmailExists = () => toast(t("register_page.email_exist"));
 
   const [terms, setTerms] = useState(false)
   useEffect(() => {
@@ -119,7 +118,7 @@ const Register = () => {
                     name="firstname"
                     required
                     pattern="[A-Za-z-.]+"
-                    title="First Name should only contain letters, period(dot) or dash"
+                    title={t("register_page.reg_error_01")}
                   />
                   <FaUser />
                 </div>
@@ -130,7 +129,7 @@ const Register = () => {
                     name="lastname"
                     required
                     pattern="[A-Za-z-.]+"
-                    title="Last Name should only contain letters, period(dot) or dash"
+                    title={t("register_page.reg_error_02")}
                   />
                   <FaUser />
                 </div>
@@ -141,7 +140,7 @@ const Register = () => {
                     name="email"
                     required
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                    title="Email must be a valid Email Address"
+                    title={t("register_page.reg_error_03")}
                   />
                   <FaRegEnvelope />
                 </div>
@@ -152,7 +151,7 @@ const Register = () => {
                     name="mobile_number"
                     required
                     pattern="[0-9]+"
-                    title="Please enter only numeric values. Letters or Decimals not allowed!"
+                    title={t("register_page.reg_error_04")}
                   />
                   <FaPhone />
                 </div>
@@ -163,7 +162,7 @@ const Register = () => {
                     name="password"
                     required
                     pattern="[A-Za-z0-9_.@]{8,}"
-                    title="Password should only consist of letters, numbers, underscore or period(dot) and contain at least 8 characters"
+                    title={t("register_page.reg_error_05")}
                   />
                   <FaLock />
                 </div>
@@ -177,7 +176,6 @@ const Register = () => {
                   <FaUser />
                 </div> */}
 
-
                 <div className="account-form-group">
                   <input
                     type="password"
@@ -185,7 +183,7 @@ const Register = () => {
                     name="password"
                     required
                     pattern="[A-Za-z0-9_.@]{8,}"
-                    title="Password should only consist of letters, numbers, underscore or period(dot) and contain at least 8 characters"
+                    title={t("register_page.reg_error_05")}
                   />
                   <FaLock />
                 </div>

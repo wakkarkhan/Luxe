@@ -23,15 +23,9 @@ const AboutPage = () => {
               <div className="about-page-left">
                 <h4>{t("about_page.subtitle")}</h4>
                 <h3>{t("about_page.title")}</h3>
-                <p>
-                We adhere to a disciplined system of self-evaluation and development.
-                In order to give consumers the greatest possible travel experience, we never stop working to offer them better and more modern services. Additionally, we are dedicated to improving ties among all participants in the service chain, including all colleagues, suppliers, and clients. Customers' feedback is actively encouraged, and we take delight in incorporating it and figuring out how it can make us better.
-                
-
-                </p>
-                <p>
-                We are aware that in order to fully satisfy clients, our team must always put the needs of the customer first. We are committed to the cause and provide service around-the-clock. We look into and purchase brand-new supercars that are unavailable in Thailand.
-                "We put in more effort than the others."
+                <p>{t("about_page.about_details_01")}</p>
+                <p>{t("about_page.about_details_02")} "{t("about_page.about_details_03")}"
+                  
                 </p>
                 <div className="about-page-call">
                   <div className="page-call-icon">

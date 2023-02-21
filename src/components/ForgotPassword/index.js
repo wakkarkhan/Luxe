@@ -12,10 +12,10 @@ import env from '../../env'
 const ForgotPasword = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const notify = () => toast("Something went wrong! Please try again");
-  const userDoesNotExist = () => toast("User with this email does not exist! Please try another one");
-  const checkEmail = () => toast("Please check your email address for activation code")
-  const wrongCode = () => toast("Wrong Code");
+  const notify = () => toast(t("forgot_password_page.wrong"));
+  const userDoesNotExist = () => toast(t("forgot_password_page.user_exists")); 
+  const checkEmail = () => toast(t("forgot_password_page.activation_code"))
+  const wrongCode = () => toast(t("forgot_password_page.wrong_code"));
 
   const [showVerifyEmail, setShowVerifyEmail] = useState('block');
   const [showVerifyCode, setShowVerifyCode] = useState('none');
@@ -212,7 +212,7 @@ const ForgotPasword = () => {
           <Col md={12}>
             <div className='login-box' style={{ height: '300px' }} >
               <Spinner animation="border" role="status" style={{ marginTop: '90px' }}>
-                <span className="visually-hidden">Loading...</span>
+                <span className="visually-hidden">{t('forgot_password_page.loading')}...</span>
               </Spinner>
             </div>
 

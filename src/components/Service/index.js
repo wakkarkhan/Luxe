@@ -80,9 +80,7 @@ const Service = () => {
                     <Link>
                     <h3>{t("rental_tourist")}</h3>
                     </Link>
-                    <p>
-                    LUXE offers the perfect car rental solution for tourists coming to experience all that our beautiful city has to offer. We have a wide selection of vehicles to choose from, so you can find the perfect one to suit your needs and budget. Our friendly and professional staff will be happy to help you with any queries you may have....
-                    </p>
+                    <p>{t("services_page.service_01")}</p>
                   </div>
                 </div>
               </div>
@@ -96,9 +94,7 @@ const Service = () => {
                     <Link>
                     <h3>{t("rental_organizations")}</h3>
                     </Link>
-                    <p>
-                    Luxe is the perfect way to make a statement at your next corporate event or big day. We offer a wide selection of top-of-the-line luxury cars for rent, so you can choose the perfect vehicle to match your style. Whether you're in need of a sleek and stylish sedan for a business trip, or a spacious SUV for a family vacation, we ....
-                    </p>
+                    <p>{t("services_page.service_02")}</p>
                   </div>
                 </div>
               </div>
@@ -112,9 +108,7 @@ const Service = () => {
                     <Link>
                     <h3>{t("rental_embassy")}</h3>
                     </Link>
-                    <p>
-                    LUXE is a premium car rental service that offers luxury vehicles for rent to embassies and other high-profile organizations. We understand that our clients require the utmost in professionalism  and we are committed to providing an exceptional level of service. LUXE provides premium services such as chauffeur services.....
-                    </p>
+                    <p>{t("services_page.service_03")}</p>
                   </div>
                 </div>
               </div>
@@ -128,9 +122,7 @@ const Service = () => {
                     <Link>
                     <h3>{t("rental_wedding")}</h3>
                     </Link>
-                    <p>
-                    LUXE provide affordable, high-quality wedding car rental vehicles to help you enjoy your special day in style and elegance. Our high-quality vehicles can comfortably and conveniently transport your guests, family and friends, or wedding party throughout your special day with a premium .......
-                    </p>
+                    <p>{t("services_page.service_04")}</p>
                   </div>
                 </div>
               </div>
@@ -144,9 +136,7 @@ const Service = () => {
                     <Link>
                     <h3>{t("private_tour_guide")}</h3>
                     </Link>
-                    <p>
-                    LUXE has the perfect car for any event, with a large range of the latest models from the leading brands. LUXE has you covered whether you're attending a black-tie event or just want to enjoy a dinner date in style. And with our private driver and private tour guide , you can be confident that you will navigate around city securely and in luxury......
-                    </p>
+                    <p>{t("services_page.service_05")}</p>
                   </div>
                 </div>
               </div>
@@ -160,9 +150,7 @@ const Service = () => {
                     <Link>
                     <h3> {t("guest")}</h3>
                     </Link>
-                    <p>
-                    LUXE is the perfect car rental service for important guests of the country or public organizations. We offer a wide range of luxury cars to choose from, so you can find the perfect one to match your needs and budget. Our team of professional drivers are experienced and knowledgeable, so you can...
-                    </p>
+                    <p>{t("services_page.service_06")}</p>
                   </div>
                 </div>
               </div>

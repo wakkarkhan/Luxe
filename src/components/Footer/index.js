@@ -42,7 +42,7 @@ const Footer = () => {
                   </Link>
                 </div>
                 <p>
-                Our mission is to treat each customer with total respect, deliver superior service, and consistently go above and above their expectations. We make sure that renting a supercar is a once-in-a-lifetime experience.
+                {t("footer.mission")}
                 </p>
                
               </div>
@@ -71,7 +71,7 @@ const Footer = () => {
               <div className="single-footer newsletter_box">
                 <h3>{t("footer.newsletter")}</h3>
                 <form onSubmit={SubmitHandler}>
-                  <input type="email" placeholder="Email Address" />
+                  <input type="email" placeholder={t("checkout_page.email")} />
                   <button type="submit">
                     <FaPaperPlane />
                   </button>

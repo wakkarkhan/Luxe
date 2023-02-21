@@ -69,7 +69,7 @@ const Cart = () => {
                       </td>
                       <td className="gauto-cart-product">
                         <Link to="/product-single">
-                          <p>shock absorber</p>
+                          <p>{t("cart.shock_absorber")}</p>
                         </Link>
                       </td>
                       <td className="gauto-cart-price">

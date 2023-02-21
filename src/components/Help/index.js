@@ -22,13 +22,10 @@ const Help = () => {
                       interpolation: { escapeValue: false },
                     }),
                   }}
-                ></h2>
-                <p>
-                We adhere to a disciplined system of self-evaluation and development.
-                In order to give consumers the greatest possible travel experience, we never stop working to offer them better and more modern services. Additionally, we are dedicated to improving ties among all participants in the service chain, including all colleagues, suppliers, and clients.
-                <br />
-                "We put in more effort than the others."
-                </p>
+                ></h2> 
+                <p>{t("about_page.about_details_01")}</p>
+                <p>{t("about_page.about_details_02")}
+                 <br />"{t("about_page.about_details_03")}"</p>
                 <div className="call-number">
                   <div className="call-icon">
                     <FaPhoneAlt />

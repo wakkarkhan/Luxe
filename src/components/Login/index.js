@@ -14,8 +14,8 @@ const Login = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const { user, setUser } = useContext(UserContext)
-  const notify = () => toast("Please Login!");
-  const invalidUser = () => toast("Invalid Credentials");
+  const notify = () => toast(t("login_page.please_login"));
+  const invalidUser = () => toast(t("login_page.invalid"));
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

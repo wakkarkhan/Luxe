@@ -12,11 +12,11 @@ import env from '../../env'
 const ResetPasword = () => {
     const { t } = useTranslation()
     const navigate = useNavigate()
-    const notify = () => toast("Something went wrong!");
-    const notifyError = () => toast("Failed to update password");
+    const notify = () => toast(t("register_page.went_wrong"));
+    const notifyError = () => toast(t("reset_pass.failed"));
 
-    const doNotMatch = () => toast("New Password and Confirm Password do not match");
-    const passUpdated = () => toast("Your password has been updated! The next time you login, Please use your new password.")
+    const doNotMatch = () => toast(t("reset_pass.new_confirm"));
+    const passUpdated = () => toast(t("reset_pass.pass_updated"));
 
     const [userEmail, setUserEmail] = useState('')
     const { state } = useLocation();
@@ -32,7 +32,6 @@ const ResetPasword = () => {
     }
 
     }, [])
-
 
     // 
     const SubmitHandler = async (e) => {

@@ -88,6 +88,10 @@
   "must_signin" : "Your must sing-in to make or comment a post",
   "c_name" : "Name",
   "c_email" : "Email",
+  "all_bookings":"All Bookings",
+  "make_booking":"Make Bookings",
+  "dashboard":"Dashboard",
+  "logout": "Logout",
   "blog-title" : {
     "blog-1" : "if Your Car's bettery down.",
     "blog-2" : "How often is a taxi used?",
@@ -107,7 +111,8 @@
     "privacy" : "Privacy Policy",
     "latest_news" : "latest News",
     "newsletter" : "newsletter",
-    "recent_post" : "Recent post"
+    "recent_post" : "Recent post",
+    "mission": "Our mission is to treat each customer with total respect, deliver superior service, and consistently go above and above their expectations. We make sure that renting a supercar is a once-in-a-lifetime experience."
   },
   "header-navigation-user" : {
     "profile":"Profile",
@@ -143,7 +148,10 @@
   "about_page" : {
     "subtitle" : "About Us",
     "title" : "We are committed to provide safe Ride solutions",
-    "proud_title" : "We are proud of our business. <span>Rent Car</span> Now!"
+    "proud_title" : "We are proud of our business. <span>Rent Car</span> Now!",
+    "about_details_01": "We adhere to a disciplined system of self-evaluation and development. In order to give consumers the greatest possible travel experience, we never stop working to offer them better and more modern services. Additionally, we are dedicated to improving ties among all participants in the service chain, including all colleagues, suppliers, and clients. Customers' feedback is actively encouraged, and we take delight in incorporating it and figuring out how it can make us better.",
+    "about_details_02": "We are aware that in order to fully satisfy clients, our team must always put the needs of the customer first. We are committed to the cause and provide service around-the-clock. We look into and purchase brand-new supercars that are unavailable in Thailand.",
+    "about_details_03": "We put in more effort than the others."
    },
    "service_details_page" : {
      "discount_text" : "40% off only for new members",
@@ -162,7 +170,17 @@
       "bank_transfer" : "Direct Bank Transfer",
       "check_payment": "Cheque Payment",
       "credit_card" : "Credit Card",
-      "payment_text" : "Make your payment directly into our bank account. Please use your Order ID as the payment reference.order won’t be shipped until the funds have cleared."
+      "payment_text" : "Make your payment directly into our bank account. Please use your Order ID as the payment reference.order won’t be shipped until the funds have cleared.",
+      "booking_successful": "Booking Successful",
+      "booking_failed":"Booking Failed",
+      "went_wrong": "Something went wrong! Please try Again",
+      "make_fav_notify": "Add to Favourites",
+      "make_unfav_notify" : "Remove from Favourites",
+      "fav_notify": "Added to Favourites",
+      "unfav_notify" : "Removed from Favourites",
+      "booking_error_01":"Journey end date should not be before journey start date",
+      "booking_error_02": "Journey end time should not be before or equal to journey start time",
+      "booking_error_03": "Some days between the journey start date and the journey end date are already booked.. Please try again"
      },
      "cart" : {
       "shopping_cart" : "Shopping Cart",
@@ -179,7 +197,8 @@
       "shipping" : "Shipping and Handling",
       "free_shipping" : "Free Shipping",
       "order_total" : "Order Total",
-      "proceed" : "Proceed to checkout"
+      "proceed" : "Proceed to checkout",
+      "shock_absorber" : "shock absorber"
     },
     "checkout_page" : {
       "billing_details" : "Billing Details",
@@ -213,7 +232,9 @@
       "f_password"  : "forgot password?",
       "keep" : "Keep Me Signed In",
       "btn" : "Login Now!",
-      "need_account" : "Do you need an account?"
+      "need_account" : "Do you need an account?",
+      "please_login" : "Please Login!",
+      "invalid":"Invalid Credentials"
     },
     "forgot_password_page" : {
       "forgot_pass" : "Reset Password",
@@ -224,7 +245,12 @@
       "description": "A verification code has been sent to the respective email.. Please check and verify..",
       "code": "code",
       "resend_code": "resend code",
-      "confirm": "confirm password"
+      "confirm": "confirm password",
+      "wrong":"Something went wrong! Please try again",
+      "user_exists":"User with this email does not exist! Please try another one",
+      "activation_code":"Please check your email address for activation code",
+      "wrong_code": "Wrong Code",
+      "loading":"Loading"
     },
     "register_page" : {
       "singup" : "sign Up",
@@ -238,7 +264,18 @@
       "c_password" : "Confirm Password",
       "terms" : "accept terms & conditions",
       "register_now" : "Register now",
-      "have_account" : "Already have an account?"
+      "have_account" : "Already have an account?",
+      "reg_successful":"Registration Successful",
+      "went_wrong":"Something Went Wrong!",
+      "pass_not_matched":"Password Not matched!",
+      "accept_terms":"Please accept Terms and Conditions",
+      "username_exist":"Username already exists!",
+      "email_exist":"User with this Email Address already exists!",
+      "reg_error_01":"First Name should only contain letters, period(dot) or dash",
+      "reg_error_02":"Last Name should only contain letters, period(dot) or dash",
+      "reg_error_03":"Email must be a valid Email Address",
+      "reg_error_04":"Please enter only numeric values. Letters or Decimals not allowed!",
+      "reg_error_05":"Password should only consist of letters, numbers, underscore or period(dot) and contain at least 8 characters"
     },
     "contact_page" : {
       "get_touch" : "Get in touch",
@@ -251,7 +288,144 @@
       "info_title" : "Contact information",
       "info_email" : "Email Us",
       "info_call" : "Call us",
-      "info_follow" : "Follow us:"
+      "info_follow" : "Follow us:",
+      "notify" : "Thanks! We'll reach you shortly",
+      "fill_in": "Please fill in this field",
+      "tags_not_allowed" : "HTML tags i.e. < > not allowed",
+      "name_error" : "Name should only contain letters, period(dot), space or dash",
+      "email_error": "Email must be a valid Email Address"
+    },
+    "fav":{
+      "your_fav":"Your Favourites",
+      "no_fav":"You have no favourite cars!!!",
+      "previous":"prev",
+      "next":"next"
+    },
+    "reset_pass":{
+      "failed":"Failed to update password",
+      "new_confirm":"New Password and Confirm Password do not match",
+      "pass_updated":"Your password has been updated! The next time you login, Please use your new password."
+    },
+    "services_page":{
+      "service_01":"LUXE offers the perfect car rental solution for tourists coming to experience all that our beautiful city has to offer. We have a wide selection of vehicles to choose from, so you can find the perfect one to suit your needs and budget. Our friendly and professional staff will be happy to help you with any queries you may have....",
+      "service_02":"Luxe is the perfect way to make a statement at your next corporate event or big day. We offer a wide selection of top-of-the-line luxury cars for rent, so you can choose the perfect vehicle to match your style. Whether you're in need of a sleek and stylish sedan for a business trip, or a spacious SUV for a family vacation, we ....",
+      "service_03":"LUXE is a premium car rental service that offers luxury vehicles for rent to embassies and other high-profile organizations. We understand that our clients require the utmost in professionalism  and we are committed to providing an exceptional level of service. LUXE provides premium services such as chauffeur services.....",
+      "service_04":"LUXE provide affordable, high-quality wedding car rental vehicles to help you enjoy your special day in style and elegance. Our high-quality vehicles can comfortably and conveniently transport your guests, family and friends, or wedding party throughout your special day with a premium .......",
+      "service_05":"LUXE has the perfect car for any event, with a large range of the latest models from the leading brands. LUXE has you covered whether you're attending a black-tie event or just want to enjoy a dinner date in style. And with our private driver and private tour guide , you can be confident that you will navigate around city securely and in luxury......",
+      "service_06":"LUXE is the perfect car rental service for important guests of the country or public organizations. We offer a wide range of luxury cars to choose from, so you can find the perfect one to match your needs and budget. Our team of professional drivers are experienced and knowledgeable, so you can..."
+    },
+    "testimonials_page":{
+      "test_01":"Thank you so much for all the wonderful support and service.",
+      "test_02":"Driver was very polite and the journey was smooth.",
+      "test_03":"Awesome company to deal with, door to door service.",
+      "test_04":"Overall very professional 100% satisfaction, and everything perfect on time."
+    },
+    "booking_details_page":{
+      "error":"Error fetching bookings",
+      "bookings":"Your Bookings",
+      "no_booking":"You haven't booked a car yet!!!",
+      "from":"from",
+      "to":"to",
+      "filter":"Filter & Book New Car"
+    },
+    "user_profile_page":{
+      "updated":"Profile Updated",
+      "pic_updated":"Profile Picture Updated",
+      "license_updated":"License Updated",
+      "choose_image":"Please choose profile image",
+      "choose_front":"Please choose license front image",
+      "choose_back":"Please choose license back image",
+      "nothing":"Nothing to upload!",
+      "new_front":"Please choose new license front image to update",
+      "new_back":"Please choose new license back image to update",
+      "details":"Profile Details",
+      "upload_photo":"Upload your photo here",
+      "upload_img":"Upload Image",
+      "upload_license":"Upload License Images here",
+      "choose_front_pic":"Choose License Front",
+      "choose_back_pic":"Choose License Back",
+      "upload_imgs":"Upload Images",
+      "title_01":"basic info",
+      "title_02":"profile image",
+      "title_03":"License images"
+    },
+    "terms":{
+      "intro":"Introduction",
+      "intro-details":" Welcome to Luxe Car rent! These Terms of Services govern your use of our website located at luxerentcar.com (together or individually “Service”) operated by Luxe Car rent. Our Privacy Policy also governs your use of our Service and explains how we collect, safeguard and disclose information that results from your use of our web pages. Your agreement with us includes these Terms and our Privacy Policy (“Agreements”). You acknowledge that you have read and understood Agreements, and agree to be bound of them. If you do not agree with (or cannot comply with) Agreements, then you may not use the Service, but please let us know by emailing at John@se0808.com so we can try to find a solution. These Terms apply to all visitors, users and others who wish to access or use Service.",
+      "comm":"Communications",
+      "comm_details":" By using our Service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or by emailing at John@se0808.com.",
+      "purchases":"Purchases",
+      "purchases_d1":"If you wish to purchase any product or service made available through Service (“Purchase”), you may be asked to supply certain information relevant to your Purchase including but not limited to, your credit or debit card number, the expiration date of your card, your billing address, and your shipping information. You represent and warrant that:",
+      "purchases_d2":"you have the legal right to use any card(s) or other payment method(s) in connection with any Purchase; and that",
+      "purchases_d3":"the information you supply to us is true, correct and complete.",
+      "purchases_d4":"We may employ the use of third party services for the purpose of facilitating payment and the completion of Purchases. By submitting your information, you grant us the right to provide the information to these third parties subject to our Privacy Policy. We reserve the right to refuse or cancel your order at any time for reasons including but not limited to: product or service availability, errors in the description or price of the product or service, error in your order or other reasons. We reserve the right to refuse or cancel your order if fraud or an unauthorized or illegal transaction is suspected.",
+      "contests":"Contests, Sweepstakes and Promotions",
+      "contests_details":" Any contests, sweepstakes or other promotions (collectively, “Promotions”) made available through Service may be governed by rules that are separate from these Terms of Service. If you participate in any Promotions, please review the applicable rules as well as our Privacy Policy. If the rules for a Promotion conflict with these Terms of Service, Promotion rules will apply.",
+      "refunds":"Refunds",
+      "refunds_details":"We issue refunds for Contracts within 1 days of the original purchase of the Contract.",
+      "content":"Content",
+      "content_details":"Content found on or through this Service are the property of Luxe Car rent or used with permission. You may not distribute, modify, transmit, reuse, download, repost, copy, or use said Content, whether in whole or in part, for commercial purposes or for personal gain, without express advance written permission from us.",
+      "proh_users":"Prohibited Uses",
+      "proh_users_d1":"You may use Service only for lawful purposes and in accordance with Terms. You agree not to use Service",
+      "proh_users_d2":"In any way that violates any applicable national or international law or regulation",
+      "proh_users_d3":"For the purpose of exploiting, harming, or attempting to exploit or harm minors in any way by exposing them to inappropriate content or otherwise",
+      "proh_users_d4":"To transmit, or procure the sending of, any advertising or promotional material, including any “junk mail”, “chain letter,” “spam,” or any other similar solicitation",
+      "proh_users_d5":"To impersonate or attempt to impersonate Company, a Company employee, another user, or any other person or entity",
+      "proh_users_d6":"In any way that infringes upon the rights of others, or in any way is illegal, threatening, fraudulent, or harmful, or in connection with any unlawful, illegal, fraudulent, or harmful purpose or activity.",
+      "proh_users_d7":"To engage in any other conduct that restricts or inhibits anyone’s use or enjoyment of Service, or which, as determined by us, may harm or offend Company or users of Service or expose them to liability",
+      "proh_users_d8":"Additionally, you agree not to",
+      "proh_users_d9":"Use Service in any manner that could disable, overburden, damage, or impair Service or interfere with any other party’s use of Service, including their ability to engage in real time activities through Service",
+      "proh_users_d10":"Use any robot, spider, or other automatic device, process, or means to access Service for any purpose, including monitoring or copying any of the material on Service",
+      "proh_users_d11":"Use any manual process to monitor or copy any of the material on Service or for any other unauthorized purpose without our prior written consent",
+      "proh_users_d12":"Use any device, software, or routine that interferes with the proper working of Service",
+      "proh_users_d13":"Introduce any viruses, trojan horses, worms, logic bombs, or other material which is malicious or technologically harmful.",
+      "proh_users_d14":" Attempt to gain unauthorized access to, interfere with, damage, or disrupt any parts of Service, the server on which Service is stored, or any server, computer, or database connected to Service",
+      "proh_users_d15":" Attack Service via a denial-of-service attack or a distributed denial-of-service attack",
+      "proh_users_d16":"Take any action that may damage or falsify Company rating",
+      "proh_users_d17":"Otherwise attempt to interfere with the proper working of Service",
+      "analytics":"Analytics",
+      "analytics_details":" We may use third-party Service Providers to monitor and analyze the use of our Service.",
+      "minor":"No Use By Minors",
+      "minor_details":"Service is intended only for access and use by individuals at least eighteen (18) years old. By accessing or using Service, you warrant and represent that you are at least eighteen (18) years of age and with the full authority, right, and capacity to enter into this agreement and abide by all of the terms and conditions of Terms. If you are not at least eighteen (18) years old, you are prohibited from both the access and usage of Service.",
+      "accounts":"Accounts",
+      "accounts_details":"When you create an account with us, you guarantee that you are above the age of 18, and that the information you provide us is accurate, complete, and current at all times. Inaccurate, incomplete, or obsolete information may result in the immediate termination of your account on Service. You are responsible for maintaining the confidentiality of your account and password, including but not limited to the restriction of access to your computer and/or account. You agree to accept responsibility for any and all activities or actions that occur under your account and/or password, whether your password is with our Service or a third-party service. You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account. You may not use as a username the name of another person or entity or that is not lawfully available for use, a name or trademark that is subject to any rights of another person or entity other than you, without appropriate authorization. You may not use as a username any name that is offensive, vulgar or obscene. We reserve the right to refuse service, terminate accounts, remove or edit content, or cancel orders in our sole discretion.",
+      "intel_pro":"Intellectual Property",
+      "intel_pro_01":"Service and its original content (excluding Content provided by users), features and functionality are and will remain the exclusive property of Luxe Car rent and its licensors. Service is protected by copyright, trademark, and other laws of and foreign countries. Our trademarks may not be used in connection with any product or service without the prior written consent of Luxe Car rent.",
+      "copyright":"Copyright Policy",
+      "copyright_details":"We respect the intellectual property rights of others. It is our policy to respond to any claim that Content posted on Service infringes on the copyright or other intellectual property rights (“Infringement”) of any person or entity. If you are a copyright owner, or authorized on behalf of one, and you believe that the copyrighted work has been copied in a way that constitutes copyright infringement, please submit your claim via email to John@se0808.com, with the subject line: “Copyright Infringement” and include in your claim a detailed description of the alleged Infringement as detailed below, under “DMCA Notice and Procedure for Copyright Infringement Claims” You may be held accountable for damages (including costs and attorneys’ fees) for misrepresentation or bad-faith claims on the infringement of any Content found on and/or through Service on your copyright.",
+      "dcma":"DMCA Notice and Procedure for Copyright Infringement Claims",
+      "dcma_details":"You may submit a notification pursuant to the Digital Millennium Copyright Act (DMCA) by providing our Copyright Agent with the following information in writing (see 17 U.S.C 512(c)(3) for further detail): 0.1. an electronic or physical signature of the person authorized to act on behalf of the owner of the copyright’s interest; 0.2. a description of the copyrighted work that you claim has been infringed, including the URL (i.e., web page address) of the location where the copyrighted work exists or a copy of the copyrighted work; 0.3. identification of the URL or other specific location on Service where the material that you claim is infringing is located; 0.4. your address, telephone number, and email address; 0.5. a statement by you that you have a good faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law; 0.6. a statement by you, made under penalty of perjury, that the above information in your notice is accurate and that you are the copyright owner or authorized to act on the copyright owner’s behalf. You can contact our Copyright Agent via email at John@se0808.com.",
+      "error_report":" Error Reporting and Feedback",
+      "error_report_details":"You may provide us either directly at John@se0808.com or via third party sites and tools with information and feedback concerning errors, suggestions for improvements, ideas, problems, complaints, and other matters related to our Service (“Feedback”). You acknowledge and agree that",
+      "error_report_d1":"you shall not retain, acquire or assert any intellectual property right or other right, title or interest in or to the Feedback;",
+      "error_report_d2":"Company may have development ideas similar to the Feedback;",
+      "error_report_d3":"Feedback does not contain confidential information or proprietary information from you or any third party; and",
+      "error_report_d4":"Company is not under any obligation of confidentiality with respect to the Feedback. In the event the transfer of the ownership to the Feedback is not possible due to applicable mandatory laws, you grant Company and its affiliates an exclusive, transferable, irrevocable, free-of-charge, sub-licensable, unlimited and perpetual right to use (including copy, modify, create derivative works, publish, distribute and commercialize) Feedback in any manner and for any purpose.",
+      "links_web":"Links To Other Web Sites",
+      "links_web_01":"For example, the outlined Terms of Use have been created using PolicyMaker.io, a free web application for generating high-quality legal documents. PolicyMaker’s Terms and Conditions generator is an easy-to-use free tool for creating an excellent standard Terms of Service template for a website, blog, e-commerce store or app. ",
+      "links_web_02":"YOU ACKNOWLEDGE AND AGREE THAT COMPANY SHALL NOT BE RESPONSIBLE OR LIABLE, DIRECTLY OR INDIRECTLY, FOR ANY DAMAGE OR LOSS CAUSED OR ALLEGED TO BE CAUSED BY OR IN CONNECTION WITH USE OF OR RELIANCE ON ANY SUCH CONTENT, GOODS OR SERVICES AVAILABLE ON OR THROUGH ANY SUCH THIRD PARTY WEB SITES OR SERVICES. WE STRONGLY ADVISE YOU TO READ THE TERMS OF SERVICE AND PRIVACY POLICIES OF ANY THIRD PARTY WEB SITES OR SERVICES THAT YOU VISIT.",
+      "disclaimer":"Disclaimer Of Warranty",
+      "disclaimer_details":"THESE SERVICES ARE PROVIDED BY COMPANY ON AN “AS IS” AND “AS AVAILABLE” BASIS. COMPANY MAKES NO REPRESENTATIONS OR WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, AS TO THE OPERATION OF THEIR SERVICES, OR THE INFORMATION, CONTENT OR MATERIALS INCLUDED THEREIN. YOU EXPRESSLY AGREE THAT YOUR USE OF THESE SERVICES, THEIR CONTENT, AND ANY SERVICES OR ITEMS OBTAINED FROM US IS AT YOUR SOLE RISK. NEITHER COMPANY NOR ANY PERSON ASSOCIATED WITH COMPANY MAKES ANY WARRANTY OR REPRESENTATION WITH RESPECT TO THE COMPLETENESS, SECURITY, RELIABILITY, QUALITY, ACCURACY, OR AVAILABILITY OF THE SERVICES. WITHOUT LIMITING THE FOREGOING, NEITHER COMPANY NOR ANYONE ASSOCIATED WITH COMPANY REPRESENTS OR WARRANTS THAT THE SERVICES, THEIR CONTENT, OR ANY SERVICES OR ITEMS OBTAINED THROUGH THE SERVICES WILL BE ACCURATE, RELIABLE, ERROR-FREE, OR UNINTERRUPTED, THAT DEFECTS WILL BE CORRECTED, THAT THE SERVICES OR THE SERVER THAT MAKES IT AVAILABLE ARE FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS OR THAT THE SERVICES OR ANY SERVICES OR ITEMS OBTAINED THROUGH THE SERVICES WILL OTHERWISE MEET YOUR NEEDS OR EXPECTATIONS. COMPANY HEREBY DISCLAIMS ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT, AND FITNESS FOR PARTICULAR PURPOSE. THE FOREGOING DOES NOT AFFECT ANY WARRANTIES WHICH CANNOT BE EXCLUDED OR LIMITED UNDER APPLICABLE LAW.",
+      "limitation":"Limitation Of Liability",
+      "limitation_details":"EXCEPT AS PROHIBITED BY LAW, YOU WILL HOLD US AND OUR OFFICERS, DIRECTORS, EMPLOYEES, AND AGENTS HARMLESS FOR ANY INDIRECT, PUNITIVE, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGE, HOWEVER IT ARISES (INCLUDING ATTORNEYS’ FEES AND ALL RELATED COSTS AND EXPENSES OF LITIGATION AND ARBITRATION, OR AT TRIAL OR ON APPEAL, IF ANY, WHETHER OR NOT LITIGATION OR ARBITRATION IS INSTITUTED), WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE, OR OTHER TORTIOUS ACTION, OR ARISING OUT OF OR IN CONNECTION WITH THIS AGREEMENT, INCLUDING WITHOUT LIMITATION ANY CLAIM FOR PERSONAL INJURY OR PROPERTY DAMAGE, ARISING FROM THIS AGREEMENT AND ANY VIOLATION BY YOU OF ANY FEDERAL, STATE, OR LOCAL LAWS, STATUTES, RULES, OR REGULATIONS, EVEN IF COMPANY HAS BEEN PREVIOUSLY ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. EXCEPT AS PROHIBITED BY LAW, IF THERE IS LIABILITY FOUND ON THE PART OF COMPANY, IT WILL BE LIMITED TO THE AMOUNT PAID FOR THE PRODUCTS AND/OR SERVICES, AND UNDER NO CIRCUMSTANCES WILL THERE BE CONSEQUENTIAL OR PUNITIVE DAMAGES. SOME STATES DO NOT ALLOW THE EXCLUSION OR LIMITATION OF PUNITIVE, INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THE PRIOR LIMITATION OR EXCLUSION MAY NOT APPLY TO YOU.",
+      "termination":"Termination",
+      "termination_details":"We may terminate or suspend your account and bar access to Service immediately, without prior notice or liability, under our sole discretion, for any reason whatsoever and without limitation, including but not limited to a breach of Terms. If you wish to terminate your account, you may simply discontinue using Service. All provisions of Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity and limitations of liability.",
+      "govern_law":"Governing Law",
+      "govern_law_details":"These Terms shall be governed and construed in accordance with the laws of thailand, which governing law applies to agreement without regard to its conflict of law provisions. Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect. These Terms constitute the entire agreement between us regarding our Service and supersede and replace any prior agreements we might have had between us regarding Service.",
+      "change_service":"Changes To Service",
+      "change_service_details":"We reserve the right to withdraw or amend our Service, and any service or material we provide via Service, in our sole discretion without notice. We will not be liable if for any reason all or any part of Service is unavailable at any time or for any period. From time to time, we may restrict access to some parts of Service, or the entire Service, to users, including registered users.",
+      "amend":"Amendments To Terms",
+      "amend_details":"We may amend Terms at any time by posting the amended terms on this site. It is your responsibility to review these Terms periodically. Your continued use of the Platform following the posting of revised Terms means that you accept and agree to the changes. You are expected to check this page frequently so you are aware of any changes, as they are binding on you. By continuing to access or use our Service after any revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, you are no longer authorized to use Service.",
+      "waiver":"Waiver And Severability",
+      "waiver_details":"No waiver by Company of any term or condition set forth in Terms shall be deemed a further or continuing waiver of such term or condition or a waiver of any other term or condition, and any failure of Company to assert a right or provision under Terms shall not constitute a waiver of such right or provision. If any provision of Terms is held by a court or other tribunal of competent jurisdiction to be invalid, illegal or unenforceable for any reason, such provision shall be eliminated or limited to the minimum extent such that the remaining provisions of Terms will continue in full force and effect.",
+      "ack":"Acknowledgement",
+      "ack_details":"BY USING SERVICE OR OTHER SERVICES PROVIDED BY US, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS OF SERVICE AND AGREE TO BE BOUND BY THEM.",
+      "contact_us":"Contact Us",
+      "contact_us_details":"Please send your feedback, comments, requests for technical support by email: John@se0808.com.",
+      "last_updated":"Last Updated:"
+    },
+    "not_authorized":{
+      "no_auth_01":"You are not authorized to access this page",
+      "no_auth_02":"Please go to Login or Forgot Password to continue..."
     }
-
 }

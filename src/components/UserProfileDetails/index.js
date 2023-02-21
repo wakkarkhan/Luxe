@@ -21,17 +21,17 @@ const UserProfileDetails = () => {
   const { t } = useTranslation();
   const navigate = useNavigate()
   const { user } = useContext(UserContext)
-  const notify = () => toast("Profile Updated");
-  const notifyImage = () => toast("Profile Picture Updated");
-  const notifyLicenseImage = () => toast("License Updated");
+  const notify = () => toast(t("user_profile_page.updated"));
+  const notifyImage = () => toast(t("user_profile_page.pic_updated"));
+  const notifyLicenseImage = () => toast(t("user_profile_page.license_updated"));
 
-  const imageError = () => toast("Please choose profile image");
-  const licenseFrontError = () => toast("Please choose license front image");
-  const licenseBackError = () => toast("Please choose license back image");
+  const imageError = () => toast(t("user_profile_page.choose_image"));
+  const licenseFrontError = () => toast(t("user_profile_page.choose_front"));
+  const licenseBackError = () => toast(t("user_profile_page.choose_back"));
 
-  const newProfileError = () => toast("Nothing to upload!")
-  const licenseNewFrontError = () => toast("Please choose new license front image to update");
-  const licenseNewBackError = () => toast("Please choose new license back image to update");
+  const newProfileError = () => toast(t("user_profile_page.nothing"))
+  const licenseNewFrontError = () => toast(t("user_profile_page.new_front"));
+  const licenseNewBackError = () => toast(t("user_profile_page.new_back"));
 
   const getuserDetails = localStorage.getItem(('dataKey'));
   const userInfo = JSON.parse(getuserDetails);
@@ -70,12 +70,12 @@ const UserProfileDetails = () => {
       navigate('/login')
     }
 
-    if (userInfo.profile_image != null && userInfo.profile_image != '') {
+    if (userInfo.profile_image !== null && userInfo.profile_image !== '') {
       setPreviewImage1(userInfo.profile_image);
       setIsProfile('true');
     }
 
-    if (userInfo.license_front != null && userInfo.license_front != '') {
+    if (userInfo.license_front !== null && userInfo.license_front !== '') {
       if (updateStatus === undefined) {
         setPreviewImage2(env.apiUrl + 'public/LicenceImages/' + localStorage.getItem('id') + '/' + userInfo.license_front)
         setisLicenseFront('true');
@@ -86,7 +86,7 @@ const UserProfileDetails = () => {
       }
     }
 
-    if (userInfo.license_back != null && userInfo.license_back != '') {
+    if (userInfo.license_back !== null && userInfo.license_back !== '') {
       if (updateStatus === undefined) {
         setPreviewImage3(env.apiUrl + 'public/LicenceImages/' + localStorage.getItem('id') + '/' + userInfo.license_back)
         setisLicenseBack('true');
@@ -218,12 +218,12 @@ const UserProfileDetails = () => {
             setShowImageUpload('flex');
             setShowImageSpinner('none');
           } else {
-            alert('errorrrrr')
+            alert('error')
             setShowImageUpload('flex');
             setShowImageSpinner('none');
           }
         } catch (error) {
-          alert('errorr')
+          alert('error')
           setShowImageUpload('flex');
           setShowImageSpinner('none');
         }
@@ -366,19 +366,19 @@ const UserProfileDetails = () => {
                 <ul className="service-menu">
                   <li>
                     {/* <Link to="/service-single">Today</Link> */}
-                    <Link to="/user-bookings">All Bookings</Link>
+                    <Link to="/user-bookings">{t("all_bookings")}</Link>
                   </li>
                   <li>
-                    <Link to="/make-bookings">Make Bookings</Link>
+                    <Link to="/make-bookings">{t("make_booking")}</Link>
                   </li>
                   <li>
-                    <Link to="/favourites">Favourites</Link>
+                    <Link to="/favourites">{t("header-navigation-user.favourites")}</Link>
                   </li>
                   <li className="active">
-                    <Link>Profile</Link>
+                    <Link>{t("profile")}</Link>
                   </li>
                   <li>
-                    <Link onClick={onClickHandler}>Logout</Link>
+                    <Link onClick={onClickHandler}>{t("logout")}</Link>
                   </li>
                 </ul>
               </div>
@@ -387,7 +387,7 @@ const UserProfileDetails = () => {
           <Col lg={8}>
             <div className="service-details-right">
               <div className="service-accordion" id="accordion">
-                <h3>Profile Details</h3>
+                <h3>{t("user_profile_page.details")}</h3>
 
                 <div className='offer-tabs' id='offerTab'>
 
@@ -397,14 +397,14 @@ const UserProfileDetails = () => {
                     className="mb-3"
                   >
                     {/* Basic Info Tab */}
-                    <Tab eventKey="basic_info" title="Basic Info">
+                    <Tab eventKey="basic_info" title={t("user_profile_page.title_01")}>
                       <form onSubmit={SubmitHandler}>
                         <Row className="mb-2 mt-4">
                           <Col md={6}>
                             <p >
                               <input
                                 type='text'
-                                placeholder={t('First Name')}
+                                placeholder={t("register_page.firstname")}
                                 name="first_name"
                                 value={userFirstName}
                                 onChange={e => setuserFirstName(e.target.value)}
@@ -416,7 +416,7 @@ const UserProfileDetails = () => {
                             <p style={{ textAlign: "End" }}>
                               <input
                                 type='text'
-                                placeholder={t('Last Name')}
+                                placeholder={t("register_page.lastname")}
                                 name="last_name"
                                 value={userLastName}
                                 onChange={e => setuserLastName(e.target.value)}
@@ -430,7 +430,7 @@ const UserProfileDetails = () => {
                             <p>
                               <input
                                 type='email'
-                                placeholder={t("Email")}
+                                placeholder={t("footer.email")}
                                 value={userEmail}
                                 name="email"
                                 disabled
@@ -441,7 +441,7 @@ const UserProfileDetails = () => {
                             <p style={{ textAlign: "End" }}>
                               <input
                                 type='number'
-                                placeholder={t('Mobile Number')}
+                                placeholder={t('checkout_page.mobile')}
                                 value={userMobile}
                                 onChange={e => setuserMobile(e.target.value)}
                                 name="phone"
@@ -477,11 +477,11 @@ const UserProfileDetails = () => {
                       </form>
                     </Tab>
                     {/* Profile Image Tab */}
-                    <Tab eventKey="profile" title="Profile Image">
+                    <Tab eventKey="profile" title={t("user_profile_page.title_02")}>
                       <div className="previewComponent">
                         <form onSubmit={SubmitImageHandler} >
                           <Row className="mt-3">
-                            <Col><h6 style={{ color: 'black' }}>Upload your photo here</h6></Col>
+                            <Col><h6 style={{ color: 'black' }}>{t("user_profile_page.upload_photo")}</h6></Col>
                           </Row>
                           <Row className="mt-4">
                             <Col lg={1}></Col>
@@ -506,7 +506,7 @@ const UserProfileDetails = () => {
                             <Col md={4}></Col>
                             <Col md={4}><button className='gauto-theme-btn mt-4 mr-2'
                               type="submit"
-                            >Upload Image</button></Col>
+                            >{t("user_profile_page.upload_img")}</button></Col>
                             <Col md={4}></Col>
                           </Row>
 
@@ -525,16 +525,16 @@ const UserProfileDetails = () => {
                       </div>
                     </Tab>
                     {/* License Image Tab */}
-                    <Tab eventKey="license" title="License Image">
+                    <Tab eventKey="license" title={t("user_profile_page.title_03")}>
                       <div className="previewComponent">
                         <form onSubmit={submitLicenseHandler} >
                           <Row className="mt-3">
-                            <Col><h6 style={{ color: 'black' }}>Upload License Images here</h6></Col>
+                            <Col><h6 style={{ color: 'black' }}>{t("user_profile_page.upload_license")}</h6></Col>
                           </Row>
                           <Row className="mt-4">
                             <Col lg={1}></Col>
                             <Col lg={3}>
-                              <label htmlFor="license_front">Choose License Front</label></Col>
+                              <label htmlFor="license_front">{t("user_profile_page.choose_front_pic")}</label></Col>
                             <Col lg={4}>
                               <input className="fileInput"
                                 name="license_front"
@@ -555,7 +555,7 @@ const UserProfileDetails = () => {
                           <Row className="mt-5">
                             <Col lg={1}></Col>
                             <Col lg={3}>
-                              <label htmlFor="license_back">Choose License Back</label></Col>
+                              <label htmlFor="license_back">{t("user_profile_page.choose_back_pic")}</label></Col>
                             <Col lg={4}>
                               <input className="fileInput"
                                 name="license_back"
@@ -579,7 +579,7 @@ const UserProfileDetails = () => {
                             <Col md={4}></Col>
                             <Col md={4}><button className='gauto-theme-btn mt-4 mr-2'
                               type="submit"
-                            >Upload Images</button></Col>
+                            >{t("user_profile_page.upload_imgs")}</button></Col>
                             <Col md={4}></Col>
                           </Row>
 
