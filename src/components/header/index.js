@@ -20,21 +20,21 @@ import "./style.css";
 import UserContext from '../../context'
 
 const languages = [
-  {
-    code: "fr",
-    name: "Français",
-    country_code: "fr",
-  },
+  // {
+  //   code: "fr",
+  //   name: "Français",
+  //   country_code: "fr",
+  // },
   {
     code: "en",
     name: "English",
     country_code: "gb",
   },
-  {
-    code: "pt",
-    name: "Português",
-    country_code: "pt",
-  },
+  // {
+  //   code: "pt",
+  //   name: "Português",
+  //   country_code: "pt",
+  // },
   {
     code: "th",
     name: "Thailand",
