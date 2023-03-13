@@ -66,6 +66,11 @@ const Footer = () => {
                       {t("footer.contact_us")}
                     </Link>
                   </li>
+                  <li>
+                    <Link to="/privacy-policy">
+                      {t("footer.privacy")}
+                    </Link>
+                  </li>
                 </ul>
               </div>
               <div className="single-footer newsletter_box">

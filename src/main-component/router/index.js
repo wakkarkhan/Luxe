@@ -30,6 +30,7 @@ import TermsNdConditions from "../Terms&ConditionsPage"
 import VerifyCode from "../VerifyCodePage"
 import ResetPassword from '../ResetPasswordPage'
 import NotAuthorized from '../NotAuthorizedPage'
+import PrivacyPolicyPage from "../PrivacyPolicyPage";
 
 const AllRoute = () => {
   return (
@@ -68,6 +69,7 @@ const AllRoute = () => {
           <Route path="/contact" element={<ContactPage />} />
           <Route element={<ErrorPage />} />
           <Route path="/terms-and-conditions" element={<TermsNdConditions />} />
+          <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
         </Routes>
       </Router>
     </div>

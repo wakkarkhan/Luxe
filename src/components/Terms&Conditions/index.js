@@ -46,9 +46,10 @@ const TermsAndCondition = () => {
                     <Col md={12}>
                         <div >
                             <h2 style={{ color: "black", textTransform: "capitalize" }}> {t("header-navigation.terms")} </h2>
-                            <h6 className="mt-2" style={{ color: "black", paddingLeft: '3px' }}> {t("terms.last_updated")} {terms.slice(14, 25)}</h6>
+                            <p className="mt-2" style={{ paddingLeft: '3px', whiteSpace: 'pre-line' }}>{terms}</p>
+                            {/* <h6 className="mt-2" style={{ color: "black", paddingLeft: '3px' }}> {t("terms.last_updated")} {terms.slice(14, 25)}</h6> */}
 
-                            <p className="mt-2"><b>1. {t("terms.intro")}: </b>
+                            {/* <p className="mt-2"><b>1. {t("terms.intro")}: </b>
                             {t("terms.intro-details")} </p>
 
                             <p className="mt-2"><b>2. {t("terms.comm")}: </b>
@@ -164,7 +165,7 @@ const TermsAndCondition = () => {
                                 <b>24. {t("terms.contact_us")}: </b>
 
                                 {t("terms.contact_us_details")}
-                            </p>
+                            </p> */}
 
                         </div>
 
